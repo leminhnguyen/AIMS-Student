@@ -1,6 +1,8 @@
+![AIMS Cover Image](assets/images/aims_cover_image.png)
+
 ## Getting Started
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Welcome to the AIMS project. Here is a guideline to help you get started.
 
 ## Folder Structure
 
@@ -11,4 +13,9 @@ The workspace contains two folders by default, where:
 
 ## Dependency Management
 
-The `JAVA DEPENDENCIES` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-pack/blob/master/release-notes/v0.9.0.md#work-with-jar-files-directly).
+Later
+
+## Author
+- nguyenlm - Software Engeneering Student - k61
+- manhvd   - Software Engeneering Student - k61
+- hieudm   - Software Engeneering Student - k61 (ICT)
