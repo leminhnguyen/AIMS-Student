@@ -1,4 +1,6 @@
-![AIMS Cover Image](assets/images/aims_cover_image.png)
+<p align="center">
+  <img src="assets/images/aims_cover_image.png" />
+</p>
 
 ## Getting Started
 
