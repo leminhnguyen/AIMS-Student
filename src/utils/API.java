@@ -20,15 +20,7 @@ import java.util.logging.Logger;
 public class API {
 
     public static DateFormat DATE_FORMATER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-    private static Logger LOGGER = getLogger(Utils.class.getName());
-    static {
-        System.setProperty("java.util.logging.SimpleFormatter.format",
-                "[%1$tF %1$tT] [%4$-7s] %5$s %n");
-    }
-
-    public static Logger getLogger(String className){
-        return Logger.getLogger(className);
-    }
+    private static Logger LOGGER = Utils.getLogger(Utils.class.getName());
 
     public static String get(String url, String token) throws Exception{
         LOGGER.info("Request URL: " + url + "\n");
