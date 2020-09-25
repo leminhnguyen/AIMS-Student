@@ -5,7 +5,6 @@ import entity.media.Media;
 public class CartMedia {
     
     private Media media;
-    private Cart cart;
     private int quantity;
     private int price;
 
@@ -15,7 +14,6 @@ public class CartMedia {
 
     public CartMedia(Media media, Cart cart, int quantity, int price) {
         this.media = media;
-        this.cart = cart;
         this.quantity = quantity;
         this.price = price;
     }
@@ -26,14 +24,6 @@ public class CartMedia {
 
     public void setMedia(Media media) {
         this.media = media;
-    }
-
-    public Cart getCart() {
-        return this.cart;
-    }
-
-    public void setCart(Cart cart) {
-        this.cart = cart;
     }
 
     public int getQuantity() {
@@ -56,7 +46,6 @@ public class CartMedia {
     public String toString() {
         return "{" +
             " media='" + media + "'" +
-            ", cart='" + cart + "'" +
             ", quantity='" + quantity + "'" +
             "}";
     }
