@@ -1,24 +1,35 @@
 package entity.order;
 
+import entity.media.Media;
+
 public class User {
     
-
+    private int id;
     private String name;
     private String email;
     private String address;
     private String phone;
+    private Cart cart;
 
-    public User(){
-
-    }
-
-    public User(String name, String email, String address, String phone) {
+    public User(int id, String name, String email, String address, String phone){
+        this.id = id;
         this.name = name;
         this.email = email;
         this.address = address;
         this.phone = phone;
+        this.cart = Cart.getCart(this.id);
+    }
+
+    public void addMediaToCart(Media media, int quantity, int price){
+        CartMedia cm = new CartMedia(media, this.cart, quantity, price);
+        this.cart.addCartMedia(cm);
+    }
+
+    public void removeMediaFromCart(CartMedia cm){
+        this.cart.removeCartMedia(cm);
     }
     
+    // override toString method
     @Override
     public String toString() {
         return "{" +
@@ -29,6 +40,7 @@ public class User {
             "}";
     }
 
+    // getter and setter
     public String getName() {
         return this.name;
     }

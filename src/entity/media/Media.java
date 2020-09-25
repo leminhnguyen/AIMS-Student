@@ -8,10 +8,21 @@ import entity.exception.*;
  */
 public class Media {
 
+    int id;
     protected String title;
     protected String category;
     protected int price;
     protected int quantity;
+    String type;
+
+    public Media (int id, String title, String category, int price, int quantity, String type){
+        this.id = id;
+        this.title = title;
+        this.category = category;
+        this.price = price;
+        this.quantity = quantity;
+        this.type = type;
+    }
 
     public String getTitle() {
         return this.title;
@@ -39,23 +50,10 @@ public class Media {
 
     @Override
     public String toString() {
-        return "{" +
-            "  title='" + getTitle() + "'" +
+        return "title='" + getTitle() + "'" +
             ", category='" + getCategory() + "'" +
             ", price='" + getPrice() + "'" +
-            ", quantity='" + this.quantity + "'" +
-            "}";
-    }
-
-    public Media(){
-
-    }
-
-    public Media (String title, String category, int price, int quantity){
-        this.title = title;
-        this.category = category;
-        this.price = price;
-        this.quantity = quantity;
+            ", quantity='" + this.quantity + "'";
     }
 
     public void decreaseQuantity(){

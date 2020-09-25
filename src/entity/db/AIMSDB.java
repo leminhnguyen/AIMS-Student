@@ -32,4 +32,8 @@ public class AIMSDB {
             LOGGER.severe("Close failed");
         }
     }
+
+    public static void main(String[] args) {
+        AIMSDB.getConnection();
+    }
 }

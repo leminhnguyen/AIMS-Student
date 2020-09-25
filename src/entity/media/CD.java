@@ -11,12 +11,9 @@ public class CD extends Media{
     String musicType;
     Date releasedDate;
 
-    public CD(){
-
-    }
-
-
-    public CD(String artist, String recordLabel, List<String> trackList, String musicType, Date releasedDate) {
+    public CD(int id, String title, String category, int price, int quantity, String type,
+              String artist, String recordLabel, List<String> trackList, String musicType, Date releasedDate) {
+        super(id, title, category, price, quantity, type);
         this.artist = artist;
         this.recordLabel = recordLabel;
         this.trackList = trackList;
