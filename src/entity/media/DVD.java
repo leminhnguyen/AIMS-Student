@@ -8,19 +8,17 @@ public class DVD extends Media{
     String director;
     int runtime;
     String studio;
-    String language;
     String subtitles;
     Date releasedDate;
     String filmType;
 
     public DVD(int id, String title, String category, int price, int quantity, String type,
-               String discType, String director, int runtime, String studio, String language, String subtitles, Date releasedDate, String filmType) {
+               String discType, String director, int runtime, String studio, String subtitles, Date releasedDate, String filmType) {
         super(id, title, category, price, quantity, type);
         this.discType = discType;
         this.director = director;
         this.runtime = runtime;
         this.studio = studio;
-        this.language = language;
         this.subtitles = subtitles;
         this.releasedDate = releasedDate;
         this.filmType = filmType;
@@ -59,14 +57,6 @@ public class DVD extends Media{
         this.studio = studio;
     }
 
-    public String getLanguage() {
-        return this.language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
     public String getSubtitles() {
         return this.subtitles;
     }
@@ -95,11 +85,11 @@ public class DVD extends Media{
     @Override
     public String toString() {
         return "{" +
+            super.toString() +
             " discType='" + discType + "'" +
             ", director='" + director + "'" +
             ", runtime='" + runtime + "'" +
             ", studio='" + studio + "'" +
-            ", language='" + language + "'" +
             ", subtitles='" + subtitles + "'" +
             ", releasedDate='" + releasedDate + "'" +
             ", filmType='" + filmType + "'" +

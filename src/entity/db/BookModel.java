@@ -22,16 +22,6 @@ public class BookModel extends MediaModel {
     }
 
     @Override
-    public void updateMedia(int id, String field, Object value) throws SQLException {
-        if (value instanceof String){
-            value = "\"" + value + "\"";
-        }
-        stm.executeUpdate(" update Book set" + " " +
-                            field + "=" + value + " " +
-                            "where id=" + id + ";");
-    }
-
-    @Override
     public void insertMedia(Media media) {
        
     }
@@ -50,7 +40,15 @@ public class BookModel extends MediaModel {
                      "where Media.id = " + id + ";";
         res = stm.executeQuery(sql);
 		if(res.next()) {
+
+            // from Media table
             String title = "";
+            String type = res.getString("type");
+            int price = res.getInt("price");
+            String category = res.getString("category");
+            int quantity = res.getInt("quantity");
+
+            // from Book table
             String author = res.getString("author");
             String coverType = res.getString("coverType");
             String publisher = res.getString("publisher");
@@ -58,10 +56,7 @@ public class BookModel extends MediaModel {
             int numOfPages = res.getInt("numOfPages");
             String language = res.getString("language");
             String bookCategory = res.getString("bookCategory");
-            String type = res.getString("type");
-            int price = res.getInt("price");
-            String category = res.getString("category");
-            int quantity = res.getInt("quantity");
+            
             return new Book(id, title, category, price, quantity, type, 
                             author, coverType, publisher, publishDate, numOfPages, language, bookCategory);
             
@@ -78,9 +73,8 @@ public class BookModel extends MediaModel {
     public static void main(String[] args) throws SQLException {
         BookModel bm = (BookModel) BookModel.getInstance();
         Utils.getLogger(BookModel.class.getName()).info(bm.getMediaById(1).toString());
-        bm.updateMedia(1, "author", "nguyenlm");
+        bm.updateMediaFieldById("Book", 1, "author", "nguyenlm");
         Utils.getLogger(BookModel.class.getName()).info("Update successfully");
     }
-
-   
+    
 }

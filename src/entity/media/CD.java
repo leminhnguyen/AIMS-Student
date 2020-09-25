@@ -11,7 +11,7 @@ public class CD extends Media{
     String musicType;
     Date releasedDate;
 
-    public CD(int id, String title, String category, int price, int quantity, String type,
+    public CD (int id, String title, String category, int price, int quantity, String type,
               String artist, String recordLabel, List<String> trackList, String musicType, Date releasedDate) {
         super(id, title, category, price, quantity, type);
         this.artist = artist;
@@ -19,6 +19,13 @@ public class CD extends Media{
         this.trackList = trackList;
         this.musicType = musicType;
         this.releasedDate = releasedDate;
+    }
+
+    public CD (int id, String title, String category, int price, int quantity, String type, 
+             String artist, String recordLabel){
+        super(id, title, category, price, quantity, type);
+        this.artist = artist;
+        this.recordLabel = recordLabel;
     }
 
 
@@ -66,6 +73,7 @@ public class CD extends Media{
     @Override
     public String toString() {
         return "{" +
+            super.toString() +
             " artist='" + artist + "'" +
             ", recordLabel='" + recordLabel + "'" +
             ", trackList='" + trackList + "'" +
