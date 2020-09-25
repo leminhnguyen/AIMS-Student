@@ -64,7 +64,4 @@ public class Media {
     public void increaseQuantity(){
         this.quantity += 1;
     }
-
-
-
 }

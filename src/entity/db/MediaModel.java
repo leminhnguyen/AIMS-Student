@@ -17,7 +17,14 @@ public abstract class MediaModel {
 
     public abstract List getAllMedia();
 
-    public abstract void updateMedia(int id, String field, Object value) throws SQLException;
+    public void updateMediaFieldById(String tbname, int id, String field, Object value) throws SQLException {
+        if (value instanceof String){
+            value = "\"" + value + "\"";
+        }
+        stm.executeUpdate(" update Book set" + " " +
+                            field + "=" + value + " " +
+                            "where id=" + id + ";");
+    }
 
     public abstract void insertMedia(Media media);
 
