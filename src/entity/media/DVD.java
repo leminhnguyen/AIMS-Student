@@ -13,11 +13,9 @@ public class DVD extends Media{
     Date releasedDate;
     String filmType;
 
-    public DVD(){
-
-    }
-
-    public DVD(String discType, String director, int runtime, String studio, String language, String subtitles, Date releasedDate, String filmType) {
+    public DVD(int id, String title, String category, int price, int quantity, String type,
+               String discType, String director, int runtime, String studio, String language, String subtitles, Date releasedDate, String filmType) {
+        super(id, title, category, price, quantity, type);
         this.discType = discType;
         this.director = director;
         this.runtime = runtime;

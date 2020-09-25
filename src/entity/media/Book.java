@@ -12,11 +12,10 @@ public class Book extends Media{
     String language;
     String bookCategory;
 
-    public Book (){
 
-    }
-
-    public Book(String author, String coverType, String publisher, Date publishDate, int numOfPages, String language, String bookCategory) {
+    public Book(int id, String title, String category, int price, int quantity, String type,
+                String author, String coverType, String publisher, Date publishDate, int numOfPages, String language, String bookCategory) {
+        super(id, title, category, price, quantity, type);
         this.author = author;
         this.coverType = coverType;
         this.publisher = publisher;
@@ -26,6 +25,10 @@ public class Book extends Media{
         this.bookCategory = bookCategory;
     }
 
+    // getter and setter
+    public int getId(){
+        return this.id;
+    }
 
     public String getAuthor() {
         return this.author;
@@ -82,5 +85,21 @@ public class Book extends Media{
     public void setBookCategory(String bookCategory) {
         this.bookCategory = bookCategory;
     }
+
+
+    @Override
+    public String toString() {
+        return "{" +
+            super.toString() +
+            " author='" + author + "'" +
+            ", coverType='" + coverType + "'" +
+            ", publisher='" + publisher + "'" +
+            ", publishDate='" + publishDate + "'" +
+            ", numOfPages='" + numOfPages + "'" +
+            ", language='" + language + "'" +
+            ", bookCategory='" + bookCategory + "'" +
+            "}";
+    }
+
 
 }

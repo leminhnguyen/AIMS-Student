@@ -2,32 +2,37 @@ package entity.order;
 
 import java.util.List;
 
-import entity.media.Media;
-
 public class Cart {
     
-    private List<Media> lstMedia;
-    public static Cart cart;
+    private List<CartMedia> lstCartMedia;
+    private int userId;
+    private static List carts;
 
-    public static Cart getCart(){
-        if(cart == null) cart = new Cart();
+    public static Cart getCart(int userId){
+
+        for (Object object : carts) {
+            Cart cart  = (Cart) object;
+            if (cart.userId == userId) return cart;
+        }
+        Cart cart = new Cart(userId);
+        carts.add(cart);
         return cart;
     }
 
-    private Cart(){
-
+    private Cart(int userId){
+        this.userId = userId;
     }
 
-    public void addMedia(Media media){
-        lstMedia.add(media);
+    public void addCartMedia(CartMedia cm){
+        lstCartMedia.add(cm);
     }
 
-    public void removeMedia(Media media){
-        lstMedia.remove(media);
+    public void removeCartMedia(CartMedia cm){
+        lstCartMedia.remove(cm);
     }
 
     public List getListMedia(){
-        return lstMedia;
+        return lstCartMedia;
     }
 
 }
