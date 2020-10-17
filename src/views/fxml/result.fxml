@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+   <children>
+      <Label fx:id="pageTitle" layoutX="80.0" layoutY="11.0" prefHeight="96.0" prefWidth="185.0" text="Payment" textAlignment="CENTER" textFill="#5091e6">
+         <font>
+            <Font name="Segoe UI Semibold" size="42.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="14.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/images/Logo.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="resultLabel" layoutX="406.0" layoutY="254.0" text="PAYMENT RESULT!" textFill="LIME">
+         <font>
+            <Font name="Calibri Bold" size="72.0" />
+         </font>
+      </Label>
+      <Label fx:id="messageLabel" alignment="CENTER" layoutX="389.0" layoutY="354.0" prefHeight="216.0" prefWidth="602.0" text="Message">
+         <font>
+            <Font name="Calibri" size="36.0" />
+         </font>
+      </Label>
+      <Button fx:id="okButton" alignment="CENTER" contentDisplay="CENTER" layoutX="528.0" layoutY="681.0" mnemonicParsing="false" onMouseClicked="#confirmPayment" prefHeight="46.0" prefWidth="316.0" style="-fx-background-color: RED;" text="OK" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Bold" size="24.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
