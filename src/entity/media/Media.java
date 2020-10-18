@@ -17,18 +17,13 @@ public abstract class Media {
 
     private static Logger LOGGER = Utils.getLogger(Media.class.getName());
 
-<<<<<<< HEAD
     protected Statement stm;
     protected int id;
-=======
-    int id;
->>>>>>> add model entity
     protected String title;
     protected String category;
     protected int value; // the real price of product (eg: 450)
     protected int price; // the price which will be displayed on browser (eg: 500)
     protected int quantity;
-<<<<<<< HEAD
     protected String type;
     protected String imageURL;
 
@@ -37,18 +32,12 @@ public abstract class Media {
     }
 
     public Media (int id, String title, String category, int price, int quantity, String type) throws SQLException{
-=======
-    String type;
-
-    public Media (int id, String title, String category, int price, int quantity, String type){
->>>>>>> add model entity
         this.id = id;
         this.title = title;
         this.category = category;
         this.price = price;
         this.quantity = quantity;
         this.type = type;
-<<<<<<< HEAD
 
         //stm = AIMSDB.getConnection().createStatement();
     }
@@ -77,8 +66,6 @@ public abstract class Media {
     // getter and setter 
     public int getId() {
         return this.id;
-=======
->>>>>>> add model entity
     }
 
     public String getTitle() {
@@ -108,7 +95,6 @@ public abstract class Media {
         return this;
     }
 
-<<<<<<< HEAD
     public String getImageURL(){
         return this.imageURL;
     }
@@ -121,14 +107,6 @@ public abstract class Media {
     public Media setQuantity(int quantity) {
         this.quantity = quantity;
         return this;
-=======
-    @Override
-    public String toString() {
-        return "title='" + getTitle() + "'" +
-            ", category='" + getCategory() + "'" +
-            ", price='" + getPrice() + "'" +
-            ", quantity='" + this.quantity + "'";
->>>>>>> add model entity
     }
 
     public String getType() {

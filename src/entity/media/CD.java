@@ -13,17 +13,12 @@ public class CD extends Media {
     String musicType;
     Date releasedDate;
 
-<<<<<<< HEAD
     public CD() throws SQLException{
 
     }
 
     public CD(int id, String title, String category, int price, int quantity, String type, String artist,
             String recordLabel, List<String> trackList, String musicType, Date releasedDate) throws SQLException{
-=======
-    public CD(int id, String title, String category, int price, int quantity, String type,
-              String artist, String recordLabel, List<String> trackList, String musicType, Date releasedDate) {
->>>>>>> add model entity
         super(id, title, category, price, quantity, type);
         this.artist = artist;
         this.recordLabel = recordLabel;
