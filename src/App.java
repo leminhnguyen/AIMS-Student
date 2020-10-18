@@ -10,7 +10,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import utils.Configs;
-import views.handler.HomeHandler;
+import views.screen.home.*;
 
 public class App extends Application {
 
@@ -47,7 +47,7 @@ public class App extends Application {
 			// After fade out, load actual content
 			fadeOut.setOnFinished((e) -> {
 				try {
-					HomeHandler homeHandler = new HomeHandler(primaryStage, Configs.HOME_PATH);
+					HomeScreen homeHandler = new HomeScreen(primaryStage, Configs.HOME_PATH);
 					homeHandler.setScreenTitle("Home Screen");
 					homeHandler.setImage();
 					homeHandler.show();

@@ -1,13 +1,23 @@
 package entity.media;
 
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Logger;
+import java.sql.Statement;
+
+import entity.db.AIMSDB;
 import entity.exception.*;
+import utils.Utils;
 
 /**
  * The general media class, for another media it can be done by inheriting this class
  * @author nguyenlm
  */
-public class Media {
+public abstract class Media {
 
+    private static Logger LOGGER = Utils.getLogger(Media.class.getName());
+
+    protected Statement stm;
     protected int id;
     protected String title;
     protected String category;
@@ -17,19 +27,43 @@ public class Media {
     protected String type;
     protected String imageURL;
 
-    public Media(){
-
+    public Media() throws SQLException{
+        //stm = AIMSDB.getConnection().createStatement();
     }
 
-    public Media (int id, String title, String category, int price, int quantity, String type){
+    public Media (int id, String title, String category, int price, int quantity, String type) throws SQLException{
         this.id = id;
         this.title = title;
         this.category = category;
         this.price = price;
         this.quantity = quantity;
         this.type = type;
+
+        //stm = AIMSDB.getConnection().createStatement();
     }
 
+    public int getQuantity() throws SQLException{
+        // int updated_quantity = getMediaById(id).getQuantity();
+        // this.quantity = updated_quantity;
+        // return updated_quantity;
+        return quantity;
+    }
+
+    public abstract Media getMediaById(int id) throws SQLException;
+
+    public abstract List getAllMedia();
+
+    public void updateMediaFieldById(String tbname, int id, String field, Object value) throws SQLException {
+        Statement stm = AIMSDB.getConnection().createStatement();
+        if (value instanceof String){
+            value = "\"" + value + "\"";
+        }
+        stm.executeUpdate(" update " + tbname + " set" + " " 
+                          + field + "=" + value + " " 
+                          + "where id=" + id + ";");
+    }
+
+    // getter and setter 
     public int getId() {
         return this.id;
     }
@@ -70,10 +104,6 @@ public class Media {
         return this;
     }
 
-    public int getQuantity() {
-        return this.quantity;
-    }
-
     public Media setQuantity(int quantity) {
         this.quantity = quantity;
         return this;
@@ -101,12 +131,4 @@ public class Media {
             "}";
     }    
 
-    public void decreaseQuantity(){
-        if(this.quantity - 1 < 0) throw new NegativeQuantityException("The quantity of this media is zero, you cannot decrease anymore");
-        this.quantity -= 1;
-    }
-
-    public void increaseQuantity(){
-        this.quantity += 1;
-    }
 }

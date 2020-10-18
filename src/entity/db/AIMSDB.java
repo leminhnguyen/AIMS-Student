@@ -11,6 +11,7 @@ public class AIMSDB {
 	private static Connection connect;
 
 	public static Connection getConnection() {
+		if (connect != null) return connect;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			connect = DriverManager.getConnection(
@@ -20,7 +21,6 @@ public class AIMSDB {
 			return connect;
 		} catch (Exception e) {
 			LOGGER.severe("Connection failed:\n" + e.getMessage());
-			;
 			return null;
 		}
 	}

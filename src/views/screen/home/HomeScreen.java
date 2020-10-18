@@ -1,8 +1,9 @@
-package views.handler;
+package views.screen.home;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -28,11 +29,13 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import utils.Configs;
 import utils.Utils;
+import views.screen.BaseScreen;
+import views.screen.cart.CartScreen;
 
 
-public class HomeHandler extends ScreenHandler implements Initializable{
+public class HomeScreen extends BaseScreen implements Initializable{
 
-    public static Logger LOGGER = Utils.getLogger(HomeHandler.class.getName());
+    public static Logger LOGGER = Utils.getLogger(HomeScreen.class.getName());
 
     @FXML
     private Label numMediaInCart;
@@ -60,7 +63,7 @@ public class HomeHandler extends ScreenHandler implements Initializable{
 
     private List homeItems;
 
-    public HomeHandler(Stage stage, String screenPath) throws IOException{
+    public HomeScreen(Stage stage, String screenPath) throws IOException{
         super(stage, screenPath);
     }
 
@@ -71,39 +74,47 @@ public class HomeHandler extends ScreenHandler implements Initializable{
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         // TODO: implement later, get data from database
-        this.homeItems = new ArrayList<>();
-        Random rand = new Random();
-        for (int i=1; i<=12; i++){
+        try{
+            this.homeItems = new ArrayList<>();
+            Random rand = new Random();
+            for (int i=1; i<=12; i++){
 
-            Media book = new Book()
-                            .setTitle("Book" + i)
-                            .setPrice(rand.nextInt(1000))
-                            .setQuantity(rand.nextInt(100))
-                            .setType("book")
-                            .setMediaURL(Configs.IMAGE_PATH + "/Books/book" + i + ".jpg");
-            Media cd = new CD()
-                            .setTitle("CD" + i)
-                            .setPrice(rand.nextInt(1000))
-                            .setQuantity(rand.nextInt(100))
-                            .setMediaURL(Configs.IMAGE_PATH + "/CDs/cd" + i + ".jpg")
-                            .setType("cd");
-            Media dvd = new DVD()
-                            .setTitle("DVD" + i)
-                            .setPrice(rand.nextInt(1000))
-                            .setQuantity(rand.nextInt(100))
-                            .setMediaURL(Configs.IMAGE_PATH + "/DVDs/dvd" + i + ".jpg")
-                            .setType("dvd");
-
-            try {
-                MediaHomeHandler m1 = new MediaHomeHandler(Configs.HOME_MEDIA_PATH, book, this);
-                MediaHomeHandler m2 = new MediaHomeHandler(Configs.HOME_MEDIA_PATH, cd, this);
-                MediaHomeHandler m3 = new MediaHomeHandler(Configs.HOME_MEDIA_PATH, dvd, this);
-                this.homeItems.addAll(Arrays.asList(m1,m2,m3));
-            } catch (Exception e) {
-                LOGGER.severe("Cannot add the mediaItem, see the logs");
-                LOGGER.info(e.getMessage());
+                Media book = new Book()
+                                .setTitle("Book" + i)
+                                .setPrice(rand.nextInt(1000))
+                                .setQuantity(rand.nextInt(100))
+                                .setType("book")
+                                .setMediaURL(Configs.IMAGE_PATH + "/Books/book" + i + ".jpg");
+                Media cd = new CD()
+                                .setTitle("CD" + i)
+                                .setPrice(rand.nextInt(1000))
+                                .setQuantity(rand.nextInt(100))
+                                .setMediaURL(Configs.IMAGE_PATH + "/CDs/cd" + i + ".jpg")
+                                .setType("cd");
+                Media dvd = new DVD()
+                                .setTitle("DVD" + i)
+                                .setPrice(rand.nextInt(1000))
+                                .setQuantity(rand.nextInt(100))
+                                .setMediaURL(Configs.IMAGE_PATH + "/DVDs/dvd" + i + ".jpg")
+                                .setType("dvd");
+                
+                try {
+                    MediaHomeScreen m1 = new MediaHomeScreen(Configs.HOME_MEDIA_PATH, book, this);
+                    MediaHomeScreen m2 = new MediaHomeScreen(Configs.HOME_MEDIA_PATH, cd, this);
+                    MediaHomeScreen m3 = new MediaHomeScreen(Configs.HOME_MEDIA_PATH, dvd, this);
+                    this.homeItems.addAll(Arrays.asList(m1,m2,m3));
+                } catch (Exception e) {
+                    LOGGER.severe("Cannot add the mediaItem, see the logs");
+                    LOGGER.info(e.getMessage());
+                    e.printStackTrace();
+                }
             }
+        }catch (SQLException e){
+            LOGGER.info("Errors occured: " + e.getMessage());
+            e.printStackTrace();
         }
+        
+            
         aimsImage.setOnMouseClicked(e -> {
             addMediaHome(this.homeItems);
         });
@@ -141,7 +152,7 @@ public class HomeHandler extends ScreenHandler implements Initializable{
                 VBox vBox = (VBox) node;
                 while(vBox.getChildren().size()<3 && !mediaItems.isEmpty()){
                     LOGGER.info("items in home: " + mediaItems.size());
-                    MediaHomeHandler media = (MediaHomeHandler) mediaItems.get(0);
+                    MediaHomeScreen media = (MediaHomeScreen) mediaItems.get(0);
                     vBox.getChildren().add(media.getContent());
                     mediaItems.remove(media);
                 }
@@ -164,7 +175,7 @@ public class HomeHandler extends ScreenHandler implements Initializable{
             });
             List filteredItems = new ArrayList<>();
             homeItems.forEach(me -> {
-                MediaHomeHandler media = (MediaHomeHandler) me;
+                MediaHomeScreen media = (MediaHomeScreen) me;
                 if (media.getMedia().getTitle().toLowerCase().startsWith(text.toLowerCase())){
                     filteredItems.add(media);
                 }
@@ -176,7 +187,7 @@ public class HomeHandler extends ScreenHandler implements Initializable{
 
     private void requestToViewCart(){
         try {
-            CartHandler cartHandler = new CartHandler(this.stage, Configs.CART_SCREEN_PATH);
+            CartScreen cartHandler = new CartScreen(this.stage, Configs.CART_SCREEN_PATH);
             cartHandler.setPreviousScreen(this);
             cartHandler.setScreenTitle("Cart Screen");
             cartHandler.show();

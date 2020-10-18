@@ -1,4 +1,4 @@
-package views.handler;
+package views.screen;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,12 +8,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-class FXMLHandler {
+public class FXMLScreen {
 
 	protected FXMLLoader loader;
 	protected AnchorPane content;
 
-	public FXMLHandler(String screenPath) throws IOException {
+	public FXMLScreen(String screenPath) throws IOException {
 		this.loader = new FXMLLoader(getClass().getResource(screenPath));
 		// Set this class as the controller
 		this.loader.setController(this);

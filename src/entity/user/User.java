@@ -1,4 +1,4 @@
-package entity.order;
+package entity.user;
 
 import entity.media.Media;
 

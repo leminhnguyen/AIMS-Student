@@ -1,22 +1,24 @@
-package views.handler;
+package views.screen.invoice;
 
 import java.io.IOException;
 import java.util.List;
 
 import utils.Configs;
+import views.screen.BaseScreen;
+import views.screen.payment.PaymentScreen;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class InvoiceHandler extends ScreenHandler {
+public class InvoiceScreen extends BaseScreen {
 
-	public InvoiceHandler(Stage stage, String screenPath) throws IOException {
+	public InvoiceScreen(Stage stage, String screenPath) throws IOException {
 		super(stage, screenPath);
 	}
 
-	protected void forward(List<Node> components) {
+	public void forward(List<Node> components) {
 		this.message = components;
 		this.subtotal.setText(((Label) this.message.get(0)).getText());
 	}
@@ -50,7 +52,7 @@ public class InvoiceHandler extends ScreenHandler {
 
 	@FXML
 	void requestToPayOrder(MouseEvent event) throws IOException {
-		ScreenHandler controller = new PaymentHandler(this.stage, Configs.PAYMENT_SCREEN_PATH);
+		BaseScreen controller = new PaymentScreen(this.stage, Configs.PAYMENT_SCREEN_PATH);
 		controller.setPreviousScreen(this);
 		controller.setScreenTitle("Payment Screen");
 		controller.show();

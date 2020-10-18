@@ -1,4 +1,4 @@
-package views.handler;
+package views.screen.cart;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,10 +11,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import views.screen.*;
 
-public class MediaHandler extends FXMLHandler {
+public class MediaScreen extends FXMLScreen {
 	
-	public MediaHandler(String screenPath) throws IOException {
+	public MediaScreen(String screenPath) throws IOException {
 		super(screenPath);
 	}
 

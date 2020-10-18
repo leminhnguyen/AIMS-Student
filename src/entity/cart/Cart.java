@@ -1,4 +1,4 @@
-package entity.order;
+package entity.cart;
 
 import java.util.ArrayList;
 import java.util.List;

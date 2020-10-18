@@ -1,16 +1,16 @@
-package views.handler;
+package views.screen.cart;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import entity.order.CartMedia;
+import entity.cart.*;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 
-public class MediaOfCartHandler extends MediaHandler implements Initializable {
+public class MediaCartScreen extends MediaScreen implements Initializable {
 
 	private CartMedia cartMedia;
 	
@@ -18,7 +18,7 @@ public class MediaOfCartHandler extends MediaHandler implements Initializable {
 
 	private static final int initialValue = 1;
 
-	public MediaOfCartHandler(String screenPath) throws IOException {
+	public MediaCartScreen(String screenPath) throws IOException {
 		super(screenPath);
 	}
 

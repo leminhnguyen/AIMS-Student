@@ -1,4 +1,4 @@
-package views.handler;
+package views.screen;
 
 import java.io.File;
 import java.net.URL;
@@ -9,7 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class SplashHandler implements Initializable {
+public class SplashScreen implements Initializable {
 
     @FXML
     ImageView logo;

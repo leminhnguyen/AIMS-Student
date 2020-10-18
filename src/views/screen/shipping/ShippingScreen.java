@@ -1,10 +1,12 @@
-package views.handler;
+package views.screen.shipping;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import utils.Configs;
+import views.screen.BaseScreen;
+import views.screen.invoice.InvoiceScreen;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -13,9 +15,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class ShippingHandler extends ScreenHandler implements Initializable {
+public class ShippingScreen extends BaseScreen implements Initializable {
 
-	public ShippingHandler(Stage stage, String screenPath) throws IOException {
+	public ShippingScreen(Stage stage, String screenPath) throws IOException {
 		super(stage, screenPath);
 	}
 
@@ -44,7 +46,7 @@ public class ShippingHandler extends ScreenHandler implements Initializable {
 
 	@FXML
 	void confirmDelivery(MouseEvent event) throws IOException {
-		ScreenHandler controller = new InvoiceHandler(this.stage, Configs.INVOICE_SCREEN_PATH);
+		BaseScreen controller = new InvoiceScreen(this.stage, Configs.INVOICE_SCREEN_PATH);
 		controller.setPreviousScreen(this);
 		controller.setScreenTitle("Invoice Screen");
 

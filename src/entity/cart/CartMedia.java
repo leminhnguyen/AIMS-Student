@@ -1,4 +1,4 @@
-package entity.order;
+package entity.cart;
 
 import entity.media.Media;
 
@@ -44,10 +44,10 @@ public class CartMedia {
 
     @Override
     public String toString() {
-        return "{" +
-            " media='" + media + "'" +
-            ", quantity='" + quantity + "'" +
-            "}";
+        return "{" 
+            + " media='" + media + "'" 
+            + ", quantity='" + quantity + "'" 
+            + "}";
     }
 
 }

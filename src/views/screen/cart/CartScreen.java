@@ -1,4 +1,4 @@
-package views.handler;
+package views.screen.cart;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,8 +6,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import entity.order.Cart;
-import entity.order.CartMedia;
+import entity.cart.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -19,10 +18,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import utils.Configs;
+import views.screen.BaseScreen;
+import views.screen.shipping.ShippingScreen;
 
-public class CartHandler extends ScreenHandler implements Initializable {
+public class CartScreen extends BaseScreen implements Initializable {
 
-	public CartHandler(Stage stage, String screenPath) throws IOException {
+	public CartScreen(Stage stage, String screenPath) throws IOException {
 		super(stage, screenPath);
 	}
 
@@ -49,7 +50,7 @@ public class CartHandler extends ScreenHandler implements Initializable {
 
 	@FXML
 	void requestToPlaceOrder(MouseEvent event) throws IOException {
-		ScreenHandler controller = new ShippingHandler(this.stage, Configs.SHIPPING_SCREEN_PATH);
+		BaseScreen controller = new ShippingScreen(this.stage, Configs.SHIPPING_SCREEN_PATH);
 		controller.setPreviousScreen(this);
 		controller.setScreenTitle("Shipping Screen");
 		controller.show();
@@ -75,7 +76,7 @@ public class CartHandler extends ScreenHandler implements Initializable {
 				String currency = "VND";
 
 				// display the attribute of cart media
-				MediaOfCartHandler mediaHandler = new MediaOfCartHandler(Configs.MEDIA_PATH);
+				MediaCartScreen mediaHandler = new MediaCartScreen(Configs.MEDIA_PATH);
 				mediaHandler.changeMedia(title, Integer.toString(price), currency);
 				mediaHandler.setCartMedia(cartMedia);
 
