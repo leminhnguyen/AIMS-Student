@@ -18,6 +18,7 @@ public class Book extends Media {
     String language;
     String bookCategory;
 
+<<<<<<< HEAD
     public Book() throws SQLException{
 
     }
@@ -25,6 +26,11 @@ public class Book extends Media {
     public Book(int id, String title, String category, int price, int quantity, String type, String author,
             String coverType, String publisher, Date publishDate, int numOfPages, String language,
             String bookCategory) throws SQLException{
+=======
+
+    public Book(int id, String title, String category, int price, int quantity, String type,
+                String author, String coverType, String publisher, Date publishDate, int numOfPages, String language, String bookCategory) {
+>>>>>>> add model entity
         super(id, title, category, price, quantity, type);
         this.author = author;
         this.coverType = coverType;
@@ -36,7 +42,11 @@ public class Book extends Media {
     }
 
     // getter and setter
+<<<<<<< HEAD
     public int getId() {
+=======
+    public int getId(){
+>>>>>>> add model entity
         return this.id;
     }
 
@@ -149,5 +159,21 @@ public class Book extends Media {
     public List getAllMedia() {
         return null;
     }
+
+
+    @Override
+    public String toString() {
+        return "{" +
+            super.toString() +
+            " author='" + author + "'" +
+            ", coverType='" + coverType + "'" +
+            ", publisher='" + publisher + "'" +
+            ", publishDate='" + publishDate + "'" +
+            ", numOfPages='" + numOfPages + "'" +
+            ", language='" + language + "'" +
+            ", bookCategory='" + bookCategory + "'" +
+            "}";
+    }
+
 
 }

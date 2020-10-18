@@ -4,8 +4,13 @@ import java.util.List;
 
 public class Order {
     
+<<<<<<< HEAD
     private int id;
     private List lstOrderMedia;
+=======
+    private User user;
+    private Cart cart;
+>>>>>>> add model entity
 
     public Order(int id, List lstOrderMedia) {
         this.id = id;
@@ -35,5 +40,7 @@ public class Order {
     public void setlstOrderMedia(List lstOrderMedia) {
         this.lstOrderMedia = lstOrderMedia;
     }
+
+    
 
 }

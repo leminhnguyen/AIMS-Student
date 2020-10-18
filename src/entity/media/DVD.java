@@ -15,12 +15,17 @@ public class DVD extends Media {
     Date releasedDate;
     String filmType;
 
+<<<<<<< HEAD
     public DVD() throws SQLException{
 
     }
 
     public DVD(int id, String title, String category, int price, int quantity, String type, String discType,
             String director, int runtime, String studio, String subtitles, Date releasedDate, String filmType) throws SQLException{
+=======
+    public DVD(int id, String title, String category, int price, int quantity, String type,
+               String discType, String director, int runtime, String studio, String language, String subtitles, Date releasedDate, String filmType) {
+>>>>>>> add model entity
         super(id, title, category, price, quantity, type);
         this.discType = discType;
         this.director = director;
