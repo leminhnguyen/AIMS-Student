@@ -13,6 +13,7 @@
    <children>
       <HBox fx:id="media" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="92.0" prefWidth="678.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
+<<<<<<< HEAD
             <VBox fx:id="imageLogoVbox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <ImageView fx:id="image" fitHeight="92.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
@@ -25,6 +26,13 @@
                   </ImageView>
                </children>
             </VBox>
+=======
+            <ImageView fx:id="image" fitHeight="92.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+            <Image url="@../../../assets/images/Media.png" />
+               </image>
+            </ImageView>
+>>>>>>> Initialize GUI
             <VBox fx:id="description" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Label fx:id="title" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="543.0" text="Title of Media" textAlignment="CENTER" textFill="#5091e6" wrapText="true">
@@ -60,7 +68,10 @@
                   <Insets />
                </HBox.margin>
             </VBox>
+<<<<<<< HEAD
             <VBox fx:id="spinnerFX" prefHeight="200.0" prefWidth="100.0" />
+=======
+>>>>>>> Initialize GUI
          </children>
       </HBox>
    </children>

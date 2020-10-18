@@ -12,12 +12,20 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+<<<<<<< HEAD
       <Label fx:id="pageTitle" layoutX="60.0" layoutY="-9.0" prefHeight="96.0" prefWidth="128.0" text="CART" textAlignment="CENTER" textFill="#5091e6">
+=======
+      <Label fx:id="pageTitle" layoutX="60.0" layoutY="-9.0" prefHeight="96.0" prefWidth="109.0" text="CART" textAlignment="CENTER" textFill="#5091e6">
+>>>>>>> Initialize GUI
          <font>
             <Font name="Segoe UI Semibold" size="42.0" />
          </font>
       </Label>
+<<<<<<< HEAD
       <ImageView fx:id="imageLogo" fitHeight="73.0" fitWidth="73.0" layoutX="-6.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+=======
+      <ImageView fitHeight="73.0" fitWidth="73.0" layoutX="-6.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+>>>>>>> Initialize GUI
          <image>
             <Image url="@../../../assets/images/Logo.png" />
          </image>

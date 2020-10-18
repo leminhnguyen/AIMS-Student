@@ -7,16 +7,28 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< HEAD
 <StackPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.screen.SplashScreen">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="600.0">
          <children>
             <ImageView fx:id="logo" fitHeight="150.0" fitWidth="200.0" layoutX="594.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
+=======
+<StackPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="594.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
+>>>>>>> Initialize GUI
                <image>
             <Image url="@../../../assets/images/Logo.png" />
                </image>
             </ImageView>
+<<<<<<< HEAD
             <Label layoutX="632.0" layoutY="383.0" prefHeight="96.0" prefWidth="143.0" text="AIMS" textAlignment="CENTER" textFill="#5091e6">
+=======
+            <Label layoutX="632.0" layoutY="383.0" prefHeight="96.0" prefWidth="102.0" text="AIMS" textAlignment="CENTER" textFill="#5091e6">
+>>>>>>> Initialize GUI
                <font>
                   <Font name="Segoe UI Semibold" size="42.0" />
                </font>
