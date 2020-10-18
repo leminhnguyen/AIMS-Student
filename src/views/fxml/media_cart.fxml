@@ -9,11 +9,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="93.0" prefWidth="978.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="93.0" prefWidth="978.0" style="-fx-padding: 10 5 5 5;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox fx:id="media" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="92.0" prefWidth="678.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox fx:id="hboxMedia" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="92.0" prefWidth="678.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-<<<<<<< HEAD
             <VBox fx:id="imageLogoVbox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <ImageView fx:id="image" fitHeight="92.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
@@ -26,16 +25,9 @@
                   </ImageView>
                </children>
             </VBox>
-=======
-            <ImageView fx:id="image" fitHeight="92.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-            <Image url="@../../../assets/images/Media.png" />
-               </image>
-            </ImageView>
->>>>>>> Initialize GUI
-            <VBox fx:id="description" prefHeight="200.0" prefWidth="100.0">
+            <VBox fx:id="description" prefHeight="78.0" prefWidth="382.0">
                <children>
-                  <Label fx:id="title" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="543.0" text="Title of Media" textAlignment="CENTER" textFill="#5091e6" wrapText="true">
+                  <Label fx:id="title" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="388.0" text="Title of Media" textAlignment="CENTER" textFill="#5091e6" wrapText="true">
                      <font>
                         <Font name="Segoe UI" size="25.0" />
                      </font>
@@ -51,7 +43,12 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </VBox>
-            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="92.0" prefWidth="224.0">
+             <VBox alignment="CENTER" prefHeight="78.0" prefWidth="216.0">
+               <children>
+                  <Label fx:id="labelOutOfStock" prefHeight="44.0" prefWidth="168.0" textFill="#e11111" wrapText="true" />
+               </children>
+            </VBox>
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="82.0" prefWidth="205.0">
                <children>
                   <Label fx:id="price" alignment="BOTTOM_RIGHT" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="202.0" text="1,200,300" textAlignment="CENTER" textFill="#5091e6">
                      <font>
@@ -68,10 +65,7 @@
                   <Insets />
                </HBox.margin>
             </VBox>
-<<<<<<< HEAD
-            <VBox fx:id="spinnerFX" prefHeight="200.0" prefWidth="100.0" />
-=======
->>>>>>> Initialize GUI
+            <VBox fx:id="spinnerFX" prefHeight="78.0" prefWidth="140.0" />
          </children>
       </HBox>
    </children>

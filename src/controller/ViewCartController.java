@@ -5,15 +5,16 @@ import java.util.List;
 
 import entity.media.Media;
 import entity.cart.Cart;
+import entity.cart.CartMedia;
 
 public class ViewCartController {
     
-    public void checkAvailabilityOfProduct() throws SQLException{
+    public static void checkAvailabilityOfProduct() throws SQLException{
         Cart cart = Cart.getCart();
         List mediaInCart = cart.getListMedia();
         for (Object object : mediaInCart) {
-            Media media = (Media) object;
-            media.getQuantity();
+            CartMedia cartMedia = (CartMedia) object;
+            cartMedia.getMedia().getQuantity();
         }
     }
 

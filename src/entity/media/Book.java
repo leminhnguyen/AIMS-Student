@@ -104,13 +104,6 @@ public class Book extends Media {
     }
 
     @Override
-    public String toString() {
-        return "{" + super.toString() + " author='" + author + "'" + ", coverType='" + coverType + "'" + ", publisher='"
-                + publisher + "'" + ", publishDate='" + publishDate + "'" + ", numOfPages='" + numOfPages + "'"
-                + ", language='" + language + "'" + ", bookCategory='" + bookCategory + "'" + "}";
-    }
-
-    @Override
     public Media getMediaById(int id) throws SQLException {
         String sql = "SELECT * FROM "+
                      "aims.Book " +

@@ -11,6 +11,7 @@ import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
+import entity.exception.ViewCartException;
 import entity.media.Book;
 import entity.media.CD;
 import entity.media.DVD;
@@ -120,10 +121,16 @@ public class HomeScreen extends BaseScreen implements Initializable{
         });
         
         cartImage.setOnMouseClicked(e -> {
-            requestToViewCart();
+            CartScreen cartScreen;
+            try {
+                LOGGER.info("User clicked to view cart");
+                cartScreen = new CartScreen(this.stage, Configs.CART_SCREEN_PATH);
+                cartScreen.requestToViewCart(this);
+            } catch (IOException | SQLException e1) {
+                throw new ViewCartException(Arrays.toString(e1.getStackTrace()).replaceAll(", ", "\n"));
+            }
         });
         addMediaHome(this.homeItems);
-        LOGGER.info("vboxes in hbox media" + hboxMedia.getChildren().size());
         addMenuItem(0, "Book", splitMenuBtnSearch);
         addMenuItem(1, "DVD", splitMenuBtnSearch);
         addMenuItem(2, "CD", splitMenuBtnSearch);
@@ -151,7 +158,6 @@ public class HomeScreen extends BaseScreen implements Initializable{
                 int vid = hboxMedia.getChildren().indexOf(node);
                 VBox vBox = (VBox) node;
                 while(vBox.getChildren().size()<3 && !mediaItems.isEmpty()){
-                    LOGGER.info("items in home: " + mediaItems.size());
                     MediaHomeScreen media = (MediaHomeScreen) mediaItems.get(0);
                     vBox.getChildren().add(media.getContent());
                     mediaItems.remove(media);
@@ -169,10 +175,13 @@ public class HomeScreen extends BaseScreen implements Initializable{
         label.setTextAlignment(TextAlignment.RIGHT);
         menuItem.setGraphic(label);
         menuItem.setOnAction(e -> {
+            // empty home media
             hboxMedia.getChildren().forEach(node -> {
                 VBox vBox = (VBox) node;
                 vBox.getChildren().clear();
             });
+
+            // filter only media with the choosen category
             List filteredItems = new ArrayList<>();
             homeItems.forEach(me -> {
                 MediaHomeScreen media = (MediaHomeScreen) me;
@@ -180,23 +189,13 @@ public class HomeScreen extends BaseScreen implements Initializable{
                     filteredItems.add(media);
                 }
             });
+
+            // fill out the home with filted media as category
             addMediaHome(filteredItems);
         });
         menuButton.getItems().add(position, menuItem);
     }
 
-    private void requestToViewCart(){
-        try {
-            CartScreen cartHandler = new CartScreen(this.stage, Configs.CART_SCREEN_PATH);
-            cartHandler.setPreviousScreen(this);
-            cartHandler.setScreenTitle("Cart Screen");
-            cartHandler.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-            LOGGER.severe("Cannot view cart, see the logs: " + e.getMessage());
-            LOGGER.info(e.getMessage());
-        }
-        
-    }
+    
     
 }

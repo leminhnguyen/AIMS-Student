@@ -6,7 +6,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-<<<<<<< HEAD
 	<classpathentry kind="lib" path="lib/linux/mysql.jar"/>
 	<classpathentry kind="lib" path="lib/linux/javafx-sdk-15/lib/javafx-swt.jar"/>
 	<classpathentry kind="lib" path="lib/linux/javafx-sdk-15/lib/javafx.base.jar"/>
@@ -16,9 +15,6 @@
 	<classpathentry kind="lib" path="lib/linux/javafx-sdk-15/lib/javafx.media.jar"/>
 	<classpathentry kind="lib" path="lib/linux/javafx-sdk-15/lib/javafx.swing.jar"/>
 	<classpathentry kind="lib" path="lib/charm-glisten-4.4.1.jar"/>
-=======
-	<classpathentry kind="lib" path="lib/mysql.jar"/>
->>>>>>> Initialize GUI
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX15"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

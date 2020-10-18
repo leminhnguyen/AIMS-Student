@@ -9,7 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import views.handler.CartHandler;
+import views.screen.cart.*;
 
 public class Main extends Application {
 
@@ -45,11 +45,10 @@ public class Main extends Application {
 			// After fade out, load actual content
 			fadeOut.setOnFinished((e) -> {
 				try {
-					CartHandler cartHandler = new CartHandler(primaryStage, Config.CART_SCREEN_PATH);
+					CartScreen cartHandler = new CartScreen(primaryStage, Config.CART_SCREEN_PATH);
 					cartHandler.setScreenTitle("Cart Screen");
 					cartHandler.show();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			});

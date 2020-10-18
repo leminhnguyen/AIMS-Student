@@ -3,10 +3,14 @@ package views.screen.cart;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Logger;
 
+import controller.ViewCartController;
 import entity.cart.*;
+import entity.exception.ViewCartException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -18,14 +22,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import utils.Configs;
+import utils.Utils;
 import views.screen.BaseScreen;
+import views.screen.FXMLScreen;
 import views.screen.shipping.ShippingScreen;
 
 public class CartScreen extends BaseScreen implements Initializable {
 
-	public CartScreen(Stage stage, String screenPath) throws IOException {
-		super(stage, screenPath);
-	}
+	private static Logger LOGGER = Utils.getLogger(CartScreen.class.getName());
 
 	@FXML
 	private ImageView imageLogo;
@@ -48,6 +52,10 @@ public class CartScreen extends BaseScreen implements Initializable {
 	@FXML
 	private Label total;
 
+	public CartScreen(Stage stage, String screenPath) throws IOException {
+		super(stage, screenPath);
+	}
+
 	@FXML
 	void requestToPlaceOrder(MouseEvent event) throws IOException {
 		BaseScreen controller = new ShippingScreen(this.stage, Configs.SHIPPING_SCREEN_PATH);
@@ -59,9 +67,15 @@ public class CartScreen extends BaseScreen implements Initializable {
 		controller.forward(this.message);
 	}
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-
+	public void requestToViewCart(BaseScreen prevScreen) throws SQLException {
+		setPreviousScreen(prevScreen);
+		setScreenTitle("Cart Screen");
+		ViewCartController.checkAvailabilityOfProduct();
+		displayCartWithMediaAvailability();
+		show();
+	}
+	
+	private void displayCartWithMediaAvailability(){
 		File file = new File("assets/images/Logo.png");
 		Image im = new Image(file.toURI().toString());
 		imageLogo.setImage(im);
@@ -76,25 +90,31 @@ public class CartScreen extends BaseScreen implements Initializable {
 				String currency = "VND";
 
 				// display the attribute of cart media
-				MediaCartScreen mediaHandler = new MediaCartScreen(Configs.MEDIA_PATH);
-				mediaHandler.changeMedia(title, Integer.toString(price), currency);
-				mediaHandler.setCartMedia(cartMedia);
+				MediaCartScreen mediaCartScreen = new MediaCartScreen(Configs.CART_MEDIA_PATH);
+				mediaCartScreen.setCartMedia(cartMedia);
 
 				// add delete button
 				Button deleteButton = new Button("Delete");
 				deleteButton.setFont(Configs.REGULAR_FONT);
 				deleteButton.setOnMouseClicked((e) -> {
-					cart.getChildren().remove(mediaHandler.getContent());
+					cart.getChildren().remove(mediaCartScreen.getContent());
 					this.show();
 				});
 
-				mediaHandler.addDescription(deleteButton);
+				// add delete button
+				mediaCartScreen.addDescription(deleteButton);
 
 				// add spinner
-				cart.getChildren().add(mediaHandler.getContent());
+				cart.getChildren().add(mediaCartScreen.getContent());
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+
+		
 	}
 }

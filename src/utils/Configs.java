@@ -37,7 +37,7 @@ public class Configs {
 	public static final String SPLASH_SCREEN_PATH = "/views/fxml/splash.fxml";
 	public static final String CART_SCREEN_PATH = "/views/fxml/cart.fxml";
 	public static final String SHIPPING_SCREEN_PATH = "/views/fxml/shipping.fxml";
-	public static final String MEDIA_PATH = "/views/fxml/media.fxml";
+	public static final String CART_MEDIA_PATH = "/views/fxml/media_cart.fxml";
 	public static final String HOME_PATH  = "/views/fxml/home.fxml";
 	public static final String HOME_MEDIA_PATH = "/views/fxml/media_home.fxml";
 
