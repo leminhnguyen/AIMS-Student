@@ -35,7 +35,4 @@ public class Order {
     public void setlstOrderMedia(List lstOrderMedia) {
         this.lstOrderMedia = lstOrderMedia;
     }
-
-    
-
 }
