@@ -37,9 +37,8 @@ public class App extends Application {
 			fadeOut.setToValue(0);
 			fadeOut.setCycleCount(1);
 
-			fadeIn.play();
-
 			// After fade in, start fade out
+			fadeIn.play();
 			fadeIn.setOnFinished((e) -> {
 				fadeOut.play();
 			});
