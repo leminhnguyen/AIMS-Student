@@ -1,20 +1,20 @@
 package entity.exception;
 
 /**
- * The ViewCartException wraps all unchecked exceptions You can use this
+ * The MediaUpdateException wraps all unchecked exceptions You can use this
  * exception to inform negative quantity in Media products
  * 
  * @author nguyenlm
  */
-public class ViewCartException extends RuntimeException {
+public class MediaUpdateException extends RuntimeException {
 
 	private static final long serialVersionUID = 1091337136123906298L;
 
-	public ViewCartException() {
+	public MediaUpdateException() {
 
 	}
 
-	public ViewCartException(String message) {
+	public MediaUpdateException(String message) {
 		super(message);
 	}
 
