@@ -6,12 +6,14 @@ import java.util.List;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import views.screen.home.HomeScreen;
 
 public class BaseScreen extends FXMLScreen {
 
 	private Scene scene;
 	private BaseScreen prev;
 	protected final Stage stage;
+	protected HomeScreen homeScreen;
 
 	private BaseScreen(String screenPath) throws IOException {
 		super(screenPath);
@@ -47,10 +49,13 @@ public class BaseScreen extends FXMLScreen {
 
 	/*
 	 * Forward component(s) from another controller to this one
-	 * 
 	 */
 	public void forward(List<Node> components) {
 		this.message = components;
+	}
+
+	public void setHomeScreen(HomeScreen homeScreen) {
+		this.homeScreen = homeScreen;
 	}
 
 }

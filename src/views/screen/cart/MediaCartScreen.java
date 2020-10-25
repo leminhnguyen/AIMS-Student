@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
+import entity.cart.Cart;
 import entity.cart.CartMedia;
 import entity.exception.MediaUpdateException;
 import javafx.fxml.FXML;
@@ -22,6 +23,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import utils.Configs;
 import utils.Utils;
 import views.screen.FXMLScreen;
 
@@ -52,12 +54,14 @@ public class MediaCartScreen extends FXMLScreen {
 
 	@FXML
 	protected Label currency;
+
 	private CartMedia cartMedia;
 	private Spinner<Integer> spinner;
-	private static final int initialValue = 1;
+	private CartScreen cartScreen;
 
-	public MediaCartScreen(String screenPath) throws IOException {
+	public MediaCartScreen(String screenPath, CartScreen cartScreen) throws IOException {
 		super(screenPath);
+		this.cartScreen = cartScreen;
 		hboxMedia.setAlignment(Pos.CENTER);
 	}
 
@@ -72,8 +76,8 @@ public class MediaCartScreen extends FXMLScreen {
 
 	private void setMediaInfo() {
 		title.setText(cartMedia.getMedia().getTitle());
-		price.setText(String.valueOf(cartMedia.getPrice()));
-		currency.setText("VND");
+		price.setText(Utils.getCurrencyFormat(cartMedia.getPrice()));
+		currency.setText(Configs.CURRENCY);
 		File file = new File(cartMedia.getMedia().getImageURL());
 		Image im = new Image(file.toURI().toString());
 		image.setImage(im);
@@ -91,19 +95,23 @@ public class MediaCartScreen extends FXMLScreen {
 			try {
 				int numOfProd = this.spinner.getValue();
 				int remainQuantity = cartMedia.getMedia().getQuantity();
+				LOGGER.info("NumOfProd: " + numOfProd + " -- remainOfProd: " + remainQuantity);
 				if (numOfProd > remainQuantity){
-					if (remainQuantity == 0) {
-						LOGGER.info("product " + cartMedia.getMedia().getTitle() + " out of stock");
-						labelOutOfStock.setText("out of stock");
-						numOfProd = 0;
-					}else{
-						LOGGER.info("product " + cartMedia.getMedia().getTitle() + " only remains " + remainQuantity + " (required " + numOfProd + ")");
-						labelOutOfStock.setText("Sorry, Only " + remainQuantity + " remain in stock");
-						spinner.getValueFactory().setValue(remainQuantity);
-						numOfProd = remainQuantity;
-					}
+					LOGGER.info("product " + cartMedia.getMedia().getTitle() + " only remains " + remainQuantity + " (required " + numOfProd + ")");
+					labelOutOfStock.setText("Sorry, Only " + remainQuantity + " remain in stock");
+					spinner.getValueFactory().setValue(remainQuantity);
+					numOfProd = remainQuantity;
 				}
-				price.setText(Integer.toString(numOfProd*cartMedia.getPrice()));
+
+				// update quantity of mediaCart in useCart
+				cartMedia.setQuantity(numOfProd);
+
+				// update the total of mediaCart
+				price.setText(Utils.getCurrencyFormat(numOfProd*cartMedia.getPrice()));
+
+				// update subtotal and amount of Cart
+				cartScreen.updateCartAmount();
+
 			} catch (SQLException e1) {
 				throw new MediaUpdateException(Arrays.toString(e1.getStackTrace()).replaceAll(", ", "\n"));
 			}
@@ -111,7 +119,5 @@ public class MediaCartScreen extends FXMLScreen {
 		});
 		spinnerFX.setAlignment(Pos.CENTER);
 		spinnerFX.getChildren().add(this.spinner);
-	
 	}
-
 }

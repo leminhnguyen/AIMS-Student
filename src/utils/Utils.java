@@ -1,11 +1,14 @@
 package utils;
 
 import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 import java.util.logging.Logger;
 
 /**
- * @author nguyenlm Contains some helpful methods needed in the project
+ * @author nguyenlm 
+ * Contains helper functions
  */
 public class Utils {
 
@@ -17,6 +20,12 @@ public class Utils {
 
 	public static Logger getLogger(String className) {
 		return Logger.getLogger(className);
+	}
+
+	public static String getCurrencyFormat(int num){
+		Locale vietname = new Locale("vi", "VN");
+		NumberFormat defaultFormat = NumberFormat.getCurrencyInstance(vietname);
+		return defaultFormat.format(num);
 	}
 
 }

@@ -6,10 +6,13 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.logging.Logger;
 
 import controller.ViewCartController;
-import entity.cart.*;
+
+import java.util.logging.Logger;
+
+import entity.cart.CartMedia;
+import entity.cart.Cart;
 import entity.exception.ViewCartException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,43 +30,48 @@ import views.screen.BaseScreen;
 import views.screen.FXMLScreen;
 import views.screen.shipping.ShippingScreen;
 
-public class CartScreen extends BaseScreen implements Initializable {
+public class CartScreen extends BaseScreen {
 
 	private static Logger LOGGER = Utils.getLogger(CartScreen.class.getName());
 
 	@FXML
-	private ImageView imageLogo;
+	private ImageView aimsImage;
 
 	@FXML
 	private Label pageTitle;
 
 	@FXML
-	private VBox cart;
-
-	@FXML
-	private Label subtotal;
-
-	@FXML
-	private Label currency;
+	private VBox vboxCart;
 
 	@FXML
 	private Label shippingFees;
 
 	@FXML
-	private Label total;
+	private Label labelAmount;
+
+	@FXML
+	private Label labelSubtotal;
 
 	public CartScreen(Stage stage, String screenPath) throws IOException {
 		super(stage, screenPath);
 	}
 
+	public Label getLabelAmount() {
+		return labelAmount;
+	}
+
+	public Label getLabelSubtotal() {
+		return labelSubtotal;
+	}
+
 	@FXML
-	void requestToPlaceOrder(MouseEvent event) throws IOException {
+	public void requestToPlaceOrder(MouseEvent event) throws IOException {
 		BaseScreen controller = new ShippingScreen(this.stage, Configs.SHIPPING_SCREEN_PATH);
 		controller.setPreviousScreen(this);
 		controller.setScreenTitle("Shipping Screen");
 		controller.show();
 		this.message = new ArrayList<Node>();
-		this.message.add(subtotal);
+		this.message.add(labelSubtotal);
 		controller.forward(this.message);
 	}
 
@@ -74,30 +82,47 @@ public class CartScreen extends BaseScreen implements Initializable {
 		displayCartWithMediaAvailability();
 		show();
 	}
+
+	public void updateCart(){
+		
+	}
+
+	public void updateCartAmount(){
+		// calculate subtotal and amount
+		int subtotal = Cart.getCart().calSubtotal();
+		int amount = (int)(subtotal + (Configs.PERCENT_VAT/100)*subtotal);
+
+		// update subtotal and amount of Cart
+		labelSubtotal.setText(Utils.getCurrencyFormat(subtotal));
+		labelAmount.setText(Utils.getCurrencyFormat(amount));
+	}
 	
 	private void displayCartWithMediaAvailability(){
 		File file = new File("assets/images/Logo.png");
 		Image im = new Image(file.toURI().toString());
-		imageLogo.setImage(im);
+		aimsImage.setImage(im);
+		aimsImage.setOnMouseClicked(e -> {
+			homeScreen.show();
+		});
 
 		try {
 			for (Object cm : Cart.getCart().getListMedia()) {
 
-				// get attribute from CartMedia
+				// display the attribute of vboxCart media
 				CartMedia cartMedia = (CartMedia) cm;
-				String title = cartMedia.getMedia().getTitle();
-				int price = cartMedia.getPrice();
-				String currency = "VND";
-
-				// display the attribute of cart media
-				MediaCartScreen mediaCartScreen = new MediaCartScreen(Configs.CART_MEDIA_PATH);
+				MediaCartScreen mediaCartScreen = new MediaCartScreen(Configs.CART_MEDIA_PATH, this);
 				mediaCartScreen.setCartMedia(cartMedia);
 
 				// add delete button
 				Button deleteButton = new Button("Delete");
 				deleteButton.setFont(Configs.REGULAR_FONT);
 				deleteButton.setOnMouseClicked((e) -> {
-					cart.getChildren().remove(mediaCartScreen.getContent());
+					// update user cart
+					Cart.getCart().removeCartMedia(cartMedia);
+
+					// update vboxCart(GUI)
+					vboxCart.getChildren().remove(mediaCartScreen.getContent());
+					updateCartAmount();
 					this.show();
 				});
 
@@ -105,16 +130,13 @@ public class CartScreen extends BaseScreen implements Initializable {
 				mediaCartScreen.addDescription(deleteButton);
 
 				// add spinner
-				cart.getChildren().add(mediaCartScreen.getContent());
+				vboxCart.getChildren().add(mediaCartScreen.getContent());
+
+				// calculate subtotal and amount
+				updateCartAmount();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-
-		
 	}
 }

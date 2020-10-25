@@ -21,15 +21,6 @@ public class Cart {
         lstCartMedia.add(cm);
     }
 
-    public int getTotalMedia(){
-        int total = 0;
-        for (Object obj : lstCartMedia) {
-            CartMedia cm = (CartMedia) obj;
-            total += cm.getQuantity();
-        }
-        return total;
-    }
-
     public void removeCartMedia(CartMedia cm){
         lstCartMedia.remove(cm);
     }
@@ -40,6 +31,24 @@ public class Cart {
 
     public void emptyCart(){
         lstCartMedia.clear();
+    }
+
+    public int getTotalMedia(){
+        int total = 0;
+        for (Object obj : lstCartMedia) {
+            CartMedia cm = (CartMedia) obj;
+            total += cm.getQuantity();
+        }
+        return total;
+    }
+
+    public int calSubtotal(){
+        int total = 0;
+        for (Object obj : lstCartMedia) {
+            CartMedia cm = (CartMedia) obj;
+            total += cm.getPrice()*cm.getQuantity();
+        }
+        return total;
     }
 
 }
