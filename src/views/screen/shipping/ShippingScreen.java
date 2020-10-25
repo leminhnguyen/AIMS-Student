@@ -57,4 +57,8 @@ public class ShippingScreen extends BaseScreen implements Initializable {
 		controller.show();
 	}
 
+	public void displayErrorDeliveryInfo(){
+		
+	}
+
 }

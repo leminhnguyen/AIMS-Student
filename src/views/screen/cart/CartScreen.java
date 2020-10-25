@@ -100,7 +100,7 @@ public class CartScreen extends BaseScreen {
 		// if some products are not available, we will not continue place order usecase
 		if (!allProductAvail) return;
 
-		// else continue processing place order usecase
+		// else display shipping form
 		ShippingScreen shippingScreen = new ShippingScreen(this.stage, Configs.SHIPPING_SCREEN_PATH);
 		shippingScreen.setPreviousScreen(this);
 		shippingScreen.setScreenTitle("Shipping Screen");

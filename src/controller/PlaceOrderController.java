@@ -20,4 +20,13 @@ public class PlaceOrderController {
         }
         return allAvai;
     }
+
+    public static void validateAndProcessDeliveryInfo(){
+        // TODO: implement later
+    }
+
+    public int calculateShippingFee(){
+        // TODO: implement later
+        return 0;
+    }
 }
