@@ -19,7 +19,7 @@
                <children>
                   <Pane prefHeight="102.0" prefWidth="237.0">
                      <children>
-                        <ImageView fx:id="aimsImage" fitHeight="94.0" fitWidth="115.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="aimsImage" fitHeight="94.0" fitWidth="115.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                            <image>
                               <Image url="@../../../../../../../../../../media/nguyenlm/DriverD/Documents/UNIVERSITY/PERSONAL/PROJECT/Java/TA-TKXDPM/AIMS/assets/images/Logo.png" />
                            </image>
@@ -60,7 +60,7 @@
                <children>
                   <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="cartImage" fitHeight="75.0" fitWidth="64.0" layoutX="14.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="cartImage" fitHeight="75.0" fitWidth="64.0" layoutX="14.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                            <image>
                               <Image url="@../../../../../../../../../../media/nguyenlm/DriverD/Documents/UNIVERSITY/PERSONAL/PROJECT/Java/TA-TKXDPM/AIMS/assets/images/cart.png" />
                            </image>

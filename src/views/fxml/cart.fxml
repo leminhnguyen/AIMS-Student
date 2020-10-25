@@ -17,7 +17,7 @@
             <Font name="Segoe UI Semibold" size="42.0" />
          </font>
       </Label>
-      <ImageView fx:id="aimsImage" fitHeight="73.0" fitWidth="73.0" layoutX="-6.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="aimsImage" fitHeight="73.0" fitWidth="73.0" layoutX="-6.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
          <image>
             <Image url="@../../../assets/images/Logo.png" />
          </image>
@@ -31,7 +31,7 @@
          <children>
             <HBox prefHeight="56.0" prefWidth="316.0">
                <children>
-                  <Label fx:id="subtotal" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="112.0" text="Subtotal:" textAlignment="CENTER">
+                  <Label fx:id="subtotal" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="123.0" text="Subtotal:" textAlignment="CENTER">
                      <font>
                         <Font name="Segoe UI Bold" size="24.0" />
                      </font>
@@ -45,7 +45,7 @@
             </HBox>
             <HBox prefHeight="48.0" prefWidth="316.0">
                <children>
-                  <Label prefHeight="48.0" prefWidth="112.0" text="Amount:">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="124.0" text="Amount:">
                      <font>
                         <Font name="Segoe UI" size="24.0" />
                      </font>
@@ -83,12 +83,7 @@
             </HBox>
             <AnchorPane prefHeight="138.0" prefWidth="344.0">
                <children>
-                  <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="316.0" style="-fx-background-color: GREEN;" text="Validate Cart" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Button>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="75.0" mnemonicParsing="false" onMouseClicked="#requestToPlaceOrder" prefHeight="55.0" prefWidth="316.0" style="-fx-background-color: RED;" text="Place order" textFill="WHITE">
+                  <Button fx:id="btnPlaceOrder" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="75.0" mnemonicParsing="false" onMouseClicked="#requestToPlaceOrder" prefHeight="55.0" prefWidth="316.0" style="-fx-background-color: RED; -fx-cursor: hand;" text="Place order" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI Bold" size="24.0" />
                      </font>

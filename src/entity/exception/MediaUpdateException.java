@@ -2,7 +2,7 @@ package entity.exception;
 
 /**
  * The MediaUpdateException wraps all unchecked exceptions You can use this
- * exception to inform negative quantity in Media products
+ * exception to inform
  * 
  * @author nguyenlm
  */

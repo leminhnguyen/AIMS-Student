@@ -14,15 +14,6 @@ import javafx.stage.Stage;
 
 public class InvoiceScreen extends BaseScreen {
 
-	public InvoiceScreen(Stage stage, String screenPath) throws IOException {
-		super(stage, screenPath);
-	}
-
-	public void forward(List<Node> components) {
-		this.message = components;
-		this.subtotal.setText(((Label) this.message.get(0)).getText());
-	}
-
 	@FXML
 	private Label pageTitle;
 
@@ -49,6 +40,15 @@ public class InvoiceScreen extends BaseScreen {
 
 	@FXML
 	private Label total;
+
+	public InvoiceScreen(Stage stage, String screenPath) throws IOException {
+		super(stage, screenPath);
+	}
+
+	public void forward(List<Node> components) {
+		this.message = components;
+		this.subtotal.setText(((Label) this.message.get(0)).getText());
+	}
 
 	@FXML
 	void requestToPayOrder(MouseEvent event) throws IOException {

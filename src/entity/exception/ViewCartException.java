@@ -2,7 +2,7 @@ package entity.exception;
 
 /**
  * The ViewCartException wraps all unchecked exceptions You can use this
- * exception to inform negative quantity in Media products
+ * exception to inform
  * 
  * @author nguyenlm
  */

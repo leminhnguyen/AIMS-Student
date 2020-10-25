@@ -2,21 +2,16 @@ package views.screen.cart;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-
-import controller.ViewCartController;
-
+import java.util.Arrays;
 import java.util.logging.Logger;
 
-import entity.cart.CartMedia;
+import controller.PlaceOrderController;
+import controller.ViewCartController;
 import entity.cart.Cart;
-import entity.exception.ViewCartException;
+import entity.cart.CartMedia;
+import entity.exception.PlaceOrderException;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -27,7 +22,6 @@ import javafx.stage.Stage;
 import utils.Configs;
 import utils.Utils;
 import views.screen.BaseScreen;
-import views.screen.FXMLScreen;
 import views.screen.shipping.ShippingScreen;
 
 public class CartScreen extends BaseScreen {
@@ -41,7 +35,7 @@ public class CartScreen extends BaseScreen {
 	private Label pageTitle;
 
 	@FXML
-	private VBox vboxCart;
+	VBox vboxCart;
 
 	@FXML
 	private Label shippingFees;
@@ -52,8 +46,34 @@ public class CartScreen extends BaseScreen {
 	@FXML
 	private Label labelSubtotal;
 
+	@FXML
+	private Button btnPlaceOrder;
+
 	public CartScreen(Stage stage, String screenPath) throws IOException {
 		super(stage, screenPath);
+
+		// fix relative image path caused by fxml
+		File file = new File("assets/images/Logo.png");
+		Image im = new Image(file.toURI().toString());
+		aimsImage.setImage(im);
+
+		// on mouse clicked, we back to home
+		aimsImage.setOnMouseClicked(e -> {
+			homeScreen.show();
+		});
+
+		// on mouse clicked, we start processing place order usecase
+		btnPlaceOrder.setOnMouseClicked(e -> {
+			LOGGER.info("Place Order button clicked");
+			try {
+				requestToPlaceOrder();
+			} catch (SQLException | IOException exp) {
+				LOGGER.severe("Cannot place the order, see the logs");
+				exp.printStackTrace();
+				throw new PlaceOrderException(Arrays.toString(exp.getStackTrace()).replaceAll(", ", "\n"));
+			}
+			
+		});
 	}
 
 	public Label getLabelAmount() {
@@ -64,17 +84,6 @@ public class CartScreen extends BaseScreen {
 		return labelSubtotal;
 	}
 
-	@FXML
-	public void requestToPlaceOrder(MouseEvent event) throws IOException {
-		BaseScreen controller = new ShippingScreen(this.stage, Configs.SHIPPING_SCREEN_PATH);
-		controller.setPreviousScreen(this);
-		controller.setScreenTitle("Shipping Screen");
-		controller.show();
-		this.message = new ArrayList<Node>();
-		this.message.add(labelSubtotal);
-		controller.forward(this.message);
-	}
-
 	public void requestToViewCart(BaseScreen prevScreen) throws SQLException {
 		setPreviousScreen(prevScreen);
 		setScreenTitle("Cart Screen");
@@ -83,11 +92,27 @@ public class CartScreen extends BaseScreen {
 		show();
 	}
 
-	public void updateCart(){
-		
+	public void requestToPlaceOrder() throws SQLException, IOException {
+		// check the availability of products
+		boolean allProductAvail = PlaceOrderController.checkAvailabilityOfProduct();
+		displayCartWithMediaAvailability();
+
+		// if some products are not available, we will not continue place order usecase
+		if (!allProductAvail) return;
+
+		// else continue processing place order usecase
+		ShippingScreen shippingScreen = new ShippingScreen(this.stage, Configs.SHIPPING_SCREEN_PATH);
+		shippingScreen.setPreviousScreen(this);
+		shippingScreen.setScreenTitle("Shipping Screen");
+		shippingScreen.show();
 	}
 
-	public void updateCartAmount(){
+	public void updateCart() throws SQLException{
+		ViewCartController.checkAvailabilityOfProduct();
+		displayCartWithMediaAvailability();
+	}
+
+	void updateCartAmount(){
 		// calculate subtotal and amount
 		int subtotal = Cart.getCart().calSubtotal();
 		int amount = (int)(subtotal + (Configs.PERCENT_VAT/100)*subtotal);
@@ -98,12 +123,8 @@ public class CartScreen extends BaseScreen {
 	}
 	
 	private void displayCartWithMediaAvailability(){
-		File file = new File("assets/images/Logo.png");
-		Image im = new Image(file.toURI().toString());
-		aimsImage.setImage(im);
-		aimsImage.setOnMouseClicked(e -> {
-			homeScreen.show();
-		});
+		// clear all old cartMedia
+		vboxCart.getChildren().clear();
 
 		try {
 			for (Object cm : Cart.getCart().getListMedia()) {
@@ -112,22 +133,6 @@ public class CartScreen extends BaseScreen {
 				CartMedia cartMedia = (CartMedia) cm;
 				MediaCartScreen mediaCartScreen = new MediaCartScreen(Configs.CART_MEDIA_PATH, this);
 				mediaCartScreen.setCartMedia(cartMedia);
-
-				// add delete button
-				Button deleteButton = new Button("Delete");
-				deleteButton.setFont(Configs.REGULAR_FONT);
-				deleteButton.setOnMouseClicked((e) -> {
-					// update user cart
-					Cart.getCart().removeCartMedia(cartMedia);
-
-					// update vboxCart(GUI)
-					vboxCart.getChildren().remove(mediaCartScreen.getContent());
-					updateCartAmount();
-					this.show();
-				});
-
-				// add delete button
-				mediaCartScreen.addDescription(deleteButton);
 
 				// add spinner
 				vboxCart.getChildren().add(mediaCartScreen.getContent());

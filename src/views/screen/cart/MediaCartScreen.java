@@ -2,25 +2,22 @@ package views.screen.cart;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.Arrays;
-import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
 import entity.cart.Cart;
 import entity.cart.CartMedia;
 import entity.exception.MediaUpdateException;
+import entity.exception.ViewCartException;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import utils.Configs;
@@ -55,6 +52,9 @@ public class MediaCartScreen extends FXMLScreen {
 	@FXML
 	protected Label currency;
 
+	@FXML
+	protected Button btnDelete;
+
 	private CartMedia cartMedia;
 	private Spinner<Integer> spinner;
 	private CartScreen cartScreen;
@@ -64,11 +64,7 @@ public class MediaCartScreen extends FXMLScreen {
 		this.cartScreen = cartScreen;
 		hboxMedia.setAlignment(Pos.CENTER);
 	}
-
-	public void addDescription(Parent component) {
-		this.description.getChildren().add(component);
-	}
-
+	
 	public void setCartMedia(CartMedia cartMedia) {
 		this.cartMedia = cartMedia;
 		setMediaInfo();
@@ -84,6 +80,20 @@ public class MediaCartScreen extends FXMLScreen {
 		image.setPreserveRatio(false);
 		image.setFitHeight(110);
 		image.setFitWidth(92);
+
+		// add delete button
+		btnDelete.setFont(Configs.REGULAR_FONT);
+		btnDelete.setOnMouseClicked(e -> {
+			try {
+				Cart.getCart().removeCartMedia(cartMedia); // update user cart
+				cartScreen.updateCart(); // re-display user cart
+				LOGGER.info("Deleted " + cartMedia.getMedia().getTitle() + " from the cart");
+			} catch (SQLException exp) {
+				exp.printStackTrace();
+				throw new ViewCartException();
+			}
+		});
+
 		initializeSpinner();
 	}
 
