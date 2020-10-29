@@ -1,18 +1,22 @@
 package views.screen.invoice;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.HashMap;
+import java.util.logging.Logger;
 
-import utils.Configs;
-import views.screen.BaseScreen;
-import views.screen.payment.PaymentScreen;
+import entity.order.Order;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import utils.Configs;
+import utils.Utils;
+import views.screen.BaseScreen;
+import views.screen.payment.PaymentScreen;
 
 public class InvoiceScreen extends BaseScreen {
+
+	private static Logger LOGGER = Utils.getLogger(InvoiceScreen.class.getName());
 
 	@FXML
 	private Label pageTitle;
@@ -41,21 +45,32 @@ public class InvoiceScreen extends BaseScreen {
 	@FXML
 	private Label total;
 
-	public InvoiceScreen(Stage stage, String screenPath) throws IOException {
+	private Order order;
+
+	public InvoiceScreen(Stage stage, String screenPath, Order order) throws IOException {
 		super(stage, screenPath);
+		this.order = order;
+		setInvoiceInfo();
 	}
 
-	public void forward(List<Node> components) {
-		this.message = components;
-		this.subtotal.setText(((Label) this.message.get(0)).getText());
+	private void setInvoiceInfo(){
+		HashMap<String, String> deliveryInfo = order.getDeliveryInfo();
+		name.setText(deliveryInfo.get("name"));
+		province.setText(deliveryInfo.get("province"));
+		instructions.setText(deliveryInfo.get("instructions"));
+		address.setText(deliveryInfo.get("address"));
+		subtotal.setText(Utils.getCurrencyFormat(order.getAmount()));
+		shippingFees.setText(Utils.getCurrencyFormat(order.getShippingFees()));
+		total.setText(Utils.getCurrencyFormat(order.getAmount() + order.getShippingFees()));
 	}
 
 	@FXML
-	void requestToPayOrder(MouseEvent event) throws IOException {
-		BaseScreen controller = new PaymentScreen(this.stage, Configs.PAYMENT_SCREEN_PATH);
-		controller.setPreviousScreen(this);
-		controller.setScreenTitle("Payment Screen");
-		controller.show();
+	void confirmInvoice(MouseEvent event) throws IOException {
+		BaseScreen paymentScreen = new PaymentScreen(this.stage, Configs.PAYMENT_SCREEN_PATH);
+		paymentScreen.setPreviousScreen(this);
+		paymentScreen.setScreenTitle("Payment Screen");
+		paymentScreen.show();
+		LOGGER.info("Confirmed invoice");
 	}
 
 }

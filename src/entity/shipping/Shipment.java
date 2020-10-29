@@ -2,7 +2,6 @@ package entity.shipping;
 
 public class Shipment {
     
-
     public void validateDeliveryInfo(){
         // TODO: implement later on
     }

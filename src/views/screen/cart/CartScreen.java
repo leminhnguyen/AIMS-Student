@@ -6,17 +6,19 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.logging.Logger;
 
+import com.gluonhq.impl.charm.a.b.b.s;
+
 import controller.PlaceOrderController;
 import controller.ViewCartController;
 import entity.cart.Cart;
 import entity.cart.CartMedia;
+import entity.exception.MediaNotAvailableException;
 import entity.exception.PlaceOrderException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import utils.Configs;
@@ -84,31 +86,43 @@ public class CartScreen extends BaseScreen {
 		return labelSubtotal;
 	}
 
+	public ViewCartController getBController(){
+		return (ViewCartController) super.getBController();
+	}
+
 	public void requestToViewCart(BaseScreen prevScreen) throws SQLException {
 		setPreviousScreen(prevScreen);
 		setScreenTitle("Cart Screen");
-		ViewCartController.checkAvailabilityOfProduct();
+		getBController().checkAvailabilityOfProduct();
 		displayCartWithMediaAvailability();
 		show();
 	}
 
 	public void requestToPlaceOrder() throws SQLException, IOException {
-		// check the availability of products
-		boolean allProductAvail = PlaceOrderController.checkAvailabilityOfProduct();
-		displayCartWithMediaAvailability();
+		try {
+			// create placeOrderController and process the order
+			PlaceOrderController placeOrderController = new PlaceOrderController();
+			placeOrderController.placeOrder();
+			
+			// display available media
+			displayCartWithMediaAvailability();
 
-		// if some products are not available, we will not continue place order usecase
-		if (!allProductAvail) return;
+			// display shipping form
+			ShippingScreen shippingScreen = new ShippingScreen(this.stage, Configs.SHIPPING_SCREEN_PATH);
+			shippingScreen.setPreviousScreen(this);
+			shippingScreen.setScreenTitle("Shipping Screen");
+			shippingScreen.setBController(placeOrderController);
+			shippingScreen.show();
 
-		// else display shipping form
-		ShippingScreen shippingScreen = new ShippingScreen(this.stage, Configs.SHIPPING_SCREEN_PATH);
-		shippingScreen.setPreviousScreen(this);
-		shippingScreen.setScreenTitle("Shipping Screen");
-		shippingScreen.show();
+		} catch (MediaNotAvailableException e) {
+			// if some media are not available then display cart and break usecase Place Order
+			displayCartWithMediaAvailability();
+			return;
+		}
 	}
 
 	public void updateCart() throws SQLException{
-		ViewCartController.checkAvailabilityOfProduct();
+		getBController().checkAvailabilityOfProduct();
 		displayCartWithMediaAvailability();
 	}
 

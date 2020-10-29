@@ -1,7 +1,10 @@
 package entity.cart;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import entity.exception.MediaNotAvailableException;
 
 public class Cart {
     
@@ -49,6 +52,17 @@ public class Cart {
             total += cm.getPrice()*cm.getQuantity();
         }
         return total;
+    }
+
+    public void checkAvailabilityOfProduct() throws SQLException{
+        boolean allAvai = true;
+        for (Object object : lstCartMedia) {
+            CartMedia cartMedia = (CartMedia) object;
+            int requiredQuantity = cartMedia.getQuantity();
+            int availQuantity = cartMedia.getMedia().getQuantity();
+            if (requiredQuantity > availQuantity) allAvai = false;
+        }
+        if (!allAvai) throw new MediaNotAvailableException();
     }
 
 }

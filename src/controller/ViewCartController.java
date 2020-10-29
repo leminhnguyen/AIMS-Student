@@ -7,15 +7,10 @@ import entity.media.Media;
 import entity.cart.Cart;
 import entity.cart.CartMedia;
 
-public class ViewCartController {
+public class ViewCartController extends BaseController{
     
-    public static void checkAvailabilityOfProduct() throws SQLException{
-        Cart cart = Cart.getCart();
-        List mediaInCart = cart.getListMedia();
-        for (Object object : mediaInCart) {
-            CartMedia cartMedia = (CartMedia) object;
-            cartMedia.getMedia().getQuantity();
-        }
+    public void checkAvailabilityOfProduct() throws SQLException{
+        Cart.getCart().checkAvailabilityOfProduct();
     }
 
 }

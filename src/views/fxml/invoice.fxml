@@ -25,15 +25,7 @@
             <Image url="@../../../assets/images/Logo.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="601.0" layoutY="663.0">
-         <children>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="-62.0" layoutY="-1.0" mnemonicParsing="false" onMouseClicked="#requestToPayOrder" prefHeight="46.0" prefWidth="316.0" style="-fx-background-color: RED;" text="Confirm order" textFill="WHITE">
-               <font>
-                  <Font name="Segoe UI Bold" size="24.0" />
-               </font>
-            </Button>
-         </children>
-      </AnchorPane>
+      <AnchorPane layoutX="601.0" layoutY="663.0" />
       <GridPane layoutX="473.0" layoutY="549.0" prefHeight="114.0" prefWidth="479.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.2" minWidth="0.0" prefWidth="189.600048828125" />
@@ -41,9 +33,9 @@
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="843.2" minWidth="10.0" prefWidth="82.39999999999998" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints maxHeight="108.60001220703126" minHeight="10.0" prefHeight="63.999996948242185" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="168.5999969482422" minHeight="10.0" prefHeight="95.20001831054688" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="311.8000549316406" minHeight="10.0" prefHeight="92.79998168945312" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="108.60001220703126" minHeight="0.0" prefHeight="47.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="168.5999969482422" minHeight="0.0" prefHeight="46.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="311.8000549316406" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
             <Label text="Subtotal">
@@ -104,8 +96,8 @@
       </GridPane>
       <GridPane layoutX="22.0" layoutY="68.0" prefHeight="448.0" prefWidth="623.0">
          <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.2" minWidth="0.0" prefWidth="165.59998168945313" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="843.2" minWidth="0.0" prefWidth="458.4000183105469" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.2" minWidth="0.0" prefWidth="187.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="843.2" minWidth="0.0" prefWidth="436.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints maxHeight="108.60001220703126" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
@@ -117,7 +109,7 @@
          <children>
             <Label text="Name">
                <font>
-                  <Font name="Segoe UI" size="24.0" />
+                  <Font name="System Bold Italic" size="24.0" />
                </font>
                <padding>
                   <Insets left="10.0" />
@@ -125,15 +117,15 @@
             </Label>
             <Label text="Phone" GridPane.rowIndex="1">
                <font>
-                  <Font name="Segoe UI" size="24.0" />
+                  <Font name="System Bold Italic" size="24.0" />
                </font>
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label text="Province/City" GridPane.rowIndex="2">
+            <Label prefHeight="30.0" prefWidth="204.0" text="City" GridPane.rowIndex="2">
                <font>
-                  <Font name="Segoe UI" size="24.0" />
+                  <Font name="System Bold Italic" size="24.0" />
                </font>
                <GridPane.margin>
                   <Insets left="10.0" />
@@ -141,7 +133,7 @@
             </Label>
             <Label text="Address" GridPane.rowIndex="3">
                <font>
-                  <Font name="Segoe UI" size="24.0" />
+                  <Font name="System Bold Italic" size="24.0" />
                </font>
                <GridPane.margin>
                   <Insets left="10.0" />
@@ -149,7 +141,7 @@
             </Label>
             <Label text="Shipping&#10;Instructions" GridPane.rowIndex="4">
                <font>
-                  <Font name="Segoe UI" size="24.0" />
+                  <Font name="System Bold Italic" size="24.0" />
                </font>
                <GridPane.margin>
                   <Insets left="10.0" />
@@ -187,5 +179,10 @@
             <VBox fx:id="cart" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="567.0" />
          </content>
       </ScrollPane>
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="540.0" layoutY="690.0" mnemonicParsing="false" onMouseClicked="#confirmInvoice" prefHeight="46.0" prefWidth="316.0" style="-fx-background-color: RED; -fx-cursor: hand;" text="Confirm order" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Bold" size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

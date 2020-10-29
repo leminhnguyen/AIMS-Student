@@ -106,7 +106,7 @@
             </ComboBox>
          </children>
       </GridPane>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="526.0" layoutY="645.0" mnemonicParsing="false" onMouseClicked="#confirmDelivery" prefHeight="46.0" prefWidth="316.0" style="-fx-background-color: RED;" text="Confirm delivery" textFill="WHITE">
+      <Button fx:id="btnConfirmDelivery" alignment="CENTER" contentDisplay="CENTER" layoutX="526.0" layoutY="645.0" mnemonicParsing="false" onMouseClicked="#submitDeliveryInfo" prefHeight="46.0" prefWidth="316.0" style="-fx-background-color: RED; -fx-cursor: hand;" text="Confirm delivery" textFill="WHITE">
          <font>
             <Font name="Segoe UI Bold" size="24.0" />
          </font>
