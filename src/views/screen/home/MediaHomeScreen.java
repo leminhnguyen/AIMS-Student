@@ -10,17 +10,14 @@ import entity.cart.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import utils.Utils;
 import views.screen.FXMLScreen;
 
 public class MediaHomeScreen extends FXMLScreen{
-
-    private static Logger LOGGER = Utils.getLogger(MediaHomeScreen.class.getName());
-
-    private Media media;
-    private HomeScreen home;
 
     @FXML
     protected ImageView mediaImage;
@@ -35,7 +32,14 @@ public class MediaHomeScreen extends FXMLScreen{
     protected Label mediaAvail;
 
     @FXML
+    protected Spinner<Integer> spinnerChangeNumber;
+
+    @FXML
     protected Button addToCartBtn;
+
+    private static Logger LOGGER = Utils.getLogger(MediaHomeScreen.class.getName());
+    private Media media;
+    private HomeScreen home;
 
     public MediaHomeScreen(String screenPath, Media media, HomeScreen home) throws SQLException, IOException{
         super(screenPath);
@@ -44,15 +48,14 @@ public class MediaHomeScreen extends FXMLScreen{
         addToCartBtn.setOnMouseClicked(e -> {
             try {
                 Cart cart = Cart.getCart();
-                CartMedia cartMedia = new CartMedia(media, cart, media.getQuantity(), media.getPrice());
+                CartMedia cartMedia = new CartMedia(media, cart, spinnerChangeNumber.getValue(), media.getPrice());
                 cart.getListMedia().add(cartMedia);
-                LOGGER.info("add media " + media.getTitle() + " to cart");
-                home.getNumMediaCartLabel().setText(String.valueOf(cart.getListMedia().size() + " media"));
+                LOGGER.info("Added " + cartMedia.getQuantity() + " " + media.getTitle() + " to cart");
+                home.getNumMediaCartLabel().setText(String.valueOf(cart.getTotalMedia() + " media"));
             } catch (Exception exp) {
                 LOGGER.severe("Cannot add media to cart: ");
                 exp.printStackTrace();
             }
-            
         });
         setMediaInfo();
     }
@@ -72,6 +75,9 @@ public class MediaHomeScreen extends FXMLScreen{
         mediaTitle.setText(media.getTitle());
         mediaPrice.setText(Integer.toString(media.getPrice()));
         mediaAvail.setText(Integer.toString(media.getQuantity()));
+        spinnerChangeNumber.setValueFactory(
+            new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 1)
+        );
 
         setImage(mediaImage, media.getImageURL());
     }

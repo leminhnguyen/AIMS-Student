@@ -11,6 +11,8 @@ import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
+import controller.PlaceOrderController;
+import controller.ViewCartController;
 import entity.exception.ViewCartException;
 import entity.media.Book;
 import entity.media.CD;
@@ -125,6 +127,8 @@ public class HomeScreen extends BaseScreen implements Initializable{
             try {
                 LOGGER.info("User clicked to view cart");
                 cartScreen = new CartScreen(this.stage, Configs.CART_SCREEN_PATH);
+                cartScreen.setHomeScreen(this);
+                cartScreen.setBController(new ViewCartController());
                 cartScreen.requestToViewCart(this);
             } catch (IOException | SQLException e1) {
                 throw new ViewCartException(Arrays.toString(e1.getStackTrace()).replaceAll(", ", "\n"));

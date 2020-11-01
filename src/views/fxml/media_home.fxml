@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,14 +11,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="210.0" prefWidth="320.0" style="-fx-border-color: #ccd9ff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="211.0" prefWidth="298.0" style="-fx-border-color: #ccd9ff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="mediaImage" fitHeight="152.0" fitWidth="160.0" layoutX="14.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../media/nguyenlm/DriverD/Documents/UNIVERSITY/PERSONAL/PROJECT/Java/TA-TKXDPM/AIMS/assets/images/book2." />
          </image>
       </ImageView>
-      <Pane layoutX="211.0" layoutY="-1.0" prefHeight="210.0" prefWidth="108.0">
+      <Pane layoutX="200.0" layoutY="-1.0" prefHeight="210.0" prefWidth="110.0">
          <children>
             <VBox prefHeight="39.0" prefWidth="110.0">
                <children>
@@ -28,13 +29,13 @@
                   </Label>
                </children>
             </VBox>
-            <VBox layoutY="39.0" prefHeight="170.0" prefWidth="108.0" style="-fx-border-color: #80ff80;">
+            <VBox layoutY="39.0" prefHeight="170.0" prefWidth="110.0" style="-fx-border-color: #80ff80;">
                <children>
-                  <HBox alignment="CENTER" prefHeight="39.0" prefWidth="108.0" style="-fx-border-color: #ccffcc;">
+                  <HBox alignment="CENTER" prefHeight="32.0" prefWidth="106.0">
                      <children>
                         <Pane prefHeight="45.0" prefWidth="55.0">
                            <children>
-                              <Label layoutX="10.0" layoutY="10.0" text="Price">
+                              <Label alignment="CENTER" layoutX="4.0" layoutY="10.0" prefHeight="16.0" prefWidth="51.0" text="Price">
                                  <font>
                                     <Font name="System Bold Italic" size="13.0" />
                                  </font>
@@ -43,16 +44,16 @@
                         </Pane>
                         <Pane prefHeight="53.0" prefWidth="61.0">
                            <children>
-                              <Label fx:id="mediaPrice" layoutY="10.0" prefHeight="16.0" prefWidth="57.0" text="100" />
+                              <Label fx:id="mediaPrice" layoutX="8.0" layoutY="10.0" prefHeight="16.0" prefWidth="49.0" text="100" />
                            </children>
                         </Pane>
                      </children>
                   </HBox>
-                  <HBox prefHeight="38.0" prefWidth="110.0" style="-fx-border-color: #80ff80;">
+                  <HBox prefHeight="30.0" prefWidth="106.0">
                      <children>
                         <Pane prefHeight="50.0" prefWidth="56.0">
                            <children>
-                              <Label layoutX="11.0" layoutY="11.0" prefHeight="16.0" prefWidth="43.0" text="Avail">
+                              <Label alignment="CENTER" layoutX="5.0" layoutY="6.0" prefHeight="16.0" prefWidth="51.0" text="Avail">
                                  <font>
                                     <Font name="System Bold Italic" size="13.0" />
                                  </font>
@@ -61,14 +62,19 @@
                         </Pane>
                         <Pane prefHeight="37.0" prefWidth="60.0">
                            <children>
-                              <Label fx:id="mediaAvail" layoutX="4.0" layoutY="11.0" prefHeight="16.0" prefWidth="49.0" text="9" />
+                              <Label fx:id="mediaAvail" layoutX="10.0" layoutY="6.0" prefHeight="16.0" prefWidth="42.0" text="9" />
                            </children>
                         </Pane>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="119.0" prefWidth="106.0">
+                  <HBox alignment="CENTER" prefHeight="32.0" prefWidth="106.0">
                      <children>
-                        <Button fx:id="addToCartBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="99.0" text="Add to Cart" />
+                        <Spinner fx:id="spinnerChangeNumber" prefHeight="26.0" prefWidth="98.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="72.0" prefWidth="106.0">
+                     <children>
+                        <Button fx:id="addToCartBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="97.0" style="-fx-cursor: hand;" text="Add to Cart" />
                      </children>
                   </HBox>
                </children>
