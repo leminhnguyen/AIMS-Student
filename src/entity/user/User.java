@@ -11,7 +11,6 @@ public class User {
     private String email;
     private String address;
     private String phone;
-    private Cart cart;
 
     public User(int id, String name, String email, String address, String phone){
         this.id = id;
@@ -19,15 +18,6 @@ public class User {
         this.email = email;
         this.address = address;
         this.phone = phone;
-    }
-
-    public void addMediaToCart(Media media, int quantity, int price){
-        CartMedia cm = new CartMedia(media, this.cart, quantity, price);
-        this.cart.addCartMedia(cm);
-    }
-
-    public void removeMediaFromCart(CartMedia cm){
-        this.cart.removeCartMedia(cm);
     }
     
     // override toString method

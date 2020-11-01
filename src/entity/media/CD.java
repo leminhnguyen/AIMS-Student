@@ -9,7 +9,6 @@ public class CD extends Media {
 
     String artist;
     String recordLabel;
-    List<String> trackList;
     String musicType;
     Date releasedDate;
 
@@ -18,20 +17,12 @@ public class CD extends Media {
     }
 
     public CD(int id, String title, String category, int price, int quantity, String type, String artist,
-            String recordLabel, List<String> trackList, String musicType, Date releasedDate) throws SQLException{
+            String recordLabel, String musicType, Date releasedDate) throws SQLException{
         super(id, title, category, price, quantity, type);
         this.artist = artist;
         this.recordLabel = recordLabel;
-        this.trackList = trackList;
         this.musicType = musicType;
         this.releasedDate = releasedDate;
-    }
-
-    public CD(int id, String title, String category, int price, int quantity, String type, String artist,
-            String recordLabel) throws SQLException{
-        super(id, title, category, price, quantity, type);
-        this.artist = artist;
-        this.recordLabel = recordLabel;
     }
 
     public String getArtist() {
@@ -49,15 +40,6 @@ public class CD extends Media {
 
     public CD setRecordLabel(String recordLabel) {
         this.recordLabel = recordLabel;
-        return this;
-    }
-
-    public List<String> getTrackList() {
-        return this.trackList;
-    }
-
-    public CD setTrackList(List<String> trackList) {
-        this.trackList = trackList;
         return this;
     }
 
@@ -82,7 +64,7 @@ public class CD extends Media {
     @Override
     public String toString() {
         return "{" + super.toString() + " artist='" + artist + "'" + ", recordLabel='" + recordLabel + "'"
-                + ", trackList='" + trackList + "'" + ", musicType='" + musicType + "'" + ", releasedDate='"
+                + "'" + ", musicType='" + musicType + "'" + ", releasedDate='"
                 + releasedDate + "'" + "}";
     }
 
@@ -106,9 +88,11 @@ public class CD extends Media {
             // from CD table
             String artist = res.getString("artist");
             String recordLabel = res.getString("recordLabel");
+            String musicType = res.getString("musicType");
+            Date releasedDate = res.getDate("releasedDate");
            
             return new CD(id, title, category, price, quantity, type, 
-                          artist, recordLabel);
+                          artist, recordLabel, musicType, releasedDate);
             
 		} else {
 			throw new SQLException();
