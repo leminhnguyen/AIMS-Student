@@ -49,10 +49,6 @@ public abstract class Media {
         return quantity;
     }
 
-    public int getRemainQuantity(){
-        return quantity-1;
-    }
-
     public abstract Media getMediaById(int id) throws SQLException;
 
     public abstract List getAllMedia();

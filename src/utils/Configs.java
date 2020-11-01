@@ -28,6 +28,7 @@ public class Configs {
 	public static final String DB_PASSWORD = System.getenv("DB_PASSWORD");
 
 	public static String CURRENCY = "VND";
+	public static float PERCENT_VAT = 10;
 
 	// static resource
 	public static final String IMAGE_PATH = "assets/images";

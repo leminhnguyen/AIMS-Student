@@ -40,11 +40,15 @@ public class PaymentScreen extends BaseScreen implements Initializable {
 	private TextField securityCode;
 
 	@FXML
-	void confirmPayment(MouseEvent event) throws IOException {
-		BaseScreen controller = new ResultScreen(this.stage, Configs.RESULT_SCREEN_PATH);
-		controller.setPreviousScreen(this);
-		controller.setScreenTitle("Result Screen");
-		controller.show();
+	void confirmToPayOrder(MouseEvent event) throws IOException {
+		BaseScreen resultScreen = new ResultScreen(this.stage, Configs.RESULT_SCREEN_PATH);
+		resultScreen.setPreviousScreen(this);
+		resultScreen.setScreenTitle("Result Screen");
+		resultScreen.show();
+	}
+
+	public void requestToPayOrder(){
+
 	}
 
 }

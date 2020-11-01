@@ -157,6 +157,4 @@ public class Book extends Media {
             ", bookCategory='" + bookCategory + "'" +
             "}";
     }
-
-
 }

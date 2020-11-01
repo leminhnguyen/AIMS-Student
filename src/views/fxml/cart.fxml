@@ -17,76 +17,47 @@
             <Font name="Segoe UI Semibold" size="42.0" />
          </font>
       </Label>
-      <ImageView fx:id="imageLogo" fitHeight="73.0" fitWidth="73.0" layoutX="-6.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="aimsImage" fitHeight="73.0" fitWidth="73.0" layoutX="-6.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
          <image>
             <Image url="@../../../assets/images/Logo.png" />
          </image>
       </ImageView>
       <ScrollPane hbarPolicy="NEVER" layoutX="14.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="678.0" prefWidth="987.0">
          <content>
-            <VBox fx:id="cart" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="567.0" />
+            <VBox fx:id="vboxCart" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="567.0" />
          </content>
       </ScrollPane>
-      <VBox layoutX="1026.0" layoutY="70.0">
+      <VBox layoutX="1012.0" layoutY="70.0" prefHeight="288.0" prefWidth="344.0">
          <children>
-            <HBox prefHeight="46.0" prefWidth="316.0">
+            <HBox prefHeight="56.0" prefWidth="316.0">
                <children>
-                  <Label prefHeight="50.0" prefWidth="110.0" text="Subtotal:">
-                     <font>
-                        <Font name="Segoe UI" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="subtotal" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="139.0" text="Amount" textAlignment="CENTER">
+                  <Label fx:id="subtotal" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="123.0" text="Subtotal:" textAlignment="CENTER">
                      <font>
                         <Font name="Segoe UI Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="currency" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="67.0" text="VND" textAlignment="CENTER">
+                  <Label fx:id="labelSubtotal" prefHeight="56.0" prefWidth="134.0" text="1000000 VND" textFill="#5091e6">
                      <font>
-                        <Font name="Segoe UI" size="24.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
-            <Label alignment="TOP_RIGHT" prefHeight="50.0" prefWidth="315.0" text="VAT included" textAlignment="JUSTIFY" textFill="RED">
-               <font>
-                  <Font name="Segoe UI" size="18.0" />
-               </font>
-            </Label>
-            <HBox prefHeight="46.0" prefWidth="316.0" visible="false">
+            <HBox prefHeight="48.0" prefWidth="316.0">
                <children>
-                  <Label prefHeight="50.0" prefWidth="110.0" text="Shipping:">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="124.0" text="Amount:">
                      <font>
                         <Font name="Segoe UI" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="shippingFees" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="139.0" text="Amount" textAlignment="CENTER">
+                  <Label fx:id="labelAmount" prefHeight="48.0" prefWidth="145.0" text="1100000 VND" textFill="#5091e6">
                      <font>
-                        <Font name="Segoe UI Semibold" size="24.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="67.0" text="VND" textAlignment="CENTER">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="87.0" text="VAT (10%)" textAlignment="JUSTIFY" textFill="RED" wrapText="true">
                      <font>
-                        <Font name="Segoe UI Semibold" size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="46.0" prefWidth="316.0">
-               <children>
-                  <Label prefHeight="50.0" prefWidth="110.0">
-                     <font>
-                        <Font name="Segoe UI" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="139.0" textAlignment="CENTER">
-                     <font>
-                        <Font name="Segoe UI Semibold" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="67.0" textAlignment="CENTER">
-                     <font>
-                        <Font name="Segoe UI Semibold" size="24.0" />
+                        <Font size="12.0" />
                      </font>
                   </Label>
                </children>
@@ -110,9 +81,9 @@
                   </Label>
                </children>
             </HBox>
-            <AnchorPane>
+            <AnchorPane prefHeight="138.0" prefWidth="344.0">
                <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#requestToPlaceOrder" prefHeight="46.0" prefWidth="316.0" style="-fx-background-color: RED;" text="Place order" textFill="WHITE">
+                  <Button fx:id="btnPlaceOrder" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="75.0" mnemonicParsing="false" onMouseClicked="#requestToPlaceOrder" prefHeight="55.0" prefWidth="316.0" style="-fx-background-color: RED; -fx-cursor: hand;" text="Place order" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI Bold" size="24.0" />
                      </font>
