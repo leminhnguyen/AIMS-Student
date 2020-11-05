@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import entity.cart.Cart;
 import entity.cart.CartMedia;
 import entity.exception.InvalidDeliveryInfoException;
+import entity.invoice.Invoice;
 import entity.order.Order;
 import entity.order.OrderMedia;
 import javafx.css.CssParser.ParseError;
@@ -30,6 +31,10 @@ public class PlaceOrderController extends BaseController{
             order.getlstOrderMedia().add(orderMedia);
         }
         return order;
+    }
+
+    public Invoice createInvoice(Order order) {
+        return new Invoice(order);
     }
 
     public void processDeliveryInfo(HashMap info) throws InterruptedException{

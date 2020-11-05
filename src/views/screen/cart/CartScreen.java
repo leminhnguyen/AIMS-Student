@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Logger;
 
 import com.gluonhq.impl.charm.a.b.b.s;
@@ -128,7 +129,7 @@ public class CartScreen extends BaseScreen {
 
 	void updateCartAmount(){
 		// calculate subtotal and amount
-		int subtotal = Cart.getCart().calSubtotal();
+		int subtotal = getBController().getCartSubtotal();
 		int amount = (int)(subtotal + (Configs.PERCENT_VAT/100)*subtotal);
 
 		// update subtotal and amount of Cart
@@ -140,8 +141,11 @@ public class CartScreen extends BaseScreen {
 		// clear all old cartMedia
 		vboxCart.getChildren().clear();
 
+		// get list media of cart after check availability
+		List lstMedia = getBController().getListCartMedia();
+
 		try {
-			for (Object cm : Cart.getCart().getListMedia()) {
+			for (Object cm : lstMedia) {
 
 				// display the attribute of vboxCart media
 				CartMedia cartMedia = (CartMedia) cm;

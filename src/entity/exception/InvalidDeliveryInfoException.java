@@ -6,7 +6,7 @@ package entity.exception;
  * 
  * @author nguyenlm
  */
-public class InvalidDeliveryInfoException extends RuntimeException {
+public class InvalidDeliveryInfoException extends AimsException {
 
 	private static final long serialVersionUID = 1091337136123906298L;
 

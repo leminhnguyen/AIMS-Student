@@ -6,7 +6,7 @@ package entity.exception;
  * 
  * @author nguyenlm
  */
-public class MediaNotAvailableException extends RuntimeException {
+public class MediaNotAvailableException extends AimsException {
 
 	private static final long serialVersionUID = 1091337136123906298L;
 

@@ -6,7 +6,7 @@ package entity.exception;
  * 
  * @author nguyenlm
  */
-public class PlaceOrderException extends RuntimeException {
+public class PlaceOrderException extends AimsException {
 
 	private static final long serialVersionUID = 1091337136123906298L;
 

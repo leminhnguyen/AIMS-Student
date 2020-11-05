@@ -13,4 +13,13 @@ public class ViewCartController extends BaseController{
         Cart.getCart().checkAvailabilityOfProduct();
     }
 
+    public int getCartSubtotal(){
+        int subtotal = Cart.getCart().calSubtotal();
+        return subtotal;
+    }
+
+    public List getListCartMedia(){
+        return Cart.getCart().getListMedia();
+    }
+
 }
