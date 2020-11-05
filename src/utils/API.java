@@ -2,6 +2,7 @@ package utils;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
@@ -15,6 +16,9 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.logging.Logger;
+
+import entity.payment.CreditCard;
+import entity.payment.PaymentTransaction;
 
 public class API {
 
@@ -41,7 +45,33 @@ public class API {
 		return respone.substring(0, respone.length() - 1).toString();
 	}
 
-	public static void post(String url, String data, String token) throws Exception {
+	int var;
+
+	public static void main(String args[]) {
+
+		CreditCard card = new CreditCard("1234 4567 7890", "DO MINH HIEU", "1123", 123);
+		PaymentTransaction trans = new PaymentTransaction("00", card, "123", "payment for me", 1000, "2020-11-4 01:59");
+		String mess = null;
+		try {
+			mess = Utils.convertMapToJSON(Utils.map(trans));
+		} catch (IllegalArgumentException | IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(mess);
+		System.out.println(Utils.md5(mess));
+
+		// try {
+//			API.post(Configs.PROCESS_TRANSACTION_URL, Configs.POST_DATA);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+	}
+
+	public static String post(String url, String data
+//			, String token
+	) throws IOException {
 		allowMethods("PATCH");
 		URL line_api_url = new URL(url);
 		String payload = data;
@@ -51,7 +81,7 @@ public class API {
 		conn.setDoOutput(true);
 		conn.setRequestMethod("PATCH");
 		conn.setRequestProperty("Content-Type", "application/json");
-		conn.setRequestProperty("Authorization", "Bearer " + token);
+//		conn.setRequestProperty("Authorization", "Bearer " + token);
 		Writer writer = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
 		writer.write(payload);
 		writer.close();
@@ -62,12 +92,12 @@ public class API {
 		} else {
 			in = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
 		}
-		StringBuilder respone = new StringBuilder();
+		StringBuilder response = new StringBuilder();
 		while ((inputLine = in.readLine()) != null)
-			respone.append(inputLine);
+			response.append(inputLine);
 		in.close();
-		LOGGER.info("Respone Info: " + respone.toString());
-
+		LOGGER.info("Respone Info: " + response.toString());
+		return response.toString();
 	}
 
 	private static void allowMethods(String... methods) {

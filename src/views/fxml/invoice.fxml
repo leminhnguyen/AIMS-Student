@@ -62,34 +62,19 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="subtotal" alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="500.0" text="100,000" GridPane.columnIndex="1">
+            <Label fx:id="subtotal" alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="500.0" text="100,000 đ" GridPane.columnIndex="1">
                <font>
                   <Font name="Segoe UI" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="shippingFees" alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="500.0" text="50,000" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label fx:id="shippingFees" alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="500.0" text="50,000 đ" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="Segoe UI" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="total" alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="500.0" text="150,000" textFill="#ff0009" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label fx:id="total" alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="500.0" text="150,000 đ" textFill="#ff0009" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font name="Segoe UI Bold" size="24.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="500.0" text="VND" GridPane.columnIndex="2">
-               <font>
-                  <Font name="Segoe UI" size="24.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="500.0" text="VND" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Segoe UI" size="24.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="500.0" text="VND" GridPane.columnIndex="2" GridPane.rowIndex="2">
-               <font>
-                  <Font name="Segoe UI" size="24.0" />
                </font>
             </Label>
          </children>

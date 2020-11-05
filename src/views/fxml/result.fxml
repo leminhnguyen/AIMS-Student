@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="pageTitle" layoutX="80.0" layoutY="11.0" prefHeight="96.0" prefWidth="185.0" text="Payment" textAlignment="CENTER" textFill="#5091e6">
          <font>
@@ -20,7 +19,7 @@
             <Image url="@../../../assets/images/Logo.png" />
          </image>
       </ImageView>
-      <Label fx:id="resultLabel" layoutX="406.0" layoutY="254.0" text="PAYMENT RESULT!" textFill="LIME">
+      <Label fx:id="resultLabel" layoutX="406.0" layoutY="254.0" text="PAYMENT RESULT!">
          <font>
             <Font name="Calibri Bold" size="72.0" />
          </font>
