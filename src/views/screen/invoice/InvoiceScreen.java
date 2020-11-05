@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
+import entity.invoice.Invoice;
 import entity.order.Order;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -45,23 +46,23 @@ public class InvoiceScreen extends BaseScreen {
 	@FXML
 	private Label total;
 
-	private Order order;
+	private Invoice invoice;
 
-	public InvoiceScreen(Stage stage, String screenPath, Order order) throws IOException {
+	public InvoiceScreen(Stage stage, String screenPath, Invoice invoice) throws IOException {
 		super(stage, screenPath);
-		this.order = order;
+		this.invoice = invoice;
 		setInvoiceInfo();
 	}
 
 	private void setInvoiceInfo(){
-		HashMap<String, String> deliveryInfo = order.getDeliveryInfo();
+		HashMap<String, String> deliveryInfo = invoice.getOrder().getDeliveryInfo();
 		name.setText(deliveryInfo.get("name"));
 		province.setText(deliveryInfo.get("province"));
 		instructions.setText(deliveryInfo.get("instructions"));
 		address.setText(deliveryInfo.get("address"));
-		subtotal.setText(Utils.getCurrencyFormat(order.getAmount()));
-		shippingFees.setText(Utils.getCurrencyFormat(order.getShippingFees()));
-		total.setText(Utils.getCurrencyFormat(order.getAmount() + order.getShippingFees()));
+		subtotal.setText(Utils.getCurrencyFormat(invoice.getOrder().getAmount()));
+		shippingFees.setText(Utils.getCurrencyFormat(invoice.getOrder().getShippingFees()));
+		total.setText(Utils.getCurrencyFormat(invoice.getOrder().getAmount() + invoice.getOrder().getShippingFees()));
 	}
 
 	@FXML

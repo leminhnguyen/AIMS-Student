@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import controller.PlaceOrderController;
+import entity.invoice.Invoice;
 import entity.order.Order;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -70,7 +71,8 @@ public class ShippingScreen extends BaseScreen implements Initializable {
 		order.setDeliveryInfo(messages);
 		
 		// create invoice screen
-		BaseScreen invoiceScreen = new InvoiceScreen(this.stage, Configs.INVOICE_SCREEN_PATH, order);
+		Invoice invoice = getBController().createInvoice(order);
+		BaseScreen invoiceScreen = new InvoiceScreen(this.stage, Configs.INVOICE_SCREEN_PATH, invoice);
 		invoiceScreen.setPreviousScreen(this);
 		invoiceScreen.setScreenTitle("Invoice Screen");
 		invoiceScreen.setBController(getBController());
@@ -81,7 +83,7 @@ public class ShippingScreen extends BaseScreen implements Initializable {
 		return (PlaceOrderController) super.getBController();
 	}
 
-	public void displayErrorDeliveryInfo(){
+	public void notifyError(){
 		
 	}
 
