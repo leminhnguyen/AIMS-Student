@@ -91,4 +91,13 @@ public class API {
 		}
 	}
 
+	public static void main(String[] args) {
+		try {
+			API.get(Configs.GET_BALANCE_URL, Configs.TOKEN);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
 }
