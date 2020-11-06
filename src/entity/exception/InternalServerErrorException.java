@@ -1,13 +1,9 @@
 package entity.exception;
 
-public class InternalServerErrorException extends RuntimeException {
+public class InternalServerErrorException extends PaymentException {
 
 	public InternalServerErrorException() {
-		
-	}
-	
-	public InternalServerErrorException(String message) {
-		super(message);
+		super("ERROR: Internal Server Error!");
 	}
 
 }

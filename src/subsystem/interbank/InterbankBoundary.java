@@ -15,7 +15,7 @@ public class InterbankBoundary {
 			 response = API.post(url, data);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			throw new InternalServerErrorException("ERROR: Internal Server Error!");
+			throw new InternalServerErrorException();
 		}
 		return response;
 	}

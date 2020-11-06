@@ -1,13 +1,9 @@
 package entity.exception;
 
-public class NotEnoughBalanceException extends RuntimeException{
+public class NotEnoughBalanceException extends PaymentException{
 
 	public NotEnoughBalanceException() {
-		
-	}
-	
-	public NotEnoughBalanceException(String message) {
-		super(message);
+		super("ERROR: Not enough balance in card!");
 	}
 
 }
