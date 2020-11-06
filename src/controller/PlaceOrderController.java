@@ -1,7 +1,7 @@
 package controller;
 
 import java.sql.SQLException;
-import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Random;
 import java.util.logging.Logger;
 
@@ -32,13 +32,13 @@ public class PlaceOrderController extends BaseController{
         return order;
     }
 
-    public void processDeliveryInfo(HashMap info) throws InterruptedException{
+    public void processDeliveryInfo(Hashtable info) throws InterruptedException{
         LOGGER.info("Process Delivery Info");
         LOGGER.info(info.toString());
         validateDeliveryInfo(info);
     }
 
-    public void validateDeliveryInfo(HashMap<String, String> info) throws InterruptedException{
+    public void validateDeliveryInfo(Hashtable<String, String> info) throws InterruptedException{
         LOGGER.info("Validate Delivery Info");
         if ( !(info.get("instructions") instanceof String) ||
              !(info.get("address") instanceof String) || 

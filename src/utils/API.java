@@ -47,28 +47,6 @@ public class API {
 
 	int var;
 
-	public static void main(String args[]) {
-
-		CreditCard card = new CreditCard("1234 4567 7890", "DO MINH HIEU", "1123", 123);
-		PaymentTransaction trans = new PaymentTransaction("00", card, "123", "payment for me", 1000, "2020-11-4 01:59");
-		String mess = null;
-		try {
-			mess = Utils.convertMapToJSON(Utils.map(trans));
-		} catch (IllegalArgumentException | IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println(mess);
-		System.out.println(Utils.md5(mess));
-
-		// try {
-//			API.post(Configs.PROCESS_TRANSACTION_URL, Configs.POST_DATA);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-	}
-
 	public static String post(String url, String data
 //			, String token
 	) throws IOException {
@@ -103,12 +81,11 @@ public class API {
 	private static void allowMethods(String... methods) {
 		try {
 			Field methodsField = HttpURLConnection.class.getDeclaredField("methods");
+			methodsField.setAccessible(true);
 
 			Field modifiersField = Field.class.getDeclaredField("modifiers");
 			modifiersField.setAccessible(true);
 			modifiersField.setInt(methodsField, methodsField.getModifiers() & ~Modifier.FINAL);
-
-			methodsField.setAccessible(true);
 
 			String[] oldMethods = (String[]) methodsField.get(null);
 			Set<String> methodsSet = new LinkedHashSet<>(Arrays.asList(oldMethods));

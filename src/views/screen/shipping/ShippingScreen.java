@@ -3,7 +3,7 @@ package views.screen.shipping;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.ResourceBundle;
 
 import controller.PlaceOrderController;
@@ -54,7 +54,7 @@ public class ShippingScreen extends BaseScreen implements Initializable {
 		Order order = getBController().createOrder();
 
 		// add info to messages
-		messages = new HashMap<>();
+		messages = new Hashtable<>();
 		messages.put("name", name.getText());
 		messages.put("phone", phone.getText());
 		messages.put("address", address.getText());
