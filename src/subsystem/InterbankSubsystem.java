@@ -28,13 +28,4 @@ public class InterbankSubsystem implements InterbankInterface {
 		InterbankSubsystemController ctrl = new InterbankSubsystemController();
 		return ctrl.refund(card, amount, contents);
 	}
-
-	/**
-	 * @see InterbankInterface#getBalance(entity.payment.CreditCard)
-	 */
-	public int getBalance(CreditCard card) {
-		InterbankSubsystemController ctrl = new InterbankSubsystemController();
-		return ctrl.getBalance(card);
-	}
-
 }

@@ -44,7 +44,7 @@ public class PaymentScreen extends BaseScreen {
 		PaymentController ctrl = new PaymentController();
 		Map<String, String> response = ctrl.payOrder(this.amount, this.contents, cardNumber.getText(), holderName.getText(),
 				expirationDate.getText(), securityCode.getText());
-
+		System.out.println(response);
 		BaseScreen resultScreen = new ResultScreen(this.stage, Configs.RESULT_SCREEN_PATH, response.get("RESULT"), response.get("MESSAGE") );
 		resultScreen.setPreviousScreen(this);
 		resultScreen.setScreenTitle("Result Screen");
