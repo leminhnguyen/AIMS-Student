@@ -8,11 +8,11 @@ public class CreditCard {
 	private int cvvCode;
 	private String dateExpired;
 
-	public CreditCard(String cardNumber, String cardHolderName, String expirationDate, int cardSecurityCode) {
+	public CreditCard(String cardCode, String owner, int cvvCode, String dateExpired) {
 		super();
-		this.cardCode = cardNumber;
-		this.owner = cardHolderName;
-		this.dateExpired = expirationDate;
-		this.cvvCode = cardSecurityCode;
+		this.cardCode = cardCode;
+		this.owner = owner;
+		this.cvvCode = cvvCode;
+		this.dateExpired = dateExpired;
 	}
 }

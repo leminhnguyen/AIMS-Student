@@ -1,7 +1,7 @@
 package views.screen;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
 
 import controller.BaseController;
@@ -16,7 +16,7 @@ public class BaseScreen extends FXMLScreen {
 	private BaseScreen prev;
 	protected final Stage stage;
 	protected HomeScreen homeScreen;
-	protected HashMap<String, String> messages;
+	protected Hashtable<String, String> messages;
 	private BaseController bController;
 
 	private BaseScreen(String screenPath) throws IOException {
@@ -57,7 +57,7 @@ public class BaseScreen extends FXMLScreen {
 		return this.bController;
 	}
 
-	public void forward(HashMap messages) {
+	public void forward(Hashtable messages) {
 		this.messages = messages;
 	}
 

@@ -1,7 +1,7 @@
 package views.screen.invoice;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.logging.Logger;
 
 import entity.order.Order;
@@ -60,7 +60,7 @@ public class InvoiceScreen extends BaseScreen {
 	}
 
 	private void setInvoiceInfo(){
-		HashMap<String, String> deliveryInfo = order.getDeliveryInfo();
+		Hashtable<String, String> deliveryInfo = order.getDeliveryInfo();
 		name.setText(deliveryInfo.get("name"));
 		province.setText(deliveryInfo.get("province"));
 		instructions.setText(deliveryInfo.get("instructions"));

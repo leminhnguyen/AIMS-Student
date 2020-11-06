@@ -1,7 +1,7 @@
 package controller;
 
 import java.util.Calendar;
-import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 
 import entity.exception.InternalServerErrorException;
@@ -11,6 +11,7 @@ import entity.payment.CreditCard;
 import entity.payment.PaymentTransaction;
 import subsystem.InterbankInterface;
 import subsystem.InterbankSubsystem;
+import utils.MyMap;
 
 public class PaymentController extends BaseController {
 
@@ -44,17 +45,25 @@ public class PaymentController extends BaseController {
 	public Map<String, String> payOrder(int amount, String contents, String cardNumber, String cardHolderName,
 			String expirationDate, String securityCode)
 			throws InternalServerErrorException, InvalidCardException, NotEnoughBalanceException {
-		Map<String, String> result = new HashMap<String, String>();
+		Map<String, String> result = new Hashtable<String, String>();
 		result.put("RESULT", "PAYMENT FAILED!");
 		try {
-			CreditCard card = new CreditCard(cardNumber, cardHolderName, getExpirationDate(expirationDate),
-					Integer.parseInt(securityCode));
+			CreditCard card = new CreditCard(cardNumber, cardHolderName, Integer.parseInt(securityCode),
+					getExpirationDate(expirationDate));
 
 			InterbankInterface interbank = new InterbankSubsystem();
 			PaymentTransaction transaction = interbank.payOrder(card, amount, contents);
+			try {
+				System.out.println(MyMap.toMyMap(transaction));
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			// TODO save transaction
 
-			//TODO save transaction
-			
 			result.put("RESULT", "PAYMENT SUCCESSFUL!");
 			result.put("MESSAGE", "");
 		} catch (InternalServerErrorException ex) {
