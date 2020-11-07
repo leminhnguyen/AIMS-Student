@@ -1,27 +1,27 @@
 package views.screen.payment;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.Map;
 
-import utils.Configs;
-import views.screen.BaseScreen;
+import controller.PaymentController;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import utils.Configs;
+import views.screen.BaseScreen;
 
-public class PaymentScreen extends BaseScreen implements Initializable {
+public class PaymentScreen extends BaseScreen {
 
-	public PaymentScreen(Stage stage, String screenPath) throws IOException {
+	private int amount;
+
+	private String contents;
+
+	public PaymentScreen(Stage stage, String screenPath, int amount, String contents) throws IOException {
 		super(stage, screenPath);
-	}
-
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-
+		this.amount = amount;
+		this.contents = contents;
 	}
 
 	@FXML
@@ -41,14 +41,14 @@ public class PaymentScreen extends BaseScreen implements Initializable {
 
 	@FXML
 	void confirmToPayOrder(MouseEvent event) throws IOException {
-		BaseScreen resultScreen = new ResultScreen(this.stage, Configs.RESULT_SCREEN_PATH);
+		PaymentController ctrl = new PaymentController();
+		Map<String, String> response = ctrl.payOrder(this.amount, this.contents, cardNumber.getText(), holderName.getText(),
+				expirationDate.getText(), securityCode.getText());
+		System.out.println(response);
+		BaseScreen resultScreen = new ResultScreen(this.stage, Configs.RESULT_SCREEN_PATH, response.get("RESULT"), response.get("MESSAGE") );
 		resultScreen.setPreviousScreen(this);
 		resultScreen.setScreenTitle("Result Screen");
 		resultScreen.show();
-	}
-
-	public void requestToPayOrder(){
-
 	}
 
 }
