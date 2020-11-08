@@ -14,7 +14,7 @@
 	<classpathentry kind="lib" path="lib/linux/javafx-sdk-15/lib/javafx.graphics.jar"/>
 	<classpathentry kind="lib" path="lib/linux/javafx-sdk-15/lib/javafx.media.jar"/>
 	<classpathentry kind="lib" path="lib/linux/javafx-sdk-15/lib/javafx.swing.jar"/>
-	<classpathentry kind="lib" path="lib/charm-glisten-4.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/sqlite-jdbc-3.7.2.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX15"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

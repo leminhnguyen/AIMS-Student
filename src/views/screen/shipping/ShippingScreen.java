@@ -55,7 +55,7 @@ public class ShippingScreen extends BaseScreen implements Initializable {
 		Order order = getBController().createOrder();
 
 		// add info to messages
-		messages = new HashMap<>();
+		HashMap messages = new HashMap<>();
 		messages.put("name", name.getText());
 		messages.put("phone", phone.getText());
 		messages.put("address", address.getText());

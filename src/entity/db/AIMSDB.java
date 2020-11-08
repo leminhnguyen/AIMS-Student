@@ -1,7 +1,12 @@
 package entity.db;
 
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.logging.Logger;
+
+import com.mysql.jdbc.DatabaseMetaData;
+
 import java.sql.Connection;
 import utils.*;
 
@@ -10,28 +15,19 @@ public class AIMSDB {
 	private static Logger LOGGER = Utils.getLogger(Connection.class.getName());
 	private static Connection connect;
 
-	public static Connection getConnection() {
-		if (connect != null) return connect;
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			connect = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/" + Configs.DB_NAME + "?autoReconnect=true&useSSL=false",
-					Configs.DB_USERNAME, Configs.DB_PASSWORD);
-			LOGGER.info("Connect database successfully");
-			return connect;
-		} catch (Exception e) {
-			LOGGER.severe("Connection failed:\n" + e.getMessage());
-			return null;
-		}
-	}
-
-    public static void close() {
+    public static Connection getConnection() {
+        if (connect != null) return connect;
         try {
-            connect.close();
+			Class.forName("org.sqlite.JDBC");
+            String url = "jdbc:sqlite:assets/db/aims.sdb";
+            connect = DriverManager.getConnection(url);
+            LOGGER.info("Connect database successfully");
         } catch (Exception e) {
-            LOGGER.severe("Close failed");
-        }
+            LOGGER.info(e.getMessage());
+        } 
+        return connect;
     }
+    
 
     public static void main(String[] args) {
         AIMSDB.getConnection();

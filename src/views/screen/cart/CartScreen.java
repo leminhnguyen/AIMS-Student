@@ -7,8 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
-import com.gluonhq.impl.charm.a.b.b.s;
-
 import controller.PlaceOrderController;
 import controller.ViewCartController;
 import entity.cart.Cart;

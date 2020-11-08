@@ -1,7 +1,7 @@
 package entity.order;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.util.List;
 
 import utils.Configs;
@@ -10,7 +10,7 @@ public class Order {
     
     private int shippingFees;
     private List lstOrderMedia;
-    private Hashtable<String, String> deliveryInfo;
+    private HashMap<String, String> deliveryInfo;
 
     public Order(){
         this.lstOrderMedia = new ArrayList<>();
@@ -44,11 +44,11 @@ public class Order {
         return shippingFees;
     }
 
-    public Hashtable getDeliveryInfo() {
+    public HashMap getDeliveryInfo() {
         return deliveryInfo;
     }
 
-    public void setDeliveryInfo(Hashtable deliveryInfo) {
+    public void setDeliveryInfo(HashMap deliveryInfo) {
         this.deliveryInfo = deliveryInfo;
     }
 
