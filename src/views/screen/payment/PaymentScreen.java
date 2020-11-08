@@ -18,6 +18,10 @@ public class PaymentScreen extends BaseScreen {
 
 	private String contents;
 
+	public PaymentScreen(Stage stage, String screenPath) throws IOException {
+		super(stage, screenPath);
+	}
+
 	public PaymentScreen(Stage stage, String screenPath, int amount, String contents) throws IOException {
 		super(stage, screenPath);
 		this.amount = amount;
