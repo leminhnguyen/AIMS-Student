@@ -48,7 +48,7 @@ public class App extends Application {
 			// After fade out, load actual content
 			fadeOut.setOnFinished((e) -> {
 				try {
-					HomeScreen homeHandler = new HomeScreen(primaryStage, Configs.HOME_PATH);
+					HomeScreenHandler homeHandler = new HomeScreenHandler(primaryStage, Configs.HOME_PATH);
 					homeHandler.setScreenTitle("Home Screen");
 					homeHandler.setImage();
 					homeHandler.show();

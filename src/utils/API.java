@@ -9,6 +9,8 @@ import java.io.Writer;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -27,13 +29,7 @@ public class API {
 
 	public static String get(String url, String token) throws Exception {
 		LOGGER.info("Request URL: " + url + "\n");
-		URL line_api_url = new URL(url);
-		HttpURLConnection conn = (HttpURLConnection) line_api_url.openConnection();
-		conn.setDoInput(true);
-		conn.setDoOutput(true);
-		conn.setRequestMethod("GET");
-		conn.setRequestProperty("Content-Type", "application/json");
-		conn.setRequestProperty("Authorization", "Bearer " + token);
+		HttpURLConnection conn = connectAPI(url, token);
 		BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 		String inputLine;
 		StringBuilder respone = new StringBuilder(); // ising StringBuilder for the sake of memory and performance
@@ -43,6 +39,18 @@ public class API {
 		in.close();
 		LOGGER.info("Respone Info: " + respone.substring(0, respone.length() - 1).toString());
 		return respone.substring(0, respone.length() - 1).toString();
+	}
+
+	private static HttpURLConnection connectAPI(String url, String token)
+			throws MalformedURLException, IOException, ProtocolException {
+		URL line_api_url = new URL(url);
+		HttpURLConnection conn = (HttpURLConnection) line_api_url.openConnection();
+		conn.setDoInput(true);
+		conn.setDoOutput(true);
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("Content-Type", "application/json");
+		conn.setRequestProperty("Authorization", "Bearer " + token);
+		return conn;
 	}
 
 	int var;

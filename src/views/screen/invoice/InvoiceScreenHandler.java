@@ -11,12 +11,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import utils.Configs;
 import utils.Utils;
-import views.screen.BaseScreen;
-import views.screen.payment.PaymentScreen;
+import views.screen.BaseScreenHandler;
+import views.screen.payment.PaymentScreenHandler;
 
-public class InvoiceScreen extends BaseScreen {
+public class InvoiceScreenHandler extends BaseScreenHandler {
 
-	private static Logger LOGGER = Utils.getLogger(InvoiceScreen.class.getName());
+	private static Logger LOGGER = Utils.getLogger(InvoiceScreenHandler.class.getName());
 
 	@FXML
 	private Label pageTitle;
@@ -51,7 +51,7 @@ public class InvoiceScreen extends BaseScreen {
 
 	private String contents;
 	
-	public InvoiceScreen(Stage stage, String screenPath, Order order) throws IOException {
+	public InvoiceScreenHandler(Stage stage, String screenPath, Order order) throws IOException {
 		super(stage, screenPath);
 		this.order = order;
 		this.amount = order.getAmount() + order.getShippingFees();
@@ -76,7 +76,7 @@ public class InvoiceScreen extends BaseScreen {
 	
 	@FXML
 	void confirmInvoice(MouseEvent event) throws IOException {
-		BaseScreen paymentScreen = new PaymentScreen(this.stage, Configs.PAYMENT_SCREEN_PATH, amount, contents);
+		BaseScreenHandler paymentScreen = new PaymentScreenHandler(this.stage, Configs.PAYMENT_SCREEN_PATH, amount, contents);
 		paymentScreen.setPreviousScreen(this);
 		paymentScreen.setScreenTitle("Payment Screen");
 		paymentScreen.show();

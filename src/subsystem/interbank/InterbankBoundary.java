@@ -1,8 +1,6 @@
 package subsystem.interbank;
 
-import java.io.IOException;
-
-import entity.exception.InternalServerErrorException;
+import common.exception.UnrecognizedException;
 import utils.API;
 
 public class InterbankBoundary {
@@ -10,12 +8,13 @@ public class InterbankBoundary {
 	String query(String url, String data) {
 		String response = null;
 		try {
-			System.out.println(url);
-			System.out.println(data);
-			 response = API.post(url, data);
-		} catch (IOException e) {
+//			System.out.println(url);
+//			System.out.println(data);
+			response = API.post(url, data);
+			System.out.println(response);
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			throw new InternalServerErrorException();
+			throw new UnrecognizedException();
 		}
 		return response;
 	}

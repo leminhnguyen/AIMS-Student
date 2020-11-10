@@ -3,10 +3,12 @@ package entity.media;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Logger;
+
+import common.exception.*;
+
 import java.sql.Statement;
 
 import entity.db.AIMSDB;
-import entity.exception.*;
 import utils.Utils;
 
 /**

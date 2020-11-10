@@ -9,7 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class SplashScreen implements Initializable {
+public class SplashScreenHandler implements Initializable {
 
     @FXML
     ImageView logo;
