@@ -16,10 +16,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import utils.Configs;
-import views.screen.BaseScreen;
-import views.screen.invoice.InvoiceScreen;
+import views.screen.BaseScreenHandler;
+import views.screen.invoice.InvoiceScreenHandler;
 
-public class ShippingScreen extends BaseScreen implements Initializable {
+public class ShippingScreenHandler extends BaseScreenHandler implements Initializable {
 
 	@FXML
 	private Label screenTitle;
@@ -39,7 +39,7 @@ public class ShippingScreen extends BaseScreen implements Initializable {
 	@FXML
 	private ComboBox<String> province;
 
-	public ShippingScreen(Stage stage, String screenPath) throws IOException {
+	public ShippingScreenHandler(Stage stage, String screenPath) throws IOException {
 		super(stage, screenPath);
 	}
 
@@ -70,7 +70,7 @@ public class ShippingScreen extends BaseScreen implements Initializable {
 		order.setDeliveryInfo(messages);
 		
 		// create invoice screen
-		BaseScreen invoiceScreen = new InvoiceScreen(this.stage, Configs.INVOICE_SCREEN_PATH, order);
+		BaseScreenHandler invoiceScreen = new InvoiceScreenHandler(this.stage, Configs.INVOICE_SCREEN_PATH, order);
 		invoiceScreen.setPreviousScreen(this);
 		invoiceScreen.setScreenTitle("Invoice Screen");
 		invoiceScreen.setBController(getBController());

@@ -6,12 +6,12 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.logging.Logger;
 
+import common.exception.MediaNotAvailableException;
+import common.exception.PlaceOrderException;
 import controller.PlaceOrderController;
 import controller.ViewCartController;
 import entity.cart.Cart;
 import entity.cart.CartMedia;
-import entity.exception.MediaNotAvailableException;
-import entity.exception.PlaceOrderException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -21,12 +21,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import utils.Configs;
 import utils.Utils;
-import views.screen.BaseScreen;
-import views.screen.shipping.ShippingScreen;
+import views.screen.BaseScreenHandler;
+import views.screen.shipping.ShippingScreenHandler;
 
-public class CartScreen extends BaseScreen {
+public class CartScreenHandler extends BaseScreenHandler {
 
-	private static Logger LOGGER = Utils.getLogger(CartScreen.class.getName());
+	private static Logger LOGGER = Utils.getLogger(CartScreenHandler.class.getName());
 
 	@FXML
 	private ImageView aimsImage;
@@ -49,7 +49,7 @@ public class CartScreen extends BaseScreen {
 	@FXML
 	private Button btnPlaceOrder;
 
-	public CartScreen(Stage stage, String screenPath) throws IOException {
+	public CartScreenHandler(Stage stage, String screenPath) throws IOException {
 		super(stage, screenPath);
 
 		// fix relative image path caused by fxml
@@ -88,7 +88,7 @@ public class CartScreen extends BaseScreen {
 		return (ViewCartController) super.getBController();
 	}
 
-	public void requestToViewCart(BaseScreen prevScreen) throws SQLException {
+	public void requestToViewCart(BaseScreenHandler prevScreen) throws SQLException {
 		setPreviousScreen(prevScreen);
 		setScreenTitle("Cart Screen");
 		getBController().checkAvailabilityOfProduct();
@@ -106,7 +106,7 @@ public class CartScreen extends BaseScreen {
 			displayCartWithMediaAvailability();
 
 			// display shipping form
-			ShippingScreen shippingScreen = new ShippingScreen(this.stage, Configs.SHIPPING_SCREEN_PATH);
+			ShippingScreenHandler shippingScreen = new ShippingScreenHandler(this.stage, Configs.SHIPPING_SCREEN_PATH);
 			shippingScreen.setPreviousScreen(this);
 			shippingScreen.setScreenTitle("Shipping Screen");
 			shippingScreen.setBController(placeOrderController);
@@ -143,7 +143,7 @@ public class CartScreen extends BaseScreen {
 
 				// display the attribute of vboxCart media
 				CartMedia cartMedia = (CartMedia) cm;
-				MediaCartScreen mediaCartScreen = new MediaCartScreen(Configs.CART_MEDIA_PATH, this);
+				MediaHandler mediaCartScreen = new MediaHandler(Configs.CART_MEDIA_PATH, this);
 				mediaCartScreen.setCartMedia(cartMedia);
 
 				// add spinner

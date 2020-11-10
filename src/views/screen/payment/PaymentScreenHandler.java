@@ -10,15 +10,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import utils.Configs;
-import views.screen.BaseScreen;
+import views.screen.BaseScreenHandler;
 
-public class PaymentScreen extends BaseScreen {
+public class PaymentScreenHandler extends BaseScreenHandler {
 
 	private int amount;
 
 	private String contents;
 
-	public PaymentScreen(Stage stage, String screenPath, int amount, String contents) throws IOException {
+	public PaymentScreenHandler(Stage stage, String screenPath, int amount, String contents) throws IOException {
 		super(stage, screenPath);
 		this.amount = amount;
 		this.contents = contents;
@@ -45,7 +45,7 @@ public class PaymentScreen extends BaseScreen {
 		Map<String, String> response = ctrl.payOrder(this.amount, this.contents, cardNumber.getText(), holderName.getText(),
 				expirationDate.getText(), securityCode.getText());
 		System.out.println(response);
-		BaseScreen resultScreen = new ResultScreen(this.stage, Configs.RESULT_SCREEN_PATH, response.get("RESULT"), response.get("MESSAGE") );
+		BaseScreenHandler resultScreen = new ResultScreenHandler(this.stage, Configs.RESULT_SCREEN_PATH, response.get("RESULT"), response.get("MESSAGE") );
 		resultScreen.setPreviousScreen(this);
 		resultScreen.setScreenTitle("Result Screen");
 		resultScreen.show();

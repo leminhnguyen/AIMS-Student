@@ -1,4 +1,4 @@
-package entity.exception;
+package common.exception;
 
 /**
  * The InvalidDeliveryInfoException wraps all unchecked exceptions You can use this
