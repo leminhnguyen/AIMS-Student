@@ -45,9 +45,7 @@ public class ResultScreen extends BaseScreen implements Initializable {
 
 	@FXML
 	void confirmPayment(MouseEvent event) throws IOException {
-		BaseScreen cartController = new HomeScreen(this.stage, Configs.HOME_PATH);
-		cartController.setScreenTitle("Home");
-		cartController.show();
+		homeScreen.show();
 	}
 
 }

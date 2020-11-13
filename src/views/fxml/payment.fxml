@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="pageTitle" layoutX="70.0" layoutY="1.0" prefHeight="96.0" prefWidth="216.0" text="Payment" textAlignment="CENTER" textFill="#5091e6">
          <font>
@@ -43,7 +43,7 @@
                   <Font name="Calibri" size="24.0" />
                </font>
             </Label>
-            <TextField fx:id="cardNumber">
+            <TextField fx:id="cardNumber" text="118609_group1_2020">
                <font>
                   <Font name="Calibri" size="24.0" />
                </font>
@@ -53,7 +53,7 @@
                   <Font name="Calibri" size="24.0" />
                </font>
             </Label>
-            <TextField fx:id="holderName">
+            <TextField fx:id="holderName" text="Group 1">
                <font>
                   <Font name="Calibri" size="24.0" />
                </font>
@@ -63,7 +63,7 @@
                   <Font name="Calibri" size="24.0" />
                </font>
             </Label>
-            <TextField fx:id="expirationDate">
+            <TextField fx:id="expirationDate" text="11/25">
                <font>
                   <Font name="Calibri" size="24.0" />
                </font>
@@ -73,17 +73,18 @@
                   <Font name="Calibri" size="24.0" />
                </font>
             </Label>
-            <TextField fx:id="securityCode">
+            <TextField fx:id="securityCode" text="185">
                <font>
                   <Font name="Calibri" size="24.0" />
                </font>
             </TextField>
          </children>
       </VBox>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="518.0" layoutY="671.0" mnemonicParsing="false" onMouseClicked="#confirmToPayOrder" prefHeight="46.0" prefWidth="316.0" style="-fx-background-color: RED; -fx-cursor: hand;" text="Confirm payment" textFill="WHITE">
+      <Button fx:id="btnConfirmPayment" alignment="CENTER" contentDisplay="CENTER" layoutX="518.0" layoutY="671.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="316.0" style="-fx-background-color: #5091e6; -fx-cursor: hand;" text="Confirm payment" textFill="WHITE">
          <font>
             <Font name="Segoe UI Bold" size="24.0" />
          </font>
       </Button>
+      <ImageView fx:id="loadingImage" fitHeight="135.0" fitWidth="170.0" layoutX="553.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

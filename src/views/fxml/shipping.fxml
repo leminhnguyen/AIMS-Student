@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
@@ -39,79 +40,112 @@
             <RowConstraints maxHeight="311.8000549316406" minHeight="10.0" prefHeight="215.8000549316406" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Name">
-               <font>
-                  <Font name="Segoe UI" size="24.0" />
-               </font>
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-            </Label>
-            <TextField fx:id="name" prefHeight="50.0" GridPane.columnIndex="1">
-               <font>
-                  <Font name="Segoe UI" size="24.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="phone" prefHeight="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Segoe UI" size="24.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="address" alignment="TOP_LEFT" prefHeight="100.0" prefWidth="843.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <font>
-                  <Font name="Segoe UI" size="24.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="instructions" alignment="TOP_LEFT" prefHeight="140.0" prefWidth="843.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="29.0" layoutY="16.0" prefHeight="30.0" prefWidth="97.0" text="Name">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="5.0" layoutY="23.0" prefHeight="20.0" prefWidth="22.0" text="*" textAlignment="CENTER" textFill="#eb0d0d">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <TextField fx:id="name" prefHeight="50.0" promptText="(a-zA-Z)" GridPane.columnIndex="1">
                <font>
                   <Font name="Segoe UI" size="24.0" />
                </font>
             </TextField>
-            <Label text="Phone" GridPane.rowIndex="1">
+            <TextField fx:id="phone" prefHeight="50.0" promptText="(0-9) 10 digits" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="Segoe UI" size="24.0" />
                </font>
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="Province/City" GridPane.rowIndex="2">
+            </TextField>
+            <TextField fx:id="address" alignment="TOP_LEFT" prefHeight="100.0" prefWidth="843.0" promptText="(a-zA-Z)" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font name="Segoe UI" size="24.0" />
                </font>
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="Address" GridPane.rowIndex="3">
+            </TextField>
+            <TextField fx:id="instructions" alignment="TOP_LEFT" prefHeight="140.0" prefWidth="843.0" promptText="(a-zA-Z)" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font name="Segoe UI" size="24.0" />
                </font>
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="Shipping&#10;Instructions" GridPane.rowIndex="4">
-               <font>
-                  <Font name="Segoe UI" size="24.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin>
-            </Label>
+            </TextField>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <children>
+                  <Label layoutX="36.0" layoutY="16.0" text="Phone">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="21.0" prefHeight="20.0" prefWidth="22.0" text="*" textAlignment="CENTER" textFill="#eb0d0d">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+               <children>
+                  <Label layoutX="38.0" layoutY="44.0" text="Address">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="49.0" prefHeight="20.0" prefWidth="22.0" text="*" textAlignment="CENTER" textFill="#eb0d0d">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+               <children>
+                  <Label layoutX="24.0" layoutY="77.0" text="Shipping&#10;Instructions">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutY="103.0" prefHeight="20.0" prefWidth="22.0" text="*" textAlignment="CENTER" textFill="#eb0d0d">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
             <ComboBox fx:id="province" prefHeight="50.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </ComboBox>
+            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <children>
+                  <Label layoutX="35.0" layoutY="18.0" prefHeight="30.0" prefWidth="99.0" text="City">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="23.0" prefHeight="20.0" prefWidth="22.0" text="*" textAlignment="CENTER" textFill="#eb0d0d">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
          </children>
       </GridPane>
-      <Button fx:id="btnConfirmDelivery" alignment="CENTER" contentDisplay="CENTER" layoutX="526.0" layoutY="645.0" mnemonicParsing="false" onMouseClicked="#submitDeliveryInfo" prefHeight="46.0" prefWidth="316.0" style="-fx-background-color: RED; -fx-cursor: hand;" text="Confirm delivery" textFill="WHITE">
+      <Button fx:id="btnConfirmDelivery" alignment="CENTER" contentDisplay="CENTER" layoutX="526.0" layoutY="645.0" mnemonicParsing="false" onMouseClicked="#submitDeliveryInfo" prefHeight="46.0" prefWidth="316.0" style="-fx-background-color: #5091e6; -fx-cursor: hand;" text="Confirm delivery" textFill="WHITE">
          <font>
             <Font name="Segoe UI Bold" size="24.0" />
          </font>
       </Button>
-      <CheckBox fx:id="rushOrderOption" layoutX="557.0" layoutY="563.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="442.0" text="Place Rush Order" textFill="RED">
+      <CheckBox fx:id="rushOrderOption" layoutX="557.0" layoutY="563.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="442.0" text="Place Rush Order" textFill="#5091e6">
          <font>
             <Font name="Segoe UI" size="24.0" />
          </font>
