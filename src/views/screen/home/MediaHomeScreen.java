@@ -7,6 +7,8 @@ import java.util.logging.Logger;
 
 import entity.media.Media;
 import entity.cart.*;
+import entity.exception.MediaNotAvailableException;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,8 +16,11 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+import utils.Configs;
 import utils.Utils;
 import views.screen.FXMLScreen;
+import views.screen.popup.PopupScreen;
 
 public class MediaHomeScreen extends FXMLScreen{
 
@@ -45,13 +50,26 @@ public class MediaHomeScreen extends FXMLScreen{
         super(screenPath);
         this.media = media;
         this.home = home;
-        addToCartBtn.setOnMouseClicked(e -> {
+        addToCartBtn.setOnMouseClicked(event -> {
             try {
+                if (spinnerChangeNumber.getValue() > media.getQuantity()) throw new MediaNotAvailableException();
                 Cart cart = Cart.getCart();
                 CartMedia cartMedia = new CartMedia(media, cart, spinnerChangeNumber.getValue(), media.getPrice());
                 cart.getListMedia().add(cartMedia);
-                LOGGER.info("Added " + cartMedia.getQuantity() + " " + media.getTitle() + " to cart");
                 home.getNumMediaCartLabel().setText(String.valueOf(cart.getTotalMedia() + " media"));
+                LOGGER.info("Added " + cartMedia.getQuantity() + " " + media.getTitle() + " to cart");
+                PopupScreen.success("The media " + media.getTitle() + " added to Cart");
+            } catch (MediaNotAvailableException exp) {
+                try {
+                    String message = "Not enough media:\nRequired: " + spinnerChangeNumber.getValue() + "\nAvail: " + media.getQuantity();
+                    LOGGER.severe(message);
+                    PopupScreen.error(message);
+                    exp.printStackTrace();
+                } catch (Exception e) {
+                    LOGGER.severe("Cannot add media to cart: ");
+                    e.printStackTrace();
+                }
+                
             } catch (Exception exp) {
                 LOGGER.severe("Cannot add media to cart: ");
                 exp.printStackTrace();

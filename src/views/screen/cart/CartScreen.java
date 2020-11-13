@@ -13,6 +13,7 @@ import entity.cart.Cart;
 import entity.cart.CartMedia;
 import entity.exception.MediaNotAvailableException;
 import entity.exception.PlaceOrderException;
+import entity.order.Order;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -46,6 +47,9 @@ public class CartScreen extends BaseScreen {
 
 	@FXML
 	private Label labelSubtotal;
+
+	@FXML
+	private Label labelVAT;
 
 	@FXML
 	private Button btnPlaceOrder;
@@ -106,9 +110,13 @@ public class CartScreen extends BaseScreen {
 			// display available media
 			displayCartWithMediaAvailability();
 
+			// create order
+			Order order = placeOrderController.createOrder();
+
 			// display shipping form
-			ShippingScreen shippingScreen = new ShippingScreen(this.stage, Configs.SHIPPING_SCREEN_PATH);
+			ShippingScreen shippingScreen = new ShippingScreen(this.stage, Configs.SHIPPING_SCREEN_PATH, order);
 			shippingScreen.setPreviousScreen(this);
+			shippingScreen.setHomeScreen(homeScreen);
 			shippingScreen.setScreenTitle("Shipping Screen");
 			shippingScreen.setBController(placeOrderController);
 			shippingScreen.show();
@@ -128,10 +136,12 @@ public class CartScreen extends BaseScreen {
 	void updateCartAmount(){
 		// calculate subtotal and amount
 		int subtotal = getBController().getCartSubtotal();
-		int amount = (int)(subtotal + (Configs.PERCENT_VAT/100)*subtotal);
+		int vat = (int)((Configs.PERCENT_VAT/100)*subtotal);
+		int amount = subtotal + vat;
 
 		// update subtotal and amount of Cart
 		labelSubtotal.setText(Utils.getCurrencyFormat(subtotal));
+		labelVAT.setText(Utils.getCurrencyFormat(vat));
 		labelAmount.setText(Utils.getCurrencyFormat(amount));
 	}
 	

@@ -159,12 +159,12 @@
             </Label>
          </children>
       </GridPane>
-      <ScrollPane hbarPolicy="NEVER" layoutX="670.0" layoutY="77.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="669.0">
+      <ScrollPane fx:id="vboxIte" hbarPolicy="NEVER" layoutX="670.0" layoutY="77.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="669.0">
          <content>
-            <VBox fx:id="cart" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="567.0" />
+            <VBox fx:id="vboxItems" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="567.0" />
          </content>
       </ScrollPane>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="540.0" layoutY="690.0" mnemonicParsing="false" onMouseClicked="#confirmInvoice" prefHeight="46.0" prefWidth="316.0" style="-fx-background-color: RED; -fx-cursor: hand;" text="Confirm order" textFill="WHITE">
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="540.0" layoutY="690.0" mnemonicParsing="false" onMouseClicked="#confirmInvoice" prefHeight="46.0" prefWidth="316.0" style="-fx-background-color: #5091e6; -fx-cursor: hand;" text="Confirm order" textFill="WHITE">
          <font>
             <Font name="Segoe UI Bold" size="24.0" />
          </font>

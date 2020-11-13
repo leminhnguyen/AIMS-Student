@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 
 import controller.PlaceOrderController;
 import controller.ViewCartController;
+import entity.cart.Cart;
 import entity.exception.ViewCartException;
 import entity.media.Book;
 import entity.media.CD;
@@ -72,6 +73,12 @@ public class HomeScreen extends BaseScreen implements Initializable{
 
     public Label getNumMediaCartLabel(){
         return this.numMediaInCart;
+    }
+
+    @Override
+    public void show() {
+        numMediaInCart.setText(String.valueOf(Cart.getCart().getListMedia().size()));
+        super.show();
     }
 
     @Override

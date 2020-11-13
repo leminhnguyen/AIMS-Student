@@ -7,8 +7,11 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import controller.PlaceOrderController;
+import entity.exception.InvalidDeliveryInfoException;
 import entity.invoice.Invoice;
 import entity.order.Order;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -19,6 +22,7 @@ import javafx.stage.Stage;
 import utils.Configs;
 import views.screen.BaseScreen;
 import views.screen.invoice.InvoiceScreen;
+import views.screen.popup.PopupScreen;
 
 public class ShippingScreen extends BaseScreen implements Initializable {
 
@@ -40,19 +44,27 @@ public class ShippingScreen extends BaseScreen implements Initializable {
 	@FXML
 	private ComboBox<String> province;
 
-	public ShippingScreen(Stage stage, String screenPath) throws IOException {
+	private Order order;
+
+	public ShippingScreen(Stage stage, String screenPath, Order order) throws IOException {
 		super(stage, screenPath);
+		this.order = order;
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		final BooleanProperty firstTime = new SimpleBooleanProperty(true); // Variable to store the focus on stage load
+		name.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
+            if(newValue && firstTime.get()){
+                content.requestFocus(); // Delegate the focus to container
+                firstTime.setValue(false); // Variable value changed for future references
+            }
+        });
 		this.province.getItems().addAll(Configs.PROVINCES);
 	}
 
 	@FXML
 	void submitDeliveryInfo(MouseEvent event) throws IOException, InterruptedException, SQLException {
-		// create order
-		Order order = getBController().createOrder();
 
 		// add info to messages
 		HashMap messages = new HashMap<>();
@@ -61,10 +73,14 @@ public class ShippingScreen extends BaseScreen implements Initializable {
 		messages.put("address", address.getText());
 		messages.put("instructions", instructions.getText());
 		messages.put("province", province.getValue());
-
-		// process and validate delivery info
-		getBController().processDeliveryInfo(messages);
-
+		try {
+			// process and validate delivery info
+			getBController().processDeliveryInfo(messages);
+		} catch (InvalidDeliveryInfoException e) {
+			PopupScreen.error("wrong format input");
+			throw new InvalidDeliveryInfoException("wrong format input");
+		}
+	
 		// calculate shipping fees
 		int shippingFees = getBController().calculateShippingFee(order);
 		order.setShippingFees(shippingFees);
@@ -74,6 +90,7 @@ public class ShippingScreen extends BaseScreen implements Initializable {
 		Invoice invoice = getBController().createInvoice(order);
 		BaseScreen invoiceScreen = new InvoiceScreen(this.stage, Configs.INVOICE_SCREEN_PATH, invoice);
 		invoiceScreen.setPreviousScreen(this);
+		invoiceScreen.setHomeScreen(homeScreen);
 		invoiceScreen.setScreenTitle("Invoice Screen");
 		invoiceScreen.setBController(getBController());
 		invoiceScreen.show();
@@ -84,7 +101,7 @@ public class ShippingScreen extends BaseScreen implements Initializable {
 	}
 
 	public void notifyError(){
-		
+		// TODO: implement later on if we need
 	}
 
 }

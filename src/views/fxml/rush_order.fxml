@@ -16,8 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="screenTitle" layoutX="70.0" layoutY="1.0" prefHeight="96.0" prefWidth="547.0" text="SHIPPING RUSH ORDER" textAlignment="CENTER" textFill="#5091e6">
          <font>
@@ -130,7 +129,7 @@
             </Label>
          </children>
       </GridPane>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="536.0" layoutY="655.0" mnemonicParsing="false" onMouseClicked="#confirmDelivery" prefHeight="46.0" prefWidth="316.0" style="-fx-background-color: RED;" text="Confirm delivery" textFill="WHITE">
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="536.0" layoutY="655.0" mnemonicParsing="false" onMouseClicked="#confirmDelivery" prefHeight="46.0" prefWidth="316.0" style="-fx-background-color: #5091e6;" text="Confirm delivery" textFill="WHITE">
          <font>
             <Font name="Segoe UI Bold" size="24.0" />
          </font>

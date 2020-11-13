@@ -27,7 +27,7 @@
       </ImageView>
       <AnchorPane layoutX="601.0" layoutY="663.0">
          <children>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="-62.0" layoutY="-1.0" mnemonicParsing="false" onMouseClicked="#requestToPayOrder" prefHeight="46.0" prefWidth="316.0" style="-fx-background-color: RED;" text="Confirm order" textFill="WHITE">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="-62.0" layoutY="-1.0" mnemonicParsing="false" onMouseClicked="#requestToPayOrder" prefHeight="46.0" prefWidth="316.0" style="-fx-background-color: #5091e6;" text="Confirm order" textFill="WHITE">
                <font>
                   <Font name="Segoe UI Bold" size="24.0" />
                </font>

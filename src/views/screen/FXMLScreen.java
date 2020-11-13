@@ -28,7 +28,7 @@ public class FXMLScreen {
 		return this.loader;
 	}
 
-	public static void setImage(ImageView imv, String path){
+	public void setImage(ImageView imv, String path){
 		File file = new File(path);
 		Image img = new Image(file.toURI().toString());
 		imv.setImage(img);

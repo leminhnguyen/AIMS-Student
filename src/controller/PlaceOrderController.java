@@ -11,7 +11,6 @@ import entity.exception.InvalidDeliveryInfoException;
 import entity.invoice.Invoice;
 import entity.order.Order;
 import entity.order.OrderMedia;
-import javafx.css.CssParser.ParseError;
 
 public class PlaceOrderController extends BaseController{
 
@@ -26,8 +25,8 @@ public class PlaceOrderController extends BaseController{
         for (Object object : Cart.getCart().getListMedia()) {
             CartMedia cartMedia = (CartMedia) object;
             OrderMedia orderMedia = new OrderMedia(cartMedia.getMedia(), 
-                                                   cartMedia.getMedia().getQuantity(), 
-                                                   cartMedia.getMedia().getPrice());    
+                                                   cartMedia.getQuantity(), 
+                                                   cartMedia.getPrice());    
             order.getlstOrderMedia().add(orderMedia);
         }
         return order;
@@ -47,11 +46,12 @@ public class PlaceOrderController extends BaseController{
         LOGGER.info("Validate Delivery Info");
         if ( !(info.get("instructions") instanceof String) ||
              !(info.get("address") instanceof String) || 
+             //!(info.get("phone").length() != 10) ||
              !(info.get("province") instanceof String) || 
              !(info.get("name") instanceof String)
              ) throw new InvalidDeliveryInfoException();
         try {
-            Thread.sleep(2000); // simulate validate delivery info
+            Thread.sleep(1000); // simulate validate delivery info
             LOGGER.info("Validate Done");
             Integer.parseInt(info.get("phone"));
         } catch (NumberFormatException e) {
@@ -61,6 +61,9 @@ public class PlaceOrderController extends BaseController{
     } 
 
     public int calculateShippingFee(Order order){
-        return (int)( (new Random().nextInt(10) + 1)/100 * order.getAmount());
+        Random rand = new Random();
+        int fees = (int)( ( (rand.nextFloat()*10)/100 ) * order.getAmount() );
+        LOGGER.info("Order Amount: " + order.getAmount() + " -- Shipping Fees: " + fees);
+        return fees;
     }
 }
