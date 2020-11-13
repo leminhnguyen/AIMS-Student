@@ -77,7 +77,7 @@ public class HomeScreen extends BaseScreen implements Initializable{
 
     @Override
     public void show() {
-        numMediaInCart.setText(String.valueOf(Cart.getCart().getListMedia().size()));
+        numMediaInCart.setText(String.valueOf(Cart.getCart().getListMedia().size()) + " media");
         super.show();
     }
 
