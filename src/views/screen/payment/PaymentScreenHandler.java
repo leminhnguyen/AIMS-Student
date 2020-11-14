@@ -19,7 +19,7 @@ import utils.Configs;
 import views.screen.BaseScreen;
 import views.screen.popup.PopupScreen;
 
-public class PaymentScreen extends BaseScreen {
+public class PaymentScreenHandler extends BaseScreenHandler {
 
 	@FXML
 	private Button btnConfirmPayment;
@@ -29,7 +29,11 @@ public class PaymentScreen extends BaseScreen {
 
 	private Invoice invoice;
 
+<<<<<<< HEAD:src/views/screen/payment/PaymentScreen.java
 	public PaymentScreen(Stage stage, String screenPath) throws IOException {
+=======
+	public PaymentScreenHandler(Stage stage, String screenPath, int amount, String contents) throws IOException {
+>>>>>>> features/pay-order:src/views/screen/payment/PaymentScreenHandler.java
 		super(stage, screenPath);
 	}
 
@@ -68,7 +72,7 @@ public class PaymentScreen extends BaseScreen {
 		Map<String, String> response = ctrl.payOrder(invoice.getAmount(), contents, cardNumber.getText(), holderName.getText(),
 				expirationDate.getText(), securityCode.getText());
 		System.out.println(response);
-		BaseScreen resultScreen = new ResultScreen(this.stage, Configs.RESULT_SCREEN_PATH, response.get("RESULT"), response.get("MESSAGE") );
+		BaseScreenHandler resultScreen = new ResultScreenHandler(this.stage, Configs.RESULT_SCREEN_PATH, response.get("RESULT"), response.get("MESSAGE") );
 		resultScreen.setPreviousScreen(this);
 		resultScreen.setHomeScreen(homeScreen);
 		resultScreen.setScreenTitle("Result Screen");

@@ -11,15 +11,15 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import utils.Configs;
-import views.screen.BaseScreen;
-import views.screen.home.HomeScreen;
+import views.screen.BaseScreenHandler;
+import views.screen.home.HomeScreenHandler;
 
-public class ResultScreen extends BaseScreen implements Initializable {
+public class ResultScreenHandler extends BaseScreenHandler implements Initializable {
 
 	private String result;
 	private String message;
 
-	public ResultScreen(Stage stage, String screenPath, String result, String message) throws IOException {
+	public ResultScreenHandler(Stage stage, String screenPath, String result, String message) throws IOException {
 		super(stage, screenPath);
 		this.result = result;
 		this.message = message;
