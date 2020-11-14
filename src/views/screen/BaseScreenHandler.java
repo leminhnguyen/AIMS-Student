@@ -8,31 +8,31 @@ import controller.BaseController;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import views.screen.home.HomeScreen;
+import views.screen.home.HomeScreenHandler;
 
-public class BaseScreen extends FXMLScreen {
+public class BaseScreenHandler extends FXMLScreenHandler {
 
 	private Scene scene;
-	private BaseScreen prev;
+	private BaseScreenHandler prev;
 	protected final Stage stage;
-	protected HomeScreen homeScreen;
+	protected HomeScreenHandler homeScreen;
 	protected Hashtable<String, String> messages;
 	private BaseController bController;
 
-	private BaseScreen(String screenPath) throws IOException {
+	private BaseScreenHandler(String screenPath) throws IOException {
 		super(screenPath);
 		this.stage = new Stage();
 	}
 
-	public void setPreviousScreen(BaseScreen prev) {
+	public void setPreviousScreen(BaseScreenHandler prev) {
 		this.prev = prev;
 	}
 
-	public BaseScreen getPreviousScreen() {
+	public BaseScreenHandler getPreviousScreen() {
 		return this.prev;
 	}
 
-	public BaseScreen(Stage stage, String screenPath) throws IOException {
+	public BaseScreenHandler(Stage stage, String screenPath) throws IOException {
 		super(screenPath);
 		this.stage = stage;
 	}
@@ -61,7 +61,7 @@ public class BaseScreen extends FXMLScreen {
 		this.messages = messages;
 	}
 
-	public void setHomeScreen(HomeScreen homeScreen) {
+	public void setHomeScreen(HomeScreenHandler homeScreen) {
 		this.homeScreen = homeScreen;
 	}
 

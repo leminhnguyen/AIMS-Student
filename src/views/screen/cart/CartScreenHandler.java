@@ -7,12 +7,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
-import controller.PlaceOrderController;
-import controller.ViewCartController;
-import entity.cart.Cart;
-import entity.cart.CartMedia;
 import common.exception.MediaNotAvailableException;
 import common.exception.PlaceOrderException;
+import controller.PlaceOrderController;
+import controller.ViewCartController;
+import entity.cart.CartMedia;
 import entity.order.Order;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

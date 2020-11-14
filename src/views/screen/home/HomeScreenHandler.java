@@ -11,13 +11,9 @@ import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
-import controller.PlaceOrderController;
+import common.exception.ViewCartException;
 import controller.ViewCartController;
 import entity.cart.Cart;
-import common.exception.ViewCartException;
-import entity.media.Book;
-import entity.media.CD;
-import entity.media.DVD;
 import entity.media.Media;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -33,13 +29,13 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import utils.Configs;
 import utils.Utils;
-import views.screen.BaseScreen;
-import views.screen.cart.CartScreen;
+import views.screen.BaseScreenHandler;
+import views.screen.cart.CartScreenHandler;
 
 
-public class HomeScreen extends BaseScreen implements Initializable{
+public class HomeScreenHandler extends BaseScreenHandler implements Initializable{
 
-    public static Logger LOGGER = Utils.getLogger(HomeScreen.class.getName());
+    public static Logger LOGGER = Utils.getLogger(HomeScreenHandler.class.getName());
 
     @FXML
     private Label numMediaInCart;
@@ -67,7 +63,7 @@ public class HomeScreen extends BaseScreen implements Initializable{
 
     private List homeItems;
 
-    public HomeScreen(Stage stage, String screenPath) throws IOException{
+    public HomeScreenHandler(Stage stage, String screenPath) throws IOException{
         super(stage, screenPath);
     }
 
@@ -88,10 +84,45 @@ public class HomeScreen extends BaseScreen implements Initializable{
         try{
             List medium = new Media().getAllMedia();
             this.homeItems = new ArrayList<>();
+<<<<<<< HEAD:src/views/screen/home/HomeScreen.java
             for (Object object : medium) {
                 Media media = (Media)object;
                 MediaHomeScreen m1 = new MediaHomeScreen(Configs.HOME_MEDIA_PATH, media, this);
                 this.homeItems.add(m1);
+=======
+            Random rand = new Random();
+            for (int i=1; i<=12; i++){
+
+                Media book = new Book()
+                                .setTitle("Book" + i)
+                                .setPrice(rand.nextInt(1000))
+                                .setQuantity(rand.nextInt(100))
+                                .setType("book")
+                                .setMediaURL(Configs.IMAGE_PATH + "/Books/book" + i + ".jpg");
+                Media cd = new CD()
+                                .setTitle("CD" + i)
+                                .setPrice(rand.nextInt(1000))
+                                .setQuantity(rand.nextInt(100))
+                                .setMediaURL(Configs.IMAGE_PATH + "/CDs/cd" + i + ".jpg")
+                                .setType("cd");
+                Media dvd = new DVD()
+                                .setTitle("DVD" + i)
+                                .setPrice(rand.nextInt(1000))
+                                .setQuantity(rand.nextInt(100))
+                                .setMediaURL(Configs.IMAGE_PATH + "/DVDs/dvd" + i + ".jpg")
+                                .setType("dvd");
+                
+                try {
+                    MediaHandler m1 = new MediaHandler(Configs.HOME_MEDIA_PATH, book, this);
+                    MediaHandler m2 = new MediaHandler(Configs.HOME_MEDIA_PATH, cd, this);
+                    MediaHandler m3 = new MediaHandler(Configs.HOME_MEDIA_PATH, dvd, this);
+                    this.homeItems.addAll(Arrays.asList(m1,m2,m3));
+                } catch (Exception e) {
+                    LOGGER.severe("Cannot add the mediaItem, see the logs");
+                    LOGGER.info(e.getMessage());
+                    e.printStackTrace();
+                }
+>>>>>>> features/pay-order:src/views/screen/home/HomeScreenHandler.java
             }
         }catch (SQLException | IOException e){
             LOGGER.info("Errors occured: " + e.getMessage());
@@ -104,10 +135,10 @@ public class HomeScreen extends BaseScreen implements Initializable{
         });
         
         cartImage.setOnMouseClicked(e -> {
-            CartScreen cartScreen;
+            CartScreenHandler cartScreen;
             try {
                 LOGGER.info("User clicked to view cart");
-                cartScreen = new CartScreen(this.stage, Configs.CART_SCREEN_PATH);
+                cartScreen = new CartScreenHandler(this.stage, Configs.CART_SCREEN_PATH);
                 cartScreen.setHomeScreen(this);
                 cartScreen.setBController(new ViewCartController());
                 cartScreen.requestToViewCart(this);
@@ -143,7 +174,7 @@ public class HomeScreen extends BaseScreen implements Initializable{
                 int vid = hboxMedia.getChildren().indexOf(node);
                 VBox vBox = (VBox) node;
                 while(vBox.getChildren().size()<3 && !mediaItems.isEmpty()){
-                    MediaHomeScreen media = (MediaHomeScreen) mediaItems.get(0);
+                    MediaHandler media = (MediaHandler) mediaItems.get(0);
                     vBox.getChildren().add(media.getContent());
                     mediaItems.remove(media);
                 }
@@ -169,7 +200,7 @@ public class HomeScreen extends BaseScreen implements Initializable{
             // filter only media with the choosen category
             List filteredItems = new ArrayList<>();
             homeItems.forEach(me -> {
-                MediaHomeScreen media = (MediaHomeScreen) me;
+                MediaHandler media = (MediaHandler) me;
                 if (media.getMedia().getTitle().toLowerCase().startsWith(text.toLowerCase())){
                     filteredItems.add(media);
                 }

@@ -6,10 +6,10 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.logging.Logger;
 
-import entity.cart.Cart;
-import entity.cart.CartMedia;
 import common.exception.MediaUpdateException;
 import common.exception.ViewCartException;
+import entity.cart.Cart;
+import entity.cart.CartMedia;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -22,11 +22,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import utils.Configs;
 import utils.Utils;
-import views.screen.FXMLScreen;
+import views.screen.FXMLScreenHandler;
 
-public class MediaCartScreen extends FXMLScreen {
+public class MediaHandler extends FXMLScreenHandler {
 
-	private static Logger LOGGER = Utils.getLogger(MediaCartScreen.class.getName());
+	private static Logger LOGGER = Utils.getLogger(MediaHandler.class.getName());
 
 	@FXML
 	protected HBox hboxMedia;
@@ -57,9 +57,9 @@ public class MediaCartScreen extends FXMLScreen {
 
 	private CartMedia cartMedia;
 	private Spinner<Integer> spinner;
-	private CartScreen cartScreen;
+	private CartScreenHandler cartScreen;
 
-	public MediaCartScreen(String screenPath, CartScreen cartScreen) throws IOException {
+	public MediaHandler(String screenPath, CartScreenHandler cartScreen) throws IOException {
 		super(screenPath);
 		this.cartScreen = cartScreen;
 		hboxMedia.setAlignment(Pos.CENTER);

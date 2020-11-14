@@ -22,7 +22,7 @@ import utils.Utils;
 import views.screen.FXMLScreen;
 import views.screen.popup.PopupScreen;
 
-public class MediaHomeScreen extends FXMLScreen{
+public class MediaHandler extends FXMLScreenHandler{
 
     @FXML
     protected ImageView mediaImage;
@@ -42,11 +42,11 @@ public class MediaHomeScreen extends FXMLScreen{
     @FXML
     protected Button addToCartBtn;
 
-    private static Logger LOGGER = Utils.getLogger(MediaHomeScreen.class.getName());
+    private static Logger LOGGER = Utils.getLogger(MediaHandler.class.getName());
     private Media media;
-    private HomeScreen home;
+    private HomeScreenHandler home;
 
-    public MediaHomeScreen(String screenPath, Media media, HomeScreen home) throws SQLException, IOException{
+    public MediaHandler(String screenPath, Media media, HomeScreenHandler home) throws SQLException, IOException{
         super(screenPath);
         this.media = media;
         this.home = home;

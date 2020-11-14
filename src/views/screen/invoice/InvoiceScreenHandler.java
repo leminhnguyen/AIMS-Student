@@ -17,12 +17,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import utils.Configs;
 import utils.Utils;
-import views.screen.BaseScreen;
-import views.screen.payment.PaymentScreen;
+import views.screen.BaseScreenHandler;
+import views.screen.payment.PaymentScreenHandler;
 
-public class InvoiceScreen extends BaseScreen {
+public class InvoiceScreenHandler extends BaseScreenHandler {
 
-	private static Logger LOGGER = Utils.getLogger(InvoiceScreen.class.getName());
+	private static Logger LOGGER = Utils.getLogger(InvoiceScreenHandler.class.getName());
 
 	@FXML
 	private Label pageTitle;
@@ -89,7 +89,11 @@ public class InvoiceScreen extends BaseScreen {
 
 	@FXML
 	void confirmInvoice(MouseEvent event) throws IOException {
+<<<<<<< HEAD:src/views/screen/invoice/InvoiceScreen.java
 		BaseScreen paymentScreen = new PaymentScreen(this.stage, Configs.PAYMENT_SCREEN_PATH, invoice);
+=======
+		BaseScreenHandler paymentScreen = new PaymentScreenHandler(this.stage, Configs.PAYMENT_SCREEN_PATH, amount, contents);
+>>>>>>> features/pay-order:src/views/screen/invoice/InvoiceScreenHandler.java
 		paymentScreen.setPreviousScreen(this);
 		paymentScreen.setHomeScreen(homeScreen);
 		paymentScreen.setScreenTitle("Payment Screen");
