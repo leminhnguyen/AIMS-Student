@@ -137,6 +137,7 @@ public class CartScreenHandler extends BaseScreenHandler {
 		int subtotal = getBController().getCartSubtotal();
 		int vat = (int)((Configs.PERCENT_VAT/100)*subtotal);
 		int amount = subtotal + vat;
+		LOGGER.info("amount" + amount);
 
 		// update subtotal and amount of Cart
 		labelSubtotal.setText(Utils.getCurrencyFormat(subtotal));
@@ -161,10 +162,9 @@ public class CartScreenHandler extends BaseScreenHandler {
 
 				// add spinner
 				vboxCart.getChildren().add(mediaCartScreen.getContent());
-
-				// calculate subtotal and amount
-				updateCartAmount();
 			}
+			// calculate subtotal and amount
+			updateCartAmount();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

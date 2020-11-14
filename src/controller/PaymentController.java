@@ -7,6 +7,7 @@ import java.util.Map;
 import common.exception.InvalidCardException;
 import common.exception.PaymentException;
 import common.exception.UnrecognizedException;
+import entity.cart.Cart;
 import entity.payment.CreditCard;
 import entity.payment.PaymentTransaction;
 import subsystem.InterbankInterface;
@@ -98,4 +99,8 @@ public class PaymentController extends BaseController {
 		}
 		return result;
 	}
+
+	public void emptyCart(){
+        Cart.getCart().emptyCart();
+    }
 }
