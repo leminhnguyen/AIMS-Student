@@ -15,7 +15,7 @@ public class BaseScreenHandler extends FXMLScreenHandler {
 	private Scene scene;
 	private BaseScreenHandler prev;
 	protected final Stage stage;
-	protected HomeScreenHandler homeScreen;
+	protected HomeScreenHandler homeScreenHandler;
 	protected Hashtable<String, String> messages;
 	private BaseController bController;
 
@@ -61,8 +61,8 @@ public class BaseScreenHandler extends FXMLScreenHandler {
 		this.messages = messages;
 	}
 
-	public void setHomeScreen(HomeScreenHandler homeScreen) {
-		this.homeScreen = homeScreen;
+	public void setHomeScreenHandler(HomeScreenHandler HomeScreenHandler) {
+		this.homeScreenHandler = HomeScreenHandler;
 	}
 
 }

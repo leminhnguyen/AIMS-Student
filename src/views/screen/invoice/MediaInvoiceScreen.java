@@ -12,9 +12,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import utils.Utils;
-import views.screen.FXMLScreen;
+import views.screen.FXMLScreenHandler;
 
-public class MediaInvoiceScreen extends FXMLScreen{
+public class MediaInvoiceScreenHandler extends FXMLScreenHandler{
 
     @FXML
     private HBox hboxMedia;
@@ -42,7 +42,7 @@ public class MediaInvoiceScreen extends FXMLScreen{
 
     private OrderMedia orderMedia;
 
-    public MediaInvoiceScreen(String screenPath) throws IOException{
+    public MediaInvoiceScreenHandler(String screenPath) throws IOException{
         super(screenPath);
     }
 

@@ -5,10 +5,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
-import entity.media.Media;
-import entity.cart.*;
 import common.exception.MediaNotAvailableException;
-import javafx.application.Platform;
+import entity.cart.Cart;
+import entity.cart.CartMedia;
+import entity.media.Media;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,10 +16,9 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
-import utils.Configs;
 import utils.Utils;
-import views.screen.FXMLScreen;
+import views.screen.FXMLScreenHandler;
+import views.screen.home.HomeScreenHandler;
 import views.screen.popup.PopupScreen;
 
 public class MediaHandler extends FXMLScreenHandler{
