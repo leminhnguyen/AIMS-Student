@@ -50,7 +50,7 @@ public class App extends Application {
 				try {
 					HomeScreenHandler homeHandler = new HomeScreenHandler(primaryStage, Configs.HOME_PATH);
 					homeHandler.setScreenTitle("Home Screen");
-					// homeHandler.setImage();
+					homeHandler.setImage();
 					homeHandler.show();
 				} catch (IOException e1) {
 					e1.printStackTrace();
