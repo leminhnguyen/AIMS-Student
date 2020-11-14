@@ -44,13 +44,26 @@ public class Media {
     }
 
     public int getQuantity() throws SQLException{
-        // int updated_quantity = getMediaById(id).getQuantity();
-        // this.quantity = updated_quantity;
-        // return updated_quantity;
-        return quantity;
+        int updated_quantity = getMediaById(id).quantity;
+        this.quantity = updated_quantity;
+        return updated_quantity;
     }
 
     public Media getMediaById(int id) throws SQLException{
+        String sql = "SELECT * FROM Media ;";
+        Statement stm = AIMSDB.getConnection().createStatement();
+        ResultSet res = stm.executeQuery(sql);
+		if(res.next()) {
+
+            return new Media()
+                .setId(res.getInt("id"))
+                .setTitle(res.getString("title"))
+                .setQuantity(res.getInt("quantity"))
+                .setCategory(res.getString("category"))
+                .setMediaURL(res.getString("imageUrl"))
+                .setPrice(res.getInt("price"))
+                .setType(res.getString("type"));
+        }
         return null;
     }
 

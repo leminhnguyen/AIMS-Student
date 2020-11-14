@@ -77,8 +77,7 @@ public class ShippingScreenHandler extends BaseScreenHandler implements Initiali
 			// process and validate delivery info
 			getBController().processDeliveryInfo(messages);
 		} catch (InvalidDeliveryInfoException e) {
-			PopupScreen.error("wrong format input");
-			throw new InvalidDeliveryInfoException("wrong format input");
+			throw new InvalidDeliveryInfoException(e.getMessage());
 		}
 	
 		// calculate shipping fees

@@ -53,10 +53,20 @@ public class MediaHandler extends FXMLScreenHandler{
             try {
                 if (spinnerChangeNumber.getValue() > media.getQuantity()) throw new MediaNotAvailableException();
                 Cart cart = Cart.getCart();
-                CartMedia cartMedia = new CartMedia(media, cart, spinnerChangeNumber.getValue(), media.getPrice());
-                cart.getListMedia().add(cartMedia);
+                // if media already in cart then we will increase the quantity by 1 instead of create the new cartMedia
+                CartMedia mediaInCart = home.getBController().checkMediaInCart(media);
+                if (mediaInCart != null) {
+                    mediaInCart.setQuantity(mediaInCart.getQuantity() + 1);
+                }else{
+                    CartMedia cartMedia = new CartMedia(media, cart, spinnerChangeNumber.getValue(), media.getPrice());
+                    cart.getListMedia().add(cartMedia);
+                    LOGGER.info("Added " + cartMedia.getQuantity() + " " + media.getTitle() + " to cart");
+                }
+
+                // subtract the quantity and redisplay
+                media.setQuantity(media.getQuantity() - spinnerChangeNumber.getValue());
+                mediaAvail.setText(String.valueOf(media.getQuantity()));
                 home.getNumMediaCartLabel().setText(String.valueOf(cart.getTotalMedia() + " media"));
-                LOGGER.info("Added " + cartMedia.getQuantity() + " " + media.getTitle() + " to cart");
                 PopupScreen.success("The media " + media.getTitle() + " added to Cart");
             } catch (MediaNotAvailableException exp) {
                 try {
