@@ -12,10 +12,10 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import utils.Configs;
-import views.screen.BaseScreen;
+import views.screen.BaseScreenHandler;
 
 
-public class PopupScreen extends BaseScreen{
+public class PopupScreen extends BaseScreenHandler{
     
 
     @FXML

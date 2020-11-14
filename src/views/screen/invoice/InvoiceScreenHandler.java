@@ -56,7 +56,7 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
 
 	private Invoice invoice;
 
-	public InvoiceScreen(Stage stage, String screenPath, Invoice invoice) throws IOException {
+	public InvoiceScreenHandler(Stage stage, String screenPath, Invoice invoice) throws IOException {
 		super(stage, screenPath);
 		this.invoice = invoice;
 		setInvoiceInfo();
@@ -75,7 +75,7 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
 		invoice.setAmount(amount);
 		invoice.getOrder().getlstOrderMedia().forEach(orderMedia -> {
 			try {
-				MediaInvoiceScreen mis = new MediaInvoiceScreen(Configs.INVOICE_MEDIA_SCREEN_PATH);
+				MediaInvoiceScreenHandler mis = new MediaInvoiceScreenHandler(Configs.INVOICE_MEDIA_SCREEN_PATH);
 				mis.setOrderMedia((OrderMedia) orderMedia);
 				vboxItems.getChildren().add(mis.getContent());
 			} catch (IOException | SQLException e) {
@@ -89,13 +89,9 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
 
 	@FXML
 	void confirmInvoice(MouseEvent event) throws IOException {
-<<<<<<< HEAD:src/views/screen/invoice/InvoiceScreen.java
-		BaseScreen paymentScreen = new PaymentScreen(this.stage, Configs.PAYMENT_SCREEN_PATH, invoice);
-=======
 		BaseScreenHandler paymentScreen = new PaymentScreenHandler(this.stage, Configs.PAYMENT_SCREEN_PATH, amount, contents);
->>>>>>> features/pay-order:src/views/screen/invoice/InvoiceScreenHandler.java
 		paymentScreen.setPreviousScreen(this);
-		paymentScreen.setHomeScreen(homeScreen);
+		paymentScreen.setHomeScreenHandler(homeScreenHandler);
 		paymentScreen.setScreenTitle("Payment Screen");
 		paymentScreen.show();
 		LOGGER.info("Confirmed invoice");

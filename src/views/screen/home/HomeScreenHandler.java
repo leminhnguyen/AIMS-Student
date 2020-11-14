@@ -84,45 +84,10 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
         try{
             List medium = new Media().getAllMedia();
             this.homeItems = new ArrayList<>();
-<<<<<<< HEAD:src/views/screen/home/HomeScreen.java
             for (Object object : medium) {
                 Media media = (Media)object;
-                MediaHomeScreen m1 = new MediaHomeScreen(Configs.HOME_MEDIA_PATH, media, this);
+                MediaHandler m1 = new MediaHandler(Configs.HOME_MEDIA_PATH, media, this);
                 this.homeItems.add(m1);
-=======
-            Random rand = new Random();
-            for (int i=1; i<=12; i++){
-
-                Media book = new Book()
-                                .setTitle("Book" + i)
-                                .setPrice(rand.nextInt(1000))
-                                .setQuantity(rand.nextInt(100))
-                                .setType("book")
-                                .setMediaURL(Configs.IMAGE_PATH + "/Books/book" + i + ".jpg");
-                Media cd = new CD()
-                                .setTitle("CD" + i)
-                                .setPrice(rand.nextInt(1000))
-                                .setQuantity(rand.nextInt(100))
-                                .setMediaURL(Configs.IMAGE_PATH + "/CDs/cd" + i + ".jpg")
-                                .setType("cd");
-                Media dvd = new DVD()
-                                .setTitle("DVD" + i)
-                                .setPrice(rand.nextInt(1000))
-                                .setQuantity(rand.nextInt(100))
-                                .setMediaURL(Configs.IMAGE_PATH + "/DVDs/dvd" + i + ".jpg")
-                                .setType("dvd");
-                
-                try {
-                    MediaHandler m1 = new MediaHandler(Configs.HOME_MEDIA_PATH, book, this);
-                    MediaHandler m2 = new MediaHandler(Configs.HOME_MEDIA_PATH, cd, this);
-                    MediaHandler m3 = new MediaHandler(Configs.HOME_MEDIA_PATH, dvd, this);
-                    this.homeItems.addAll(Arrays.asList(m1,m2,m3));
-                } catch (Exception e) {
-                    LOGGER.severe("Cannot add the mediaItem, see the logs");
-                    LOGGER.info(e.getMessage());
-                    e.printStackTrace();
-                }
->>>>>>> features/pay-order:src/views/screen/home/HomeScreenHandler.java
             }
         }catch (SQLException | IOException e){
             LOGGER.info("Errors occured: " + e.getMessage());
@@ -139,7 +104,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
             try {
                 LOGGER.info("User clicked to view cart");
                 cartScreen = new CartScreenHandler(this.stage, Configs.CART_SCREEN_PATH);
-                cartScreen.setHomeScreen(this);
+                cartScreen.setHomeScreenHandler(this);
                 cartScreen.setBController(new ViewCartController());
                 cartScreen.requestToViewCart(this);
             } catch (IOException | SQLException e1) {

@@ -16,7 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import utils.Configs;
-import views.screen.BaseScreen;
+import views.screen.BaseScreenHandler;
 import views.screen.popup.PopupScreen;
 
 public class PaymentScreenHandler extends BaseScreenHandler {
@@ -29,15 +29,11 @@ public class PaymentScreenHandler extends BaseScreenHandler {
 
 	private Invoice invoice;
 
-<<<<<<< HEAD:src/views/screen/payment/PaymentScreen.java
-	public PaymentScreen(Stage stage, String screenPath) throws IOException {
-=======
 	public PaymentScreenHandler(Stage stage, String screenPath, int amount, String contents) throws IOException {
->>>>>>> features/pay-order:src/views/screen/payment/PaymentScreenHandler.java
 		super(stage, screenPath);
 	}
 
-	public PaymentScreen(Stage stage, String screenPath, Invoice invoice) throws IOException {
+	public PaymentScreenHandler(Stage stage, String screenPath, Invoice invoice) throws IOException {
 		super(stage, screenPath);
 		this.invoice = invoice;
 		
@@ -74,7 +70,7 @@ public class PaymentScreenHandler extends BaseScreenHandler {
 		System.out.println(response);
 		BaseScreenHandler resultScreen = new ResultScreenHandler(this.stage, Configs.RESULT_SCREEN_PATH, response.get("RESULT"), response.get("MESSAGE") );
 		resultScreen.setPreviousScreen(this);
-		resultScreen.setHomeScreen(homeScreen);
+		resultScreen.setHomeScreenHandler(homeScreenHandler);
 		resultScreen.setScreenTitle("Result Screen");
 		resultScreen.show();
 	}

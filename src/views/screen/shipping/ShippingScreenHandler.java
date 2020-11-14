@@ -20,11 +20,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import utils.Configs;
-import views.screen.BaseScreen;
-import views.screen.invoice.InvoiceScreen;
+import views.screen.BaseScreenHandler;
+import views.screen.invoice.InvoiceScreenHandler;
 import views.screen.popup.PopupScreen;
 
-public class ShippingScreen extends BaseScreen implements Initializable {
+public class ShippingScreenHandler extends BaseScreenHandler implements Initializable {
 
 	@FXML
 	private Label screenTitle;
@@ -46,7 +46,7 @@ public class ShippingScreen extends BaseScreen implements Initializable {
 
 	private Order order;
 
-	public ShippingScreen(Stage stage, String screenPath, Order order) throws IOException {
+	public ShippingScreenHandler(Stage stage, String screenPath, Order order) throws IOException {
 		super(stage, screenPath);
 		this.order = order;
 	}
@@ -88,12 +88,12 @@ public class ShippingScreen extends BaseScreen implements Initializable {
 		
 		// create invoice screen
 		Invoice invoice = getBController().createInvoice(order);
-		BaseScreen invoiceScreen = new InvoiceScreen(this.stage, Configs.INVOICE_SCREEN_PATH, invoice);
-		invoiceScreen.setPreviousScreen(this);
-		invoiceScreen.setHomeScreen(homeScreen);
-		invoiceScreen.setScreenTitle("Invoice Screen");
-		invoiceScreen.setBController(getBController());
-		invoiceScreen.show();
+		BaseScreenHandler InvoiceScreenHandler = new InvoiceScreenHandler(this.stage, Configs.INVOICE_SCREEN_PATH, invoice);
+		InvoiceScreenHandler.setPreviousScreen(this);
+		InvoiceScreenHandler.setHomeScreenHandler(homeScreenHandler);
+		InvoiceScreenHandler.setScreenTitle("Invoice Screen");
+		InvoiceScreenHandler.setBController(getBController());
+		InvoiceScreenHandler.show();
 	}
 
 	public PlaceOrderController getBController(){
