@@ -8,8 +8,8 @@ import java.util.logging.Logger;
 
 import entity.cart.Cart;
 import entity.cart.CartMedia;
-import utils.exception.MediaUpdateException;
-import utils.exception.ViewCartException;
+import common.exception.MediaUpdateException;
+import common.exception.ViewCartException;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

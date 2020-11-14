@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 import controller.PlaceOrderController;
 import controller.ViewCartController;
 import entity.cart.Cart;
-import utils.exception.ViewCartException;
+import common.exception.ViewCartException;
 import entity.media.Book;
 import entity.media.CD;
 import entity.media.DVD;

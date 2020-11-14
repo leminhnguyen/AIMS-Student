@@ -1,4 +1,4 @@
-package utils.exception;
+package common.exception;;
 
 public class InvalidTransactionAmountException extends PaymentException {
 	public InvalidTransactionAmountException() {

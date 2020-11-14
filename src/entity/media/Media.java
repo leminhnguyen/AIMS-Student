@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 import java.sql.Statement;
 
 import entity.db.AIMSDB;
-import utils.exception.*;
+import common.exception.*;
 import utils.Utils;
 
 /**

@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 import entity.cart.Cart;
 import entity.cart.CartMedia;
-import utils.exception.InvalidDeliveryInfoException;
+import common.exception.InvalidDeliveryInfoException;
 import entity.invoice.Invoice;
 import entity.order.Order;
 import entity.order.OrderMedia;
