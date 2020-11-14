@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +13,7 @@ import common.exception.InvalidDeliveryInfoException;
 import entity.invoice.Invoice;
 import entity.order.Order;
 import entity.order.OrderMedia;
+import views.screen.popup.PopupScreen;
 
 public class PlaceOrderController extends BaseController{
 
@@ -37,26 +39,32 @@ public class PlaceOrderController extends BaseController{
         return new Invoice(order);
     }
 
-    public void processDeliveryInfo(HashMap info) throws InterruptedException{
+    public void processDeliveryInfo(HashMap info) throws InterruptedException, IOException{
         LOGGER.info("Process Delivery Info");
         LOGGER.info(info.toString());
         validateDeliveryInfo(info);
     }
 
-    public void validateDeliveryInfo(HashMap<String, String> info) throws InterruptedException{
+    public void validateDeliveryInfo(HashMap<String, String> info) throws InterruptedException, IOException{
+
         LOGGER.info("Validate Delivery Info");
-        if ( !(info.get("instructions") instanceof String) ||
-             !(info.get("address") instanceof String) || 
-             //!(info.get("phone").length() != 10) ||
-             !(info.get("province") instanceof String) || 
-             !(info.get("name") instanceof String)
-             ) throw new InvalidDeliveryInfoException();
-        try {
-            Thread.sleep(500); // simulate validate delivery info
-            LOGGER.info("Validate Done");
-            Integer.parseInt(info.get("phone"));
-        } catch (NumberFormatException e) {
-            throw new InvalidDeliveryInfoException();
+        String message = "";
+        if (info.get("name") == "") message = "The name must not be empty and must be characters";
+        else if (info.get("province") == "") message = "The province must not be empty";
+        else if (!(info.get("phone").length() == 10)) message = "The phone must be number and 10 digits";
+        else if (info.get("address") == "") message = "The address must not be empty";
+        else{
+            try {
+                Thread.sleep(500); // simulate validate delivery info
+                LOGGER.info("Validate Done");
+                Integer.parseInt(info.get("phone"));
+            } catch (NumberFormatException e) {
+                message = "The phone must be number and 10 digits";
+            }
+        }
+        if (message != ""){
+            PopupScreen.error(message);
+            throw new InvalidDeliveryInfoException(message);
         }
         
     } 

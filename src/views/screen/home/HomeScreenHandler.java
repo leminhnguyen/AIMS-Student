@@ -12,6 +12,8 @@ import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
 import common.exception.ViewCartException;
+import controller.BaseController;
+import controller.HomeController;
 import controller.ViewCartController;
 import entity.cart.Cart;
 import entity.media.Media;
@@ -71,6 +73,10 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
         return this.numMediaInCart;
     }
 
+    public HomeController getBController() {
+        return (HomeController) super.getBController();
+    }
+
     @Override
     public void show() {
         numMediaInCart.setText(String.valueOf(Cart.getCart().getListMedia().size()) + " media");
@@ -79,10 +85,9 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        // TODO: implement later, get data from database
-       
+        setBController(new HomeController());
         try{
-            List medium = new Media().getAllMedia();
+            List medium = getBController().getAllMedia();
             this.homeItems = new ArrayList<>();
             for (Object object : medium) {
                 Media media = (Media)object;

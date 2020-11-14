@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import common.exception.MediaNotAvailableException;
+import entity.media.Media;
 
 public class Cart {
     
@@ -63,6 +64,13 @@ public class Cart {
             if (requiredQuantity > availQuantity) allAvai = false;
         }
         if (!allAvai) throw new MediaNotAvailableException("Some media not available");
+    }
+
+    public CartMedia checkMediaInCart(Media media){
+        for (CartMedia cartMedia : lstCartMedia) {
+            if (cartMedia.getMedia().getId() == media.getId()) return cartMedia;
+        }
+        return null;
     }
 
 }
