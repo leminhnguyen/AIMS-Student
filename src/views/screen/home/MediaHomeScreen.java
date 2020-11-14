@@ -64,10 +64,8 @@ public class MediaHomeScreen extends FXMLScreen{
                     String message = "Not enough media:\nRequired: " + spinnerChangeNumber.getValue() + "\nAvail: " + media.getQuantity();
                     LOGGER.severe(message);
                     PopupScreen.error(message);
-                    exp.printStackTrace();
                 } catch (Exception e) {
                     LOGGER.severe("Cannot add media to cart: ");
-                    e.printStackTrace();
                 }
                 
             } catch (Exception exp) {
@@ -91,7 +89,7 @@ public class MediaHomeScreen extends FXMLScreen{
         mediaImage.setImage(image);
 
         mediaTitle.setText(media.getTitle());
-        mediaPrice.setText(Integer.toString(media.getPrice()));
+        mediaPrice.setText(Utils.getCurrencyFormat(media.getPrice()));
         mediaAvail.setText(Integer.toString(media.getQuantity()));
         spinnerChangeNumber.setValueFactory(
             new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 1)

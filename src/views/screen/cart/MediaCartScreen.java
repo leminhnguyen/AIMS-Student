@@ -73,7 +73,6 @@ public class MediaCartScreen extends FXMLScreen {
 	private void setMediaInfo() {
 		title.setText(cartMedia.getMedia().getTitle());
 		price.setText(Utils.getCurrencyFormat(cartMedia.getPrice()));
-		currency.setText(Configs.CURRENCY);
 		File file = new File(cartMedia.getMedia().getImageURL());
 		Image im = new Image(file.toURI().toString());
 		image.setImage(im);
