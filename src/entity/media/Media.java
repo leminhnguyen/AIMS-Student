@@ -63,6 +63,7 @@ public class Media {
             Media media = new Media()
                 .setId(res.getInt("id"))
                 .setTitle(res.getString("title"))
+                .setQuantity(res.getInt("quantity"))
                 .setCategory(res.getString("category"))
                 .setMediaURL(res.getString("imageUrl"))
                 .setPrice(res.getInt("price"))

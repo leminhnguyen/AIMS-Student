@@ -51,7 +51,7 @@ public class PlaceOrderController extends BaseController{
              !(info.get("name") instanceof String)
              ) throw new InvalidDeliveryInfoException();
         try {
-            Thread.sleep(1000); // simulate validate delivery info
+            Thread.sleep(500); // simulate validate delivery info
             LOGGER.info("Validate Done");
             Integer.parseInt(info.get("phone"));
         } catch (NumberFormatException e) {
