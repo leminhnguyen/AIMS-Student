@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import controller.PlaceOrderController;
-import utils.exception.InvalidDeliveryInfoException;
+import common.exception.InvalidDeliveryInfoException;
 import entity.invoice.Invoice;
 import entity.order.Order;
 import javafx.beans.property.BooleanProperty;

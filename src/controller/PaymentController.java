@@ -4,11 +4,11 @@ import java.util.Calendar;
 import java.util.Hashtable;
 import java.util.Map;
 
-import utils.exception.InternalServerErrorException;
-import utils.exception.InvalidCardException;
-import utils.exception.NotEnoughBalanceException;
-import utils.exception.PaymentException;
-import utils.exception.UnrecognizedException;
+import common.exception.InternalServerErrorException;
+import common.exception.InvalidCardException;
+import common.exception.NotEnoughBalanceException;
+import common.exception.PaymentException;
+import common.exception.UnrecognizedException;
 import entity.payment.CreditCard;
 import entity.payment.PaymentTransaction;
 import subsystem.InterbankInterface;

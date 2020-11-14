@@ -1,4 +1,4 @@
-package utils.exception;
+package common.exception;;
 
 public class UnrecognizedException extends RuntimeException {
 public UnrecognizedException() {

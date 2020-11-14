@@ -1,4 +1,4 @@
-package utils.exception;
+package common.exception;;
 
 /**
  * The MediaNotAvailableException wraps all unchecked exceptions You can use this

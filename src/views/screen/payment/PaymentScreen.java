@@ -5,7 +5,7 @@ import java.util.Map;
 
 import controller.PaymentController;
 import entity.cart.Cart;
-import utils.exception.PlaceOrderException;
+import common.exception.PlaceOrderException;
 import entity.invoice.Invoice;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
