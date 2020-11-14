@@ -2,6 +2,7 @@ package controller;
 
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 import java.util.logging.Logger;
 
@@ -65,5 +66,9 @@ public class PlaceOrderController extends BaseController{
         int fees = (int)( ( (rand.nextFloat()*10)/100 ) * order.getAmount() );
         LOGGER.info("Order Amount: " + order.getAmount() + " -- Shipping Fees: " + fees);
         return fees;
+    }
+
+    public List getListCartMedia(){
+        return Cart.getCart().getListMedia();
     }
 }

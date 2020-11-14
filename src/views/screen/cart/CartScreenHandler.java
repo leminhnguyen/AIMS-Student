@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 import utils.Configs;
 import utils.Utils;
 import views.screen.BaseScreenHandler;
+import views.screen.popup.PopupScreen;
 import views.screen.shipping.ShippingScreenHandler;
 
 public class CartScreenHandler extends BaseScreenHandler {
@@ -104,6 +105,11 @@ public class CartScreenHandler extends BaseScreenHandler {
 		try {
 			// create placeOrderController and process the order
 			PlaceOrderController placeOrderController = new PlaceOrderController();
+			if (placeOrderController.getListCartMedia().size() == 0){
+				PopupScreen.error("You don't have anything to place");
+				return;
+			}
+
 			placeOrderController.placeOrder();
 			
 			// display available media
@@ -123,7 +129,6 @@ public class CartScreenHandler extends BaseScreenHandler {
 		} catch (MediaNotAvailableException e) {
 			// if some media are not available then display cart and break usecase Place Order
 			displayCartWithMediaAvailability();
-			return;
 		}
 	}
 
