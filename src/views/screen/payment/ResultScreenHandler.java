@@ -12,19 +12,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import views.screen.BaseScreenHandler;
 
-public class ResultScreenHandler extends BaseScreenHandler implements Initializable {
+public class ResultScreenHandler extends BaseScreenHandler {
 
 	private String result;
 	private String message;
 
 	public ResultScreenHandler(Stage stage, String screenPath, String result, String message) throws IOException {
 		super(stage, screenPath);
-		this.result = result;
-		this.message = message;
-	}
-
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
 		resultLabel.setText(result);
 		messageLabel.setText(message);
 	}

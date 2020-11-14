@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="pageTitle" layoutX="80.0" layoutY="11.0" prefHeight="96.0" prefWidth="185.0" text="Payment" textAlignment="CENTER" textFill="#5091e6">
+      <Label fx:id="pageTitle" layoutX="80.0" layoutY="11.0" prefHeight="96.0" prefWidth="258.0" text="Payment" textAlignment="CENTER" textFill="#5091e6">
          <font>
             <Font name="Segoe UI Semibold" size="42.0" />
          </font>
@@ -19,17 +19,17 @@
             <Image url="@../../../assets/images/Logo.png" />
          </image>
       </ImageView>
-      <Label fx:id="resultLabel" layoutX="406.0" layoutY="254.0" text="PAYMENT RESULT!">
+      <Label fx:id="resultLabel" layoutX="365.0" layoutY="248.0" text="PAYMENT RESULT!" textFill="#5091e6">
          <font>
             <Font name="Calibri Bold" size="72.0" />
          </font>
       </Label>
-      <Label fx:id="messageLabel" alignment="CENTER" layoutX="389.0" layoutY="354.0" prefHeight="216.0" prefWidth="602.0" text="Message">
+      <Label fx:id="messageLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="373.0" layoutY="353.0" prefHeight="216.0" prefWidth="657.0" text="Message" textFill="#5091e6" wrapText="true">
          <font>
             <Font name="Calibri" size="36.0" />
          </font>
       </Label>
-      <Button fx:id="okButton" alignment="CENTER" contentDisplay="CENTER" layoutX="528.0" layoutY="681.0" mnemonicParsing="false" onMouseClicked="#confirmPayment" prefHeight="46.0" prefWidth="316.0" style="-fx-background-color: #5091e6;" text="OK" textFill="WHITE">
+      <Button fx:id="okButton" alignment="CENTER" contentDisplay="CENTER" layoutX="544.0" layoutY="676.0" mnemonicParsing="false" onMouseClicked="#confirmPayment" prefHeight="46.0" prefWidth="316.0" style="-fx-background-color: #5091e6;" text="OK" textFill="WHITE">
          <font>
             <Font name="Segoe UI Bold" size="24.0" />
          </font>

@@ -6,14 +6,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="213.0" prefWidth="257.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="215.0" prefWidth="314.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="tickicon" fitHeight="99.0" fitWidth="103.0" layoutX="69.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tickicon" fitHeight="99.0" fitWidth="103.0" layoutX="107.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../assets/images/tickgreen.png" />
          </image>
       </ImageView>
-      <Label fx:id="message" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="122.0" prefHeight="88.0" prefWidth="240.0" text="The Media added to Cart" wrapText="true">
+      <Label fx:id="message" alignment="CENTER" contentDisplay="CENTER" layoutX="16.0" layoutY="122.0" prefHeight="79.0" prefWidth="284.0" text="The Media added to Cart" wrapText="true">
          <font>
             <Font size="16.0" />
          </font>
