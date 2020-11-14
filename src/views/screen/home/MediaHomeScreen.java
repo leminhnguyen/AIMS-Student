@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 import entity.media.Media;
 import entity.cart.*;
-import entity.exception.MediaNotAvailableException;
+import utils.exception.MediaNotAvailableException;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

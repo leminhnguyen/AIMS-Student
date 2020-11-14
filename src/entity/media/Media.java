@@ -1,19 +1,21 @@
 package entity.media;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import java.sql.Statement;
 
 import entity.db.AIMSDB;
-import entity.exception.*;
+import utils.exception.*;
 import utils.Utils;
 
 /**
  * The general media class, for another media it can be done by inheriting this class
  * @author nguyenlm
  */
-public abstract class Media {
+public class Media {
 
     private static Logger LOGGER = Utils.getLogger(Media.class.getName());
 
@@ -28,7 +30,7 @@ public abstract class Media {
     protected String imageURL;
 
     public Media() throws SQLException{
-        //stm = AIMSDB.getConnection().createStatement();
+        stm = AIMSDB.getConnection().createStatement();
     }
 
     public Media (int id, String title, String category, int price, int quantity, String type) throws SQLException{
@@ -49,9 +51,26 @@ public abstract class Media {
         return quantity;
     }
 
-    public abstract Media getMediaById(int id) throws SQLException;
+    public Media getMediaById(int id) throws SQLException{
+        return null;
+    }
 
-    public abstract List getAllMedia();
+    public List getAllMedia() throws SQLException{
+        Statement stm = AIMSDB.getConnection().createStatement();
+        ResultSet res = stm.executeQuery("select * from Media");
+        ArrayList medium = new ArrayList<>();
+        while (res.next()) {
+            Media media = new Media()
+                .setId(res.getInt("id"))
+                .setTitle(res.getString("title"))
+                .setCategory(res.getString("category"))
+                .setMediaURL(res.getString("imageUrl"))
+                .setPrice(res.getInt("price"))
+                .setType(res.getString("type"));
+            medium.add(media);
+        }
+        return medium;
+    }
 
     public void updateMediaFieldById(String tbname, int id, String field, Object value) throws SQLException {
         Statement stm = AIMSDB.getConnection().createStatement();
@@ -66,6 +85,11 @@ public abstract class Media {
     // getter and setter 
     public int getId() {
         return this.id;
+    }
+
+    private Media setId(int id){
+        this.id = id;
+        return this;
     }
 
     public String getTitle() {

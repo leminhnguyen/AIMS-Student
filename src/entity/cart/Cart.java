@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import entity.exception.MediaNotAvailableException;
+import utils.exception.MediaNotAvailableException;
 
 public class Cart {
     

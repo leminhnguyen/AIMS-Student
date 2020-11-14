@@ -1,4 +1,4 @@
-package entity.exception;
+package utils.exception;
 
 /**
  * The ViewCartException wraps all unchecked exceptions You can use this

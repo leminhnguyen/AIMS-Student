@@ -1,4 +1,4 @@
-package entity.exception;
+package utils.exception;
 
 /**
  * The ProcessInvoiceException wraps all unchecked exceptions You can use this
