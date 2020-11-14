@@ -2,7 +2,7 @@ package subsystem.interbank;
 
 import java.io.IOException;
 
-import entity.exception.InternalServerErrorException;
+import utils.exception.InternalServerErrorException;
 import utils.API;
 
 public class InterbankBoundary {

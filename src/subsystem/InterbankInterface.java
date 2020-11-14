@@ -1,7 +1,7 @@
 package subsystem;
 
-import entity.exception.PaymentException;
-import entity.exception.UnrecognizedException;
+import utils.exception.PaymentException;
+import utils.exception.UnrecognizedException;
 import entity.payment.CreditCard;
 import entity.payment.PaymentTransaction;
 

@@ -1,4 +1,4 @@
-package entity.exception;
+package utils.exception;
 
 public class NotEnoughTransactionInfoException extends PaymentException {
 public NotEnoughTransactionInfoException() {

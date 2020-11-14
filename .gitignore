@@ -4,3 +4,5 @@
 *.class
 /bin/
 aims.session.sql
+*.ipynb
+test/notebook

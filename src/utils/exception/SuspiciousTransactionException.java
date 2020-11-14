@@ -1,4 +1,4 @@
-package entity.exception;
+package utils.exception;
 
 public class SuspiciousTransactionException extends PaymentException {
 	public SuspiciousTransactionException() {

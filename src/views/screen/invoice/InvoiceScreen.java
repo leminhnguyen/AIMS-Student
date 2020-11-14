@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
-import entity.exception.ProcessInvoiceException;
+import utils.exception.ProcessInvoiceException;
 import entity.invoice.Invoice;
 import entity.order.Order;
 import entity.order.OrderMedia;
