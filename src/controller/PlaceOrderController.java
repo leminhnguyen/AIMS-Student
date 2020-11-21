@@ -83,51 +83,20 @@ public class PlaceOrderController extends BaseController{
     }
     
     public boolean validatePhoneNumber(String phoneNumber) {
+    	// TODO: your work
     	return false;
     }
     
     public boolean validateName(String name) {
+    	// TODO: your work
     	return false;
     }
     
     public boolean validateAddress(String address) {
+    	// TODO: your work
     	return false;
     }
     
-    
-    
-    
-    
-
-//    /**
-//     * The method validates the info
-//     * @param info
-//     * @throws InterruptedException
-//     * @throws IOException
-//     */
-//    public void validateDeliveryInfo(HashMap<String, String> info) throws InterruptedException, IOException{
-//
-//        LOGGER.info("Validate Delivery Info");
-//        String message = "";
-//        if (info.get("name") == "") message = "The name must not be empty and must be characters";
-//        else if (info.get("province") == "") message = "The province must not be empty";
-//        else if (!(info.get("phone").length() == 10)) message = "The phone must be number and 10 digits";
-//        else if (info.get("address") == "") message = "The address must not be empty";
-//        else{
-//            try {
-//                Thread.sleep(500); // simulate validate delivery info
-//                LOGGER.info("Validate Done");
-//                Integer.parseInt(info.get("phone"));
-//            } catch (NumberFormatException e) {
-//                message = "The phone must be number and 10 digits";
-//            }
-//        }
-//        if (message != ""){
-//            PopupScreen.error(message);
-//            throw new InvalidDeliveryInfoException(message);
-//        }
-//        
-//    } 
 
     /**
      * This method calculates the shipping fees of order
