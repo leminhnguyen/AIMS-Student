@@ -21,7 +21,7 @@ public class InterbankSubsystemController {
 	private static final String PUBLIC_KEY = "AQzdE8O/fR8=";
 	private static final String SECRET_KEY = "BUXj/7/gHHI=";
 	private static final String PAY_COMMAND = "pay";
-	private static final String VERSION = "1.0.1";
+	private static final String VERSION = "1.0.0";
 
 	private static InterbankBoundary interbankBoundary = new InterbankBoundary();
 
@@ -47,15 +47,9 @@ public class InterbankSubsystemController {
 		transaction.put("amount", amount);
 		transaction.put("createdAt", Utils.getToday());
 
-		Map<String, Object> plainText = new MyMap();
-		plainText.put("secretKey", SECRET_KEY);
-		plainText.put("transaction", transaction);
-
 		Map<String, Object> requestMap = new MyMap();
 		requestMap.put("version", VERSION);
 		requestMap.put("transaction", transaction);
-		requestMap.put("appCode", PUBLIC_KEY);
-		requestMap.put("hashCode", Utils.md5(((MyMap) plainText).toJSON()));
 
 		String responseText = interbankBoundary.query(Configs.PROCESS_TRANSACTION_URL, generateData(requestMap));
 		MyMap response = null;
