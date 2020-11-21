@@ -113,12 +113,4 @@ public class PlaceOrderController extends BaseController{
         LOGGER.info("Order Amount: " + order.getAmount() + " -- Shipping Fees: " + fees);
         return fees;
     }
-
-    /**
-     * This method gets the list of items in cart
-     * @return List[CartMedia]
-     */
-    public List getListCartMedia(){
-        return Cart.getCart().getListMedia();
-    }
 }
