@@ -38,7 +38,7 @@ Click on `Run` -> `Run Configurations...`  -> `Java Application`, create a new l
 - For Linux distro: 
 > `--module-path lib/linux/javafx-sdk-15 --add-modules javafx.controls,javafx.fxml`
 - For Windows:
-> `--module-path lib/win/javafx-sdk-15 --add-modules javafx.controls,javafx.fxml`
+> `--module-path lib/win/javafx-sdk-15/lib --add-modules javafx.controls,javafx.fxml`
 
 ## Author
 - nguyenlm - Software Engeneering Student - k61
