@@ -1,7 +1,10 @@
 #  An Internet Media Store
-<p align="center">
-  <img src="assets/images/aims_cover_image.png" />
-</p>
+
+## Home Page
+<img src="./assets/images/home_aims.png" alt="check out" title="Home Page">
+
+## Database Design
+<img src="./assets/images/aims_db_design.png" alt="db design" title="Database Design">
 
 ## Getting Started
 
