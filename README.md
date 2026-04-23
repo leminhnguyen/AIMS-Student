@@ -1,49 +1,137 @@
-#  An Internet Media Store
+# AIMS — An Internet Media Store
 
-## Home Page
-<img src="./assets/images/home_aims.png" alt="check out" title="Home Page">
+> A desktop application for browsing and purchasing media products (Books, CDs, DVDs) built with Java and JavaFX.
 
-## Database Design
-<img src="./assets/images/aims_db_design.png" alt="db design" title="Database Design">
+---
+
+## Screenshots
+
+| Home Page | Database Design |
+|:---------:|:---------------:|
+| <img src="./assets/images/home_aims.png" alt="Home Page" width="420"> | <img src="./assets/images/aims_db_design.png" alt="Database Design" width="420"> |
+
+---
+
+## Features
+
+- Browse a catalog of media products: **Books**, **CDs**, and **DVDs**
+- Add items to a shopping cart and manage quantities
+- Place orders with delivery information
+- Process payments via an interbank payment subsystem (credit card)
+- View order invoices and transaction history
+- Persistent data storage with **SQLite**
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Language | Java 11+ |
+| UI Framework | JavaFX 15 |
+| Database | SQLite (`sqlite-jdbc`) |
+| Testing | JUnit 5 |
+| IDE | Eclipse |
+
+---
+
+## Project Structure
+
+```
+AIMS-Student/
+├── src/
+│   ├── App.java                  # Application entry point
+│   ├── common/exception/         # Custom exception classes
+│   ├── controller/               # Business logic controllers
+│   ├── entity/                   # Domain models (Cart, Media, Order, Payment, …)
+│   ├── subsystem/                # Interbank payment subsystem
+│   ├── utils/                    # Utility classes & configuration
+│   └── views/                    # JavaFX FXML layouts & screen handlers
+├── test/                         # Unit tests
+├── lib/
+│   ├── linux/javafx-sdk-15/      # JavaFX SDK for Linux
+│   └── win/javafx-sdk-15/        # JavaFX SDK for Windows
+└── assets/
+    ├── db/                       # SQLite schema & MySQL Workbench file
+    └── images/                   # Product and UI images
+```
+
+---
 
 ## Getting Started
 
-Welcome to the AIMS project. Here is a guideline to help you get started.
+### Prerequisites
 
-## Folder Structure
+- **Java 11** or higher
+- **Eclipse IDE** (recommended)
+- **JavaFX 15** (bundled under `lib/`)
 
-The workspace contains the following folders, where:
+### 1. Clone the repository
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-- `assets`: the folder to maintain static resources
-- `test`: the folder for testing purpose
+```bash
+git clone https://github.com/leminhnguyen/AIMS-Student.git
+cd AIMS-Student
+```
 
-## Dependency Management
-### Working with Eclipse
-Import the root directory of this repository after cloning under `Eclipse` -> `Open Projects from File System...` or by using EGit.
+### 2. Open in Eclipse
 
-### SQLite
-Import `sqlite-jdbc-3.7.2.jar` in `lib` under `Eclipse` -> `Project` -> `Properties` -> `Java Build Path` -> `Classpath` -> `Add JARs...`.
+Go to **Eclipse** → **File** → **Open Projects from File System…** and select the cloned root directory.
 
+### 3. Configure dependencies
 
-### JUnit
-Import `JUnit5` library under `Eclipse` -> `Project` -> `Properties` -> `Java Build Path` -> `Modulepath` -> `Add Library...` -> `JUnit` -> `Next`.
+#### SQLite JDBC
 
-### JavaFX
-**Note:** At first, please try to run the project once, and then follow these steps.
-1. Create a new `User Library` under `Eclipse` -> `Window` -> `Preferences` -> `Java` -> `Build Path` -> `User Libraries` -> `New`
-2. Name it anything you want, e.g., `JavaFX15`, and include the ***jars*** under either the `lib/linux/javafx-sdk-15` directory for Linux distro or the `lib/win/javafx-sdk-15` directory for Windows in the project.
-3. Include the library, e.g., `JavaFX15`, into the classpath.
+**Project** → **Properties** → **Java Build Path** → **Classpath** → **Add JARs…**  
+Select `sqlite-jdbc-3.7.2.jar` from the `lib/` directory.
 
-### Add VM arguments
-Click on `Run` -> `Run Configurations...`  -> `Java Application`, create a new launch configuration for your project and add these VM arguments:
-- For Linux distro: 
-> `--module-path lib/linux/javafx-sdk-15 --add-modules javafx.controls,javafx.fxml`
-- For Windows:
-> `--module-path lib/win/javafx-sdk-15/lib --add-modules javafx.controls,javafx.fxml`
+#### JUnit 5
 
-## Author
-- nguyenlm - Software Engeneering Student - k61
-- manhvd   - Software Engeneering Student - k61
-- hieudm   - ICT - k61
+**Project** → **Properties** → **Java Build Path** → **Modulepath** → **Add Library…** → **JUnit** → **Next**.
+
+#### JavaFX
+
+1. Open **Eclipse** → **Window** → **Preferences** → **Java** → **Build Path** → **User Libraries** → **New**.
+2. Name the library (e.g., `JavaFX15`) and add all JARs from the appropriate directory:
+   - **Linux:** `lib/linux/javafx-sdk-15/lib/`
+   - **Windows:** `lib/win/javafx-sdk-15/lib/`
+3. Add the user library to the project classpath.
+
+### 4. Add VM arguments
+
+Open **Run** → **Run Configurations…** → **Java Application**, select your launch configuration, and add the following under **VM arguments**:
+
+**Linux:**
+```
+--module-path lib/linux/javafx-sdk-15/lib --add-modules javafx.controls,javafx.fxml
+```
+
+**Windows:**
+```
+--module-path lib/win/javafx-sdk-15/lib --add-modules javafx.controls,javafx.fxml
+```
+
+### 5. Set up the database
+
+Import the SQL schema into SQLite using the file at `assets/db/aims_sqlite.sql`.
+
+---
+
+## Running Tests
+
+Tests are located in the `test/` directory and use **JUnit 5**. Run them from Eclipse via **Run As** → **JUnit Test**.
+
+---
+
+## Authors
+
+| Name | Role | Batch |
+|---|---|---|
+| nguyenlm | Software Engineering Student | K61 |
+| manhvd | Software Engineering Student | K61 |
+| hieudm | ICT Student | K61 |
+
+---
+
+## License
+
+This project is intended for educational purposes as part of the Software Engineering curriculum.
