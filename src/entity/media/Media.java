@@ -43,14 +43,22 @@ public class Media {
         //stm = AIMSDB.getConnection().createStatement();
     }
 
-    public int getQuantity() throws SQLException{
+    /**
+     * Retrieves the updated quantity of the media item from the database.
+     * This method fetches the current quantity of the media item by its ID
+     * and updates the local quantity value.
+     *
+     * @return The updated quantity of the media item.
+     * @throws SQLException If there's an error accessing the database.
+     */
+    public int getQuantity() throws SQLException {
         int updated_quantity = getMediaById(id).quantity;
         this.quantity = updated_quantity;
         return updated_quantity;
     }
 
     public Media getMediaById(int id) throws SQLException{
-        String sql = "SELECT * FROM Media ;";
+        String sql = "SELECT * FROM Media;";
         Statement stm = AIMSDB.getConnection().createStatement();
         ResultSet res = stm.executeQuery(sql);
 		if(res.next()) {
@@ -67,10 +75,10 @@ public class Media {
         return null;
     }
 
-    public List getAllMedia() throws SQLException{
+    public List<Media> getAllMedia() throws SQLException{
         Statement stm = AIMSDB.getConnection().createStatement();
         ResultSet res = stm.executeQuery("select * from Media");
-        ArrayList medium = new ArrayList<>();
+        ArrayList<Media> medium = new ArrayList<>();
         while (res.next()) {
             Media media = new Media()
                 .setId(res.getInt("id"))

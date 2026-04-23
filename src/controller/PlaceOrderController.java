@@ -24,7 +24,7 @@ public class PlaceOrderController extends BaseController{
     /**
      * Just for logging purpose
      */
-    private static Logger LOGGER = utils.Utils.getLogger(PlaceOrderController.class.getName());
+    private static final Logger LOGGER = utils.Utils.getLogger(PlaceOrderController.class.getName());
 
     /**
      * This method checks the avalibility of product when user click PlaceOrder button
@@ -36,10 +36,9 @@ public class PlaceOrderController extends BaseController{
 
     /**
      * This method creates the new Order based on the Cart
-     * @return Order
-     * @throws SQLException
+     * @return {@link Order}
      */
-    public Order createOrder() throws SQLException{
+    public Order createOrder() {
         Order order = new Order();
         for (Object object : Cart.getCart().getListMedia()) {
             CartMedia cartMedia = (CartMedia) object;
@@ -81,20 +80,49 @@ public class PlaceOrderController extends BaseController{
     public void validateDeliveryInfo(HashMap<String, String> info) throws InterruptedException, IOException{
     	
     }
-    
+
+    /**
+     * This method takes responsibility for check user's input phone number
+     */
     public boolean validatePhoneNumber(String phoneNumber) {
-    	// TODO: your work
-    	return false;
+        try {
+            if (phoneNumber == null) {
+                return false;
+            }
+            return phoneNumber.length() == 10 && phoneNumber.matches("\\d{10}");
+        } catch (Exception e) {
+            return false;
+        }
     }
-    
+
+    /**
+     * This method takes responsibility for check user's input name
+     */
     public boolean validateName(String name) {
-    	// TODO: your work
-    	return false;
+        try {
+            if (name == null) {
+                return false;
+            }
+            return !name.isEmpty() && name.matches("^[a-zA-Z0-9\\s,.-]+$");
+        } catch (Exception e) {
+            return false;
+        }
     }
-    
+
+    /**
+     * This method takes responsibility for check user's input address
+     */
     public boolean validateAddress(String address) {
-    	// TODO: your work
-    	return false;
+        try {
+            if (address == null) {
+                return false;
+            }
+
+            return !address.isEmpty() &&
+                    address.matches("^[a-zA-Z\\s]+$");
+        } catch (Exception e) {
+            return false;
+        }
     }
     
 

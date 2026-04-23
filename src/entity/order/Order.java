@@ -9,14 +9,14 @@ import utils.Configs;
 public class Order {
     
     private int shippingFees;
-    private List lstOrderMedia;
+    private List<OrderMedia> lstOrderMedia;
     private HashMap<String, String> deliveryInfo;
 
     public Order(){
         this.lstOrderMedia = new ArrayList<>();
     }
 
-    public Order(List lstOrderMedia) {
+    public Order(List<OrderMedia> lstOrderMedia) {
         this.lstOrderMedia = lstOrderMedia;
     }
 
