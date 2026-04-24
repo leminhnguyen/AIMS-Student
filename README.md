@@ -6,9 +6,21 @@
 
 ## Screenshots
 
-| Home Page | Database Design |
-|:---------:|:---------------:|
-| <img src="./assets/images/home_aims.png" alt="Home Page" width="420"> | <img src="./assets/images/aims_db_design.png" alt="Database Design" width="420"> |
+| Home Page | Cart / Place Order | Shipping Form |
+|:---------:|:-----------------:|:-------------:|
+| <img src="./assets/images/home_aims.png" alt="Home Page" width="280"> | <img src="./assets/images/systems/place_order.png" alt="Cart and Place Order" width="280"> | <img src="./assets/images/systems/shipping.png" alt="Shipping Form" width="280"> |
+
+---
+
+## System Design
+
+### Database Design
+
+<img src="./assets/images/aims_db_design.png" alt="Database Design" width="860">
+
+### Class Diagram
+
+<img src="./assets/images/systems/class_design.jpeg" alt="Class Diagram" width="860">
 
 ---
 
@@ -60,65 +72,89 @@ AIMS-Student/
 
 ## Getting Started
 
-### Prerequisites
+> [!NOTE]
+> **Prerequisites** — make sure you have all of the following before continuing:
+> - **Java 11** or higher
+> - **Eclipse IDE** (recommended)
+> - **JavaFX 15** (bundled under `lib/`)
 
-- **Java 11** or higher
-- **Eclipse IDE** (recommended)
-- **JavaFX 15** (bundled under `lib/`)
+---
 
-### 1. Clone the repository
+### Step 1 — Clone the repository
 
 ```bash
 git clone https://github.com/leminhnguyen/AIMS-Student.git
 cd AIMS-Student
 ```
 
-### 2. Open in Eclipse
+---
 
-Go to **Eclipse** → **File** → **Open Projects from File System…** and select the cloned root directory.
+### Step 2 — Open in Eclipse
 
-### 3. Configure dependencies
+> [!TIP]
+> Go to **Eclipse** → **File** → **Open Projects from File System…** and select the cloned root directory.
 
-#### SQLite JDBC
+---
 
-**Project** → **Properties** → **Java Build Path** → **Classpath** → **Add JARs…**  
-Select `sqlite-jdbc-3.7.2.jar` from the `lib/` directory.
+### Step 3 — Configure dependencies
 
-#### JUnit 5
+> [!IMPORTANT]
+> You need to add three libraries to the build path.
 
-**Project** → **Properties** → **Java Build Path** → **Modulepath** → **Add Library…** → **JUnit** → **Next**.
+**SQLite JDBC**
 
-#### JavaFX
+```
+Project → Properties → Java Build Path → Classpath → Add JARs…
+Select sqlite-jdbc-3.7.2.jar from the lib/ directory.
+```
 
-1. Open **Eclipse** → **Window** → **Preferences** → **Java** → **Build Path** → **User Libraries** → **New**.
-2. Name the library (e.g., `JavaFX15`) and add all JARs from the appropriate directory:
-   - **Linux:** `lib/linux/javafx-sdk-15/lib/`
-   - **Windows:** `lib/win/javafx-sdk-15/lib/`
-3. Add the user library to the project classpath.
+**JUnit 5**
 
-### 4. Add VM arguments
+```
+Project → Properties → Java Build Path → Modulepath → Add Library… → JUnit → Next
+```
 
-Open **Run** → **Run Configurations…** → **Java Application**, select your launch configuration, and add the following under **VM arguments**:
+**JavaFX**
 
-**Linux:**
+```
+Eclipse → Window → Preferences → Java → Build Path → User Libraries → New
+Name it (e.g. JavaFX15) and add all JARs from:
+  • Linux  : lib/linux/javafx-sdk-15/lib/
+  • Windows: lib/win/javafx-sdk-15/lib/
+Then add the user library to the project classpath.
+```
+
+---
+
+### Step 4 — Add VM arguments
+
+> [!IMPORTANT]
+> Open **Run** → **Run Configurations…** → **Java Application**, select your launch config, and paste the VM arguments below.
+
+**Linux**
 ```
 --module-path lib/linux/javafx-sdk-15/lib --add-modules javafx.controls,javafx.fxml
 ```
 
-**Windows:**
+**Windows**
 ```
 --module-path lib/win/javafx-sdk-15/lib --add-modules javafx.controls,javafx.fxml
 ```
 
-### 5. Set up the database
+---
 
-Import the SQL schema into SQLite using the file at `assets/db/aims_sqlite.sql`.
+### Step 5 — Set up the database
+
+> [!TIP]
+> Import the SQL schema into SQLite using the file at `assets/db/aims_sqlite.sql`.
 
 ---
 
 ## Running Tests
 
-Tests are located in the `test/` directory and use **JUnit 5**. Run them from Eclipse via **Run As** → **JUnit Test**.
+> [!NOTE]
+> Tests are located in the `test/` directory and use **JUnit 5**.  
+> Run them from Eclipse via **Run As** → **JUnit Test**.
 
 ---
 
