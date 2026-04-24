@@ -70,6 +70,19 @@ AIMS-Student/
 
 ---
 
+## Design Patterns
+
+| Pattern | Where applied | Purpose |
+|---|---|---|
+| **Singleton** | `Cart`, `AIMSDB` | Ensure a single shared instance of the cart and database connection across the app |
+| **MVC** | `entity/` · `controller/` · `views/` | Cleanly separate domain data, business logic, and UI rendering |
+| **Facade** | `InterbankSubsystem` | Expose a simple payment API that hides the internal `InterbankSubsystemController` complexity |
+| **Template Method** | `BaseController` → controllers · `BaseScreenHandler` → screens | Define a common skeleton and let subclasses specialise behaviour |
+| **Strategy (Interface)** | `InterbankInterface` | Decouple payment logic from a concrete implementation so the subsystem can be swapped or mocked |
+| **Inheritance / Polymorphism** | `Media` → `Book`, `CD`, `DVD` | Share common media attributes while allowing each type to carry its own fields |
+
+---
+
 ## Getting Started
 
 > [!NOTE]
