@@ -1,4 +1,4 @@
-# AIMS — An Internet Media Store
+# 🐛 AIMS — An Internet Media Store
 
 > A desktop application for browsing and purchasing media products (Books, CDs, DVDs) built with Java and JavaFX.
 
